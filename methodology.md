@@ -4,7 +4,7 @@
 
 ---
 
-The Rake scores tech companies on how their revenue models relate to the interests of the people who use them. Every score is derived from public information, applied through a consistent framework, with sources cited and confidence levels shown. We are not publishing legal findings or making accusations — we are applying a transparent system to public facts.
+The Rake scores tech companies on how their revenue models relate to the interests of the people who use them. Every score is derived from public information, applied through a consistent framework, with sources cited and confidence levels shown. We are not publishing legal findings or making accusations. We are applying a transparent system to public facts.
 
 This document describes that system in full. If you disagree with a score, the methodology is your starting point.
 
@@ -12,7 +12,7 @@ This document describes that system in full. If you disagree with a score, the m
 
 ## The five profile labels
 
-Every company receives a spectrum position from 0–100 and a corresponding profile label. The label is editorial, not mechanical — it reflects a judgment about the full picture, weighted toward incentive alignment as the core question. The spectrum position conveys where within a band a company sits; two companies with the same label can occupy meaningfully different positions.
+Every company receives a spectrum position from 0–100 and a corresponding profile label. The label is editorial, not mechanical. It reflects a judgment about the full picture, weighted toward incentive alignment as the core question. The spectrum position conveys where within a band a company sits; two companies with the same label can occupy meaningfully different positions.
 
 | Band | Label | Definition |
 |---|---|---|
@@ -28,7 +28,7 @@ Profiles are always displayed with their spectrum position: e.g. **Compromised (
 
 ## The seven dimensions
 
-Each company is scored across seven dimensions on a 1–3 scale. The scores are the starting point — the evidence and confidence levels behind each score carry as much weight as the number itself.
+Each company is scored across seven dimensions on a 1–3 scale. The scores are the starting point. The evidence and confidence levels behind each score carry as much weight as the number itself.
 
 | Dimension | The question it answers |
 |---|---|
@@ -178,7 +178,7 @@ The confidence split is displayed as a ratio per dimension and as an aggregate a
 
 High inferred scores are themselves editorial information. A company that is hard to score confidently is exhibiting opacity. This is noted in the writeup.
 
-There is no threshold below which we withhold a score — we publish with a low confidence rating and flag it for community verification. Opacity is a behaviour worth surfacing.
+There is no threshold below which we withhold a score, as opacity is a behaviour worth surfacing. However our editorial team may choose to not publish a report with a seriously low confidence rating, or instead spend more effort finding sources that will improve the confidence score. 
 
 ### Confidence thresholds
 
@@ -192,22 +192,22 @@ There is no threshold below which we withhold a score — we publish with a low 
 
 ## How scores are produced
 
-### Step 1 — Agent assessment
-An AI agent searches public sources, scores each dimension 1–3, tags each source as assessed or inferred, and produces a confidence split per dimension and in aggregate. This is the research and scoring input — not a final score.
+### Phase 1 — Research collection
+An AI agent searches public sources systematically across company websites, filings, terms of service, press, and regulatory records. It collects and organises all evidence relevant to the seven dimensions, tags each source as assessed or inferred, and produces a structured research document. The agent does not score anything — it finds and organizes evidence.
 
-### Step 2 — Analyst review
-A human analyst reviews the agent's output, corrects errors, adds context, applies flags, and signs off. The signed-off version is what gets published. The analyst's judgment determines the final profile label and spectrum position.
+### Phase 2 — Scoring
+A second AI agent takes the Phase 1 research document and applies the scoring framework to it. It scores each dimension 1–3, writes a rationale grounded in the evidence, produces a confidence split per dimension, proposes a profile label and spectrum position, and identifies flags. The agent works only from the Phase 1 document — it does not search the web or add new information.
 
-### Step 3 — Community verification
-Readers can submit new sources, contest dimension scores, and shift the confidence split over time. Community input can upgrade inferred evidence to assessed if documented sources are provided. Community members can also nominate new flags or contest existing ones.
+### Phase 3 — Human analysis and narrative
+A human reviews the Phase 1 research and Phase 2 scorecard, checks sources, corrects errors, applies final judgment on the profile label and spectrum position, and writes the published narrative. This final step is completed by a human, not generated by an AI. The analyst's judgment determines what gets published.
 
-Companies may engage directly to correct the record. If a company provides new information that changes a score, the entry is updated with a changelog. The original score and date are preserved. Company engagement is noted as a verification status on the profile.
+Community and company verification are planned features for a future version of The Rake. For now, if a company provides new information that changes a score, the entry is updated with a changelog and the original score and date are preserved.
 
 ---
 
 ## Versioning
 
-Every score is a snapshot. Entries are dated and versioned. When a score changes — due to new information, community input, or company response — a new version is published with a changelog explaining what changed and why. The historical record is preserved.
+Every score is a snapshot. Entries are dated and versioned. When a score changes — due to new information, significant new coverage, community input, or company response — a new version is published with a changelog explaining what changed and why. The historical record is preserved.
 
 Examples:
 - `v1.0` — initial score
