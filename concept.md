@@ -47,6 +47,8 @@ The seven dimensions are:
 
 Every profile also includes a label (one of five editorial categories from Adversarial to Principled) and a spectrum position (a 0–100 placement within that label). Two companies can share a label while sitting at meaningfully different positions.
 
+Flags surface the most significant positive and negative findings from the research — specific documented incidents or structural commitments that are important enough to affect how a dimension score should be read. Every flag is tied to a specific dimension and requires a cited source. Flags come in two types: negative (a documented incident or structural problem) and positive (a commitment or action that genuinely distinguishes a company from the norm).
+
 - **Adversarial** (0–20) — designed to work against you
 - **Extractive** (21–40) — takes more value than it delivers
 - **Compromised** (41–60) — genuine value but not fully on your side

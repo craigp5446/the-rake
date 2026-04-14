@@ -23,7 +23,7 @@ The Rake scores tech companies across seven dimensions:
 
 Scores aren't collapsed into a single number. The profile across dimensions is more revealing than any aggregate. Every company receives a label — from **Adversarial** to **Principled** — and a spectrum position (0–100) that shows where within that label it sits.
 
-The research is done systematically using a two-phase AI process, reviewed and written up by a human. The framework is public, forkable, and versioned.
+The research is done systematically using a three-phase process: two AI agents handle collection and scoring, and a human reviews, applies final judgment, and writes the narrative. The framework is public, forkable, and versioned.
 
 ---
 

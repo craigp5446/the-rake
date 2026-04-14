@@ -110,24 +110,38 @@ practices, deletion vs deactivation distinction, any regulatory action
 related to cancellation difficulty.
 
 ### 4. Engagement extraction
-Does the product benefit from maximising time-in-app regardless of user
-outcome? Look for: streak mechanics, push notification strategy, variable
-reward schedules, infinite scroll, any statements from the company about
-engagement as a metric, research or journalism on psychological design
-choices.
+Is the product engineered to defeat the user's ability to disengage, or
+does engagement reflect genuine user value? Look for: evidence that
+specific mechanics — streaks, push notifications, reward schedules —
+are deliberately calibrated to extract time or attention beyond what
+serves the user's stated goal. Prioritise internal documentation,
+academic research, or investigative reporting over surface observation.
+Note whether engagement mechanics serve user goals or override user
+judgment. Also look for any features that actively help users limit
+their own usage.
 
 ### 5. Multi-sided tension
 Does this company serve more than one customer group? If so, whose
 interests take priority when they conflict? Look for: advertiser
 relationships, employer/recruiter tiers, data sharing with third parties,
 algorithmic ranking influenced by payment, any documented instances of
-user interests being subordinated to paying customers.
+user interests being subordinated to paying customers. If the platform
+hosts third-party content, also look for: content moderation policies
+and how they are applied, documented instances where moderation decisions
+appeared to favour revenue over user safety, and any evidence the
+platform earns revenue from users causing harm to other users.
 
-### 6. Algorithmic transparency
-Is the feed, search, or recommendation surface shaped by undisclosed
-forces? Look for: paid placement in search or feeds, disclosed vs
-undisclosed ranking signals, any regulatory findings on algorithmic
-manipulation, company statements about how content is ranked.
+### 6. Algorithmic accountability
+Does the company take responsibility for what its systems surface and
+amplify? Look for: evidence of harmful content being surfaced or promoted
+by the algorithm, the company's stated moderation and ranking policies,
+documented instances where the company was aware of harmful amplification
+and chose not to intervene, paid placement in feeds or search results and
+whether it is disclosed, any regulatory findings on algorithmic behaviour,
+and any company publications disclosing ranking signals in meaningful
+detail. Deliberate non-intervention is a scoreable policy stance —
+look for evidence of what the company has chosen not to do as well as
+what it has done.
 
 ### 7. Ownership pressure
 Who owns this company and what are they optimising for? Look for: current
@@ -138,16 +152,63 @@ acquisition).
 
 ## Flags to watch for
 
-While collecting, note if you find evidence of any of the following —
-these will be assessed in Phase 2 but flag them now if you see them:
-- Recent acquisition or ownership change
-- Advertising introduced to a previously ad-free product
-- Free tier materially degraded
-- Active regulatory investigation or litigation
-- Significant layoffs (10%+) in the past 12 months
-- Founder exit post-acquisition
-- Founder conduct concerns
-- Any documented breach of own privacy policy or terms
+While collecting, watch for evidence that matches any of the flag
+categories below. Flags are not predefined findings — they are triggered
+when research surfaces something specific and significant enough to affect
+how a dimension score should be read. Both negative and positive flags
+are worth surfacing.
+
+For each flag candidate you identify, note the specific finding, the
+source URL and date, and which dimension it maps to. Phase 2 will
+determine whether it meets the threshold for inclusion.
+
+**Dimension 1 — Revenue clarity**
+- Negative: a material revenue stream that does not appear anywhere in
+  user-facing documentation (pricing, privacy policy, onboarding, terms)
+- Positive: voluntary disclosure of all revenue streams in plain language,
+  going beyond legal requirement
+
+**Dimension 2 — Incentive alignment**
+- Negative: evidence that the business model structurally requires users
+  not achieving their stated goal in order to sustain revenue
+- Positive: pricing model that charges only when a user achieves a
+  defined, user-meaningful outcome
+
+**Dimension 3 — Captivity**
+- Negative: cancellation flow confirmed to use dark patterns by a
+  regulatory finding, user research study, or credible publication
+- Positive: data export covering all material user data in open formats,
+  going beyond regulatory minimum
+
+**Dimension 4 — Engagement extraction**
+- Negative: specific mechanics confirmed by research or internal
+  documentation to be calibrated to extract time beyond what serves
+  the user's stated goal
+- Positive: product features that actively help users limit their own
+  usage, built into the core product at cost to engagement metrics
+
+**Dimension 5 — Multi-sided tension**
+- Negative: evidence the platform directly earns revenue from users
+  causing documented harm to other users, with named examples
+- Positive: documented instance where the company sided with users
+  against a paying customer or advertiser at measurable commercial cost
+
+**Dimension 6 — Algorithmic accountability**
+- Negative: specific documented instance where the algorithm promoted
+  harmful content with evidence the company was aware and did not
+  intervene
+- Positive: company publication disclosing primary ranking signals in
+  meaningful, actionable detail
+
+**Dimension 7 — Ownership pressure**
+- Negative (Active divestment): parent company has signalled exit from
+  the product while continuing to monetise its user base, confirmed by
+  a primary source
+- Negative (Founder conduct): founder or CEO personally associated with
+  investments, causes, or behaviour conflicting materially with company
+  values or user interests, confirmed and named
+- Positive: legally binding mission-lock or equivalent structure
+  confirmed by an assessed source
 
 ## Output format
 

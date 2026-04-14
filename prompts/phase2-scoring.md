@@ -1,5 +1,5 @@
 # The Rake — Phase 2: Scoring Prompt
-**Version 1.1 — April 2026**
+**Version 1.2 — April 2026**
 
 ---
 
@@ -22,8 +22,9 @@ the evidence shows, not to argue a case.
 
 ## The scoring framework
 
-Score each of the seven dimensions below on a scale of 1–3. There are no 
-half-points. For each dimension, you must:
+Score each of the seven dimensions below on a scale of 1–3, or mark N/A 
+where the dimension genuinely does not apply. There are no half-points. 
+For each dimension, you must:
 
 - State the score and its label
 - Write a rationale of 2–3 sentences grounded in specific evidence from 
@@ -42,6 +43,12 @@ half-points. For each dimension, you must:
 
 If a dimension has no usable evidence in the Phase 1 document, leave it 
 unscored and note why. Opacity is itself a signal — note it as such.
+
+**N/A dimensions:** Mark a dimension N/A only when it genuinely does not 
+apply to this company's product — not as a default when evidence is thin. 
+N/A requires a one-sentence rationale. If there is reasonable doubt about 
+whether a dimension applies, score it. A company cannot receive N/A on 
+more than three dimensions.
 
 ---
 
@@ -89,54 +96,87 @@ straightforward?*
   for leaving.
 
 ### 4. Engagement extraction
-*Does the product benefit from maximising time-in-app regardless of 
-whether that time serves the user?*
+*Is the product engineered to defeat the user's ability to disengage, or 
+does engagement reflect genuine user value?*
 
-- **1 — Exploitative.** Mechanics borrowed directly from addiction and 
-  gambling design: variable reward schedules, streak anxiety with real 
-  loss aversion, notifications calibrated to pull users back when 
-  disengaging, infinite scroll with no natural stopping point.
-- **2 — Present.** Engagement mechanics exist and are tied to revenue, 
-  but fall short of exploitative. The product benefits from time spent 
-  regardless of user outcome, but does not actively exploit psychological 
-  vulnerabilities.
-- **3 — Restrained.** Product is primarily task-focused. Limited push 
-  notifications. No streak or guilt mechanics. The product is designed to 
-  get out of the user's way.
+- **1 — Weaponised.** The product is deliberately engineered to defeat 
+  the user's own ability to disengage. Psychological mechanisms are 
+  exploited to override user judgment — not to deliver value, but to 
+  extract time and attention regardless of user outcome. The gap between 
+  what users want to do (stop) and what they do (continue) is engineered, 
+  not incidental.
+- **2 — Extractive.** Engagement mechanics exist and are tied to revenue, 
+  but stop short of deliberately exploiting psychological vulnerabilities. 
+  The product benefits from time spent regardless of user outcome, but 
+  does not systematically engineer against the user's ability to disengage.
+- **3 — Value-driven.** Engagement reflects genuine user value. The 
+  product is used when it is useful and does not employ mechanics designed 
+  to extend use beyond that. Engagement that incidentally benefits the 
+  business is acceptable here provided it is not calibrated against user 
+  judgment.
+
+> Note: this dimension asks about product design decisions, not business 
+> model structure. A company can score neutrally on incentive alignment 
+> (flat subscription) while scoring poorly here if its product is 
+> deliberately engineered to override user judgment. These are different 
+> questions.
 
 ### 5. Multi-sided tension
-*When the interests of different customer groups conflict, whose side does 
-the company take?*
+*When the interests of different customer groups conflict — including 
+through platform safety and content decisions — whose side does the 
+company take?*
 
 - **1 — Users are the product.** Users are actively sold to the paying 
-  party. Recommendations driven by advertiser spend or employer payment; 
-  user data sold or shared with third parties; no meaningful recourse when 
-  interests conflict.
+  party, or the platform's content and moderation decisions consistently 
+  favour paying or high-revenue users over the safety and interests of 
+  the broader user base. Recommendations driven by advertiser spend or 
+  platform commercial preferences; user data sold or shared with third 
+  parties; no meaningful recourse when interests conflict.
 - **2 — Mixed record.** Nominal user protections exist but the company's 
-  track record when interests conflict is ambiguous or unresolved.
+  track record when interests conflict is ambiguous or unresolved. This 
+  includes platforms where moderation policy exists on paper but 
+  documented incidents suggest consistent prioritisation of revenue over 
+  user safety.
 - **3 — Users defended.** No advertiser relationship, or clear structural 
   protections when interests conflict. Track record of siding with users 
-  when it costs the company something.
+  — including enforcing content and safety standards — when it costs the 
+  company something.
 
-> If the company is not multi-sided (serves only one user group), score 
-> this dimension 3 by default and note that no structural conflict exists.
+> When a platform hosts third-party content, its content moderation 
+> decisions are treated as a form of taking sides between user groups. 
+> A policy of deliberate non-intervention is a scoreable stance, not a 
+> neutral one — particularly when the platform earns revenue from the 
+> content it declines to moderate.
 
-### 6. Algorithmic transparency
-*Does the product show users what it says it shows them, or is the feed, 
-search, or recommendation surface shaped by undisclosed forces?*
+> If a company is not multi-sided and hosts no third-party content, mark 
+> this dimension N/A.
 
-- **1 — Opaque and compromised.** Algorithmic ranking is actively shaped 
-  by paid placement, platform commercial preferences, or deliberate 
-  suppression — none of which is disclosed to users.
-- **2 — Partially disclosed.** Algorithmic shaping exists and is broadly 
-  known, but specific signals, paid influences, or suppression criteria 
-  are not transparent.
-- **3 — Honest.** Ranking signals are disclosed; paid placement is clearly 
-  labelled; the platform does not suppress content beyond stated and 
-  consistently applied guidelines.
+### 6. Algorithmic accountability
+*Does the company take responsibility for what its systems surface and 
+amplify?*
 
-> For products with no algorithmic content layer (direct-purchase tools, 
-> task-focused apps), score this dimension 3 by default and note why.
+- **1 — Unaccountable.** The platform's algorithmic systems actively 
+  surface, amplify, or recommend harmful content, and the company has 
+  chosen not to intervene despite awareness. This includes deliberate 
+  non-intervention as a policy stance, paid placement that is not 
+  disclosed, and suppression of content beyond stated guidelines without 
+  explanation. Documented incidents of harm are treated as evidence of 
+  the underlying policy, not as isolated events.
+- **2 — Partial accountability.** The company acknowledges responsibility 
+  for algorithmic outcomes and has moderation or ranking policies in 
+  place, but these are inconsistently applied, incompletely disclosed, or 
+  have a documented record of failing to prevent significant harm. The 
+  company is trying but the systems are not working reliably in users' 
+  interests.
+- **3 — Accountable.** The company takes clear and documented 
+  responsibility for what its systems surface. Ranking signals are 
+  disclosed in meaningful detail; paid placement is clearly labelled; 
+  content moderation policies are published and consistently applied; 
+  and the company has a documented record of intervening when its systems 
+  cause harm.
+
+> For products with no algorithmic content layer and no user-generated 
+> content, mark this dimension N/A.
 
 ### 7. Ownership pressure *(Trajectory)*
 *Who owns this company, and what structural pressures are they under to 
@@ -173,7 +213,7 @@ position.
 | 21–40    | Extractive     | This product takes more value from you than it delivers — engagement, data, or money are harvested in ways that don't serve your interests. |
 | 41–60    | Compromised    | This product has genuine value but isn't fully on your side — trade-offs exist between what's good for you and what's good for the business. |
 | 61–80    | Aligned        | This product makes money when you get value — its incentives and your interests point in the same direction. |
-| 81–100   | Principled     | This product actively prioritises your interests, sometimes at cost to itself. |
+| 81–100   | Principled     | This product actively prioritises your interests, sometimes at cost to itself — the way it's built reflects values, not just incentives. |
 
 The label is editorial, not mechanical. It reflects a judgment about the 
 full picture, weighted toward incentive alignment as the core question. 
@@ -190,28 +230,81 @@ drove the label and whether any tension exists between dimensions.
 
 Review the FLAGS OBSERVED section from Phase 1 and determine which flags 
 to carry forward. For each flag carried forward, write one sentence 
-explaining why it applies, and include its source URL and date.
+explaining the specific finding, and include its source URL and date.
 
-Flags do not change the score. They contextualise it.
+Flags are the evidence layer that makes dimension scores legible. Every 
+flag must be tied to a specific dimension. A flag is what justifies a 
+score — particularly when a documented incident is what moves a score 
+from 2 to 1, or a structural commitment is what earns a 3. If a finding 
+is not significant enough to affect how a dimension score is read, it is 
+not a flag.
 
-**Reference flag list (apply any that are supported by evidence):**
+Both negative and positive flags are applied. Drop any flag candidate 
+from Phase 1 that is not supported by at least one cited source, or that 
+does not meet the threshold below.
 
-Ownership & leadership: Founder conduct, Unsavoury backing, Significant 
-layoffs, Active divestment, Acquisition in progress, Founder exit
+**Flag categories and thresholds:**
 
-Business model: Ads introduced, Feature degraded, Free tier degraded, 
-New data sharing, B2B pipeline
+*Dimension 1 — Revenue clarity*
+- Negative (Hidden revenue stream): material revenue stream absent from 
+  all user-facing documentation. Requires assessed source confirming the 
+  stream exists and one confirming it is not disclosed.
+- Positive (Proactive revenue disclosure): voluntary plain-language 
+  disclosure of all revenue streams beyond legal requirement. Requires 
+  assessed source.
 
-Legal & regulatory: Active investigation, Settled action, Policy 
-violation, Mandated changes
+*Dimension 2 — Incentive alignment*
+- Negative (Documented failure dependency): structural evidence the 
+  business model requires users not achieving their goal. Requires 
+  assessed source or multiple strong inferred sources. Single opinion 
+  pieces do not qualify.
+- Positive (Outcomes-based pricing): charges only on user-meaningful 
+  outcomes. Must be a primary or significant revenue model. Requires 
+  assessed source.
 
-Product & labour: Product sunset risk, Union dispute, Support degraded
+*Dimension 3 — Captivity*
+- Negative (Dark pattern cancellation): confirmed by regulatory finding, 
+  systematic user research, or credible publication that tested the flow 
+  directly. User reviews alone do not qualify.
+- Positive (Full data portability): all material user data exportable in 
+  open formats, beyond regulatory minimum. Requires assessed source.
 
-Algorithmic: Documented suppression, Undisclosed promotion, Filter bubble
+*Dimension 4 — Engagement extraction*
+- Negative (Extractive engagement mechanics confirmed): specific mechanics 
+  confirmed by internal documentation, academic research, or credible 
+  investigative reporting to be calibrated against user judgment. 
+  Gamification serving user goals does not qualify.
+- Positive (Usage limiting by design): core product features that 
+  actively help users limit their own usage, at cost to engagement 
+  metrics. Requires assessed source.
 
-Drop any flag from Phase 1 that is not supported by at least one cited 
-source. Add new flags if the evidence clearly supports them and a source 
-exists.
+*Dimension 5 — Multi-sided tension*
+- Negative (Harmful user monetisation): platform earns revenue from users 
+  causing documented harm to other users. Named examples required. 
+  Assessed source preferred; named journalism acceptable.
+- Positive (User-side enforcement at commercial cost): company sided with 
+  users against a paying customer or advertiser at documented commercial 
+  cost. Requires confirmed source showing both the decision and the cost.
+
+*Dimension 6 — Algorithmic accountability*
+- Negative (Documented harmful amplification): specific incident where 
+  algorithm promoted harmful content with evidence the company was aware 
+  and did not intervene. Named examples required. Single strong source 
+  minimum.
+- Positive (Algorithmic criteria publicly documented): company discloses 
+  primary ranking signals in meaningful, actionable detail. Must be 
+  current and maintained. Requires assessed source.
+
+*Dimension 7 — Ownership pressure*
+- Negative (Active divestment): parent company signalled exit while 
+  continuing to monetise user base. Requires primary source — earnings 
+  call, filing, or named leadership statement.
+- Negative (Founder conduct): founder or CEO personally associated with 
+  named investments, causes, or behaviour conflicting materially with 
+  company values or user interests. Requires assessed source.
+- Positive (Mission-lock structure): legally binding structure confirmed 
+  by assessed source. Values documents and stated commitments do not 
+  qualify.
 
 ---
 
@@ -243,31 +336,46 @@ DIMENSION SCORES
 For each dimension:
 
 DIMENSION: [name]
-SCORE: [1, 2, or 3] — [rubric label, e.g. "Partial"]
+SCORE: [1, 2, or 3] — [rubric label] | or N/A — [one sentence rationale]
 RATIONALE: [2–3 sentences describing what the evidence shows on this 
-dimension. Factual and specific. No editorial framing.]
+dimension. Factual and specific. No editorial framing. Omit if N/A.]
 SOURCES:
   - [URL] | [date] | [ASSESSED or INFERRED]
   - [URL] | [date] | [ASSESSED or INFERRED]
 CONFIDENCE: [n] sources — [n] assessed, [n] inferred = [x]% assessed 
-→ [High / Medium / Low] confidence
+→ [High / Medium / Low] confidence | Omit if N/A.
 
 ---
 
-PROFILE
+PROFILE SUMMARY
 
 PROPOSED LABEL: [Adversarial / Extractive / Compromised / Aligned / 
 Principled]
 PROPOSED SPECTRUM POSITION: [0–100]
-REASONING: [2–3 sentences explaining the label and position]
+DIMENSIONS SCORED: [n] of 7
+
+Revenue clarity             [1 / 2 / 3]
+Incentive alignment         [1 / 2 / 3]
+Captivity                   [1 / 2 / 3]
+Engagement extraction       [1 / 2 / 3]
+Multi-sided tension         [1 / 2 / 3 / N/A — reason]
+Algorithmic accountability  [1 / 2 / 3 / N/A — reason]
+Ownership pressure          [1 / 2 / 3]
+
+Overall confidence: [High / Medium / Low] ([x]% assessed)
+
+REASONING: [2–3 sentences explaining the label and position, including 
+which dimensions drove the label and whether any tension exists between 
+dimensions]
 
 ---
 
 FLAGS
 
-FLAG: [flag name]
-REASON: [one sentence]
-SOURCE: [URL] | [date]
+FLAG: [flag name] — [Negative / Positive]
+DIMENSION: [dimension it maps to]
+FINDING: [one sentence describing the specific documented finding]
+SOURCE: [URL] | [date] | [ASSESSED or INFERRED]
 
 (Repeat for each flag)
 
@@ -281,7 +389,7 @@ PERSONA TAKEAWAYS
 
 OVERALL CONFIDENCE
 
-Total sources across all dimensions: [n]
+Total sources across all scored dimensions: [n]
 Assessed: [n] | Inferred: [n]
 Overall assessed %: [x]%
 Overall confidence level: [High / Medium / Low]
