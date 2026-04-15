@@ -327,6 +327,7 @@ are direct, practical conclusions for a reader who wants to know:
 Produce the scorecard in this structure:
 
 SCORING DATE: [inherit from Phase 1 research date]
+METHODOLOGY VERSION: [inherit exactly from Phase 1 research document — do not change this value]
 COMPANY: [company name]
 
 ---

@@ -8,6 +8,7 @@ MODEL = "claude-opus-4-5"
 MAX_TOKENS = 8000
 PROMPTS_DIR = "prompts"
 ISSUES_DIR = "issues"
+METHODOLOGY_VERSION = "1.1"  # Update this when the methodology changes
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 def load_prompt(filename):
@@ -33,16 +34,20 @@ def run_phase1(company, company_slug):
     client = anthropic.Anthropic()
     system_prompt = load_prompt("phase1-collection.md")
 
-    # Phase 1 uses web search tool
     response = client.messages.create(
         model=MODEL,
         max_tokens=MAX_TOKENS,
         system=system_prompt,
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
-        messages=[{"role": "user", "content": f"Research company: {company}"}]
+        messages=[{
+            "role": "user",
+            "content": (
+                f"METHODOLOGY VERSION: {METHODOLOGY_VERSION}\n\n"
+                f"Research company: {company}"
+            )
+        }]
     )
 
-    # Extract all text blocks from the response (web search returns multiple blocks)
     output_parts = []
     for block in response.content:
         if block.type == "text":
@@ -65,7 +70,10 @@ def run_phase2(company, company_slug, phase1_output):
         system=system_prompt,
         messages=[{
             "role": "user",
-            "content": f"Here is the Phase 1 research document:\n\n{phase1_output}"
+            "content": (
+                f"METHODOLOGY VERSION: {METHODOLOGY_VERSION}\n\n"
+                f"Here is the Phase 1 research document:\n\n{phase1_output}"
+            )
         }]
     )
 
@@ -84,9 +92,9 @@ def main():
     company_slug = company.lower().replace(" ", "-")
 
     print(f"\n🔍 The Rake — running report for: {company}")
+    print(f"   Methodology version: {METHODOLOGY_VERSION}")
     print("=" * 55)
 
-    # Phase 1
     phase1_output, phase1_path = run_phase1(company, company_slug)
 
     print("\n── Phase 1 complete ──────────────────────────────────────")
@@ -94,7 +102,6 @@ def main():
     print("\nPress Enter to continue to Phase 2, or Ctrl+C to stop and review first.")
     input()
 
-    # Phase 2
     phase2_output, phase2_path = run_phase2(company, company_slug, phase1_output)
 
     print("\n── Phase 2 complete ──────────────────────────────────────")

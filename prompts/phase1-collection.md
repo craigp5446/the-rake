@@ -214,6 +214,7 @@ determine whether it meets the threshold for inclusion.
 
 Begin with:
 RESEARCH DATE: [full date, e.g. 13 April 2026]
+METHODOLOGY VERSION: [injected by the system — do not change this value]
 
 Then produce a structured research document with one section per
 dimension. Each entry within a section must follow this format:
