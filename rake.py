@@ -1,6 +1,7 @@
 import anthropic
 import sys
 import os
+import glob
 from datetime import datetime
 
 # ── config ──────────────────────────────────────────────────────────────────
@@ -27,6 +28,18 @@ def save_output(company_slug, phase, content):
     print(f"\n✓ Saved to {path}")
     return path
 
+def load_latest_phase1(company_slug):
+    folder = os.path.join(ISSUES_DIR, company_slug)
+    pattern = os.path.join(folder, "*-phase1.md")
+    files = sorted(glob.glob(pattern))
+    if not files:
+        print(f"Error: no Phase 1 file found for '{company_slug}' in {folder}")
+        sys.exit(1)
+    path = files[-1]
+    print(f"Loading Phase 1 from: {path}")
+    with open(path, "r") as f:
+        return f.read(), path
+
 def run_phase1(company, company_slug, seed_urls=None):
     print(f"\n── Phase 1: Research ({company}) ──────────────────────────────")
     print("Running with live web search. This may take a few minutes...\n")
@@ -40,7 +53,6 @@ def run_phase1(company, company_slug, seed_urls=None):
     client = anthropic.Anthropic()
     system_prompt = load_prompt("phase1-collection.md")
 
-    # Build the user message, prepending seed URLs if provided
     user_message = f"METHODOLOGY VERSION: {METHODOLOGY_VERSION}\n\n"
 
     if seed_urls:
@@ -51,7 +63,6 @@ def run_phase1(company, company_slug, seed_urls=None):
 
     user_message += f"Research company: {company}"
 
-    # Phase 1 uses web search tool
     response = client.messages.create(
         model=MODEL,
         max_tokens=MAX_TOKENS,
@@ -63,7 +74,6 @@ def run_phase1(company, company_slug, seed_urls=None):
         }]
     )
 
-    # Extract all text blocks from the response (web search returns multiple blocks)
     output_parts = []
     for block in response.content:
         if block.type == "text":
@@ -101,12 +111,20 @@ def run_phase2(company, company_slug, phase1_output):
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 rake.py <company name> [--seeds URL1 URL2 ...]")
+        print("       python3 rake.py <company name> --phase2")
         print("Example: python3 rake.py substack")
-        print("Example: python3 rake.py substack --seeds https://leavesubstack.com https://example.com/article")
+        print("Example: python3 rake.py substack --seeds https://leavesubstack.com")
+        print("Example: python3 rake.py substack --phase2")
         sys.exit(1)
 
-    # Split args into company name and seed URLs
     args = sys.argv[1:]
+
+    # Check for --phase2 flag
+    phase2_only = "--phase2" in args
+    if phase2_only:
+        args = [a for a in args if a != "--phase2"]
+
+    # Check for --seeds flag
     if "--seeds" in args:
         seed_index = args.index("--seeds")
         company_parts = args[:seed_index]
@@ -128,13 +146,17 @@ def main():
         print(f"   Seed URLs: {len(seed_urls)}")
     print("=" * 55)
 
-    # Phase 1
-    phase1_output, phase1_path = run_phase1(company, company_slug, seed_urls)
-
-    print("\n── Phase 1 complete ──────────────────────────────────────")
-    print(f"Review the output at: {phase1_path}")
-    print("\nPress Enter to continue to Phase 2, or Ctrl+C to stop and review first.")
-    input()
+    if phase2_only:
+        # Load the most recent Phase 1 file for this company
+        print("\n── Skipping Phase 1 — loading existing research ─────────")
+        phase1_output, phase1_path = load_latest_phase1(company_slug)
+    else:
+        # Run Phase 1
+        phase1_output, phase1_path = run_phase1(company, company_slug, seed_urls)
+        print("\n── Phase 1 complete ──────────────────────────────────────")
+        print(f"Review the output at: {phase1_path}")
+        print("\nPress Enter to continue to Phase 2, or Ctrl+C to stop and review first.")
+        input()
 
     # Phase 2
     phase2_output, phase2_path = run_phase2(company, company_slug, phase1_output)
