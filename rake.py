@@ -8,7 +8,7 @@ MODEL = "claude-opus-4-5"
 MAX_TOKENS = 8000
 PROMPTS_DIR = "prompts"
 ISSUES_DIR = "issues"
-METHODOLOGY_VERSION = "1.1"  # Update this when the methodology changes
+METHODOLOGY_VERSION = "1.2"  # Update this when the methodology changes
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 def load_prompt(filename):
@@ -27,13 +27,31 @@ def save_output(company_slug, phase, content):
     print(f"\n✓ Saved to {path}")
     return path
 
-def run_phase1(company, company_slug):
+def run_phase1(company, company_slug, seed_urls=None):
     print(f"\n── Phase 1: Research ({company}) ──────────────────────────────")
     print("Running with live web search. This may take a few minutes...\n")
+
+    if seed_urls:
+        print(f"Seed URLs: {len(seed_urls)} provided")
+        for url in seed_urls:
+            print(f"  {url}")
+        print()
 
     client = anthropic.Anthropic()
     system_prompt = load_prompt("phase1-collection.md")
 
+    # Build the user message, prepending seed URLs if provided
+    user_message = f"METHODOLOGY VERSION: {METHODOLOGY_VERSION}\n\n"
+
+    if seed_urls:
+        user_message += "SEED URLS:\n"
+        for url in seed_urls:
+            user_message += f"  {url}\n"
+        user_message += "\n"
+
+    user_message += f"Research company: {company}"
+
+    # Phase 1 uses web search tool
     response = client.messages.create(
         model=MODEL,
         max_tokens=MAX_TOKENS,
@@ -41,13 +59,11 @@ def run_phase1(company, company_slug):
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
         messages=[{
             "role": "user",
-            "content": (
-                f"METHODOLOGY VERSION: {METHODOLOGY_VERSION}\n\n"
-                f"Research company: {company}"
-            )
+            "content": user_message
         }]
     )
 
+    # Extract all text blocks from the response (web search returns multiple blocks)
     output_parts = []
     for block in response.content:
         if block.type == "text":
@@ -84,24 +100,43 @@ def run_phase2(company, company_slug, phase1_output):
 # ── main ─────────────────────────────────────────────────────────────────────
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python3 rake.py <company name>")
+        print("Usage: python3 rake.py <company name> [--seeds URL1 URL2 ...]")
         print("Example: python3 rake.py substack")
+        print("Example: python3 rake.py substack --seeds https://leavesubstack.com https://example.com/article")
         sys.exit(1)
 
-    company = " ".join(sys.argv[1:])
+    # Split args into company name and seed URLs
+    args = sys.argv[1:]
+    if "--seeds" in args:
+        seed_index = args.index("--seeds")
+        company_parts = args[:seed_index]
+        seed_urls = args[seed_index + 1:]
+    else:
+        company_parts = args
+        seed_urls = []
+
+    if not company_parts:
+        print("Error: company name required")
+        sys.exit(1)
+
+    company = " ".join(company_parts)
     company_slug = company.lower().replace(" ", "-")
 
     print(f"\n🔍 The Rake — running report for: {company}")
     print(f"   Methodology version: {METHODOLOGY_VERSION}")
+    if seed_urls:
+        print(f"   Seed URLs: {len(seed_urls)}")
     print("=" * 55)
 
-    phase1_output, phase1_path = run_phase1(company, company_slug)
+    # Phase 1
+    phase1_output, phase1_path = run_phase1(company, company_slug, seed_urls)
 
     print("\n── Phase 1 complete ──────────────────────────────────────")
     print(f"Review the output at: {phase1_path}")
     print("\nPress Enter to continue to Phase 2, or Ctrl+C to stop and review first.")
     input()
 
+    # Phase 2
     phase2_output, phase2_path = run_phase2(company, company_slug, phase1_output)
 
     print("\n── Phase 2 complete ──────────────────────────────────────")
