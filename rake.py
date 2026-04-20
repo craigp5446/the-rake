@@ -9,7 +9,7 @@ MODEL = "claude-opus-4-5"
 MAX_TOKENS = 8000
 PROMPTS_DIR = "prompts"
 ISSUES_DIR = "issues"
-METHODOLOGY_VERSION = "1.3"  # Update this when the methodology changes
+METHODOLOGY_VERSION = "1.4"  # Update this when the methodology changes
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 def load_prompt(filename):

@@ -1,5 +1,5 @@
 # The Rake — Phase 1: Collection Prompt
-**Version 1.3 — April 2026**
+**Version 1.4 — April 2026**
 
 ---
 
@@ -217,15 +217,7 @@ judgment. Also look for any features that actively help users limit
 their own usage.
 
 ### 5. Multi-sided tension
-Does this company serve more than one customer group? If so, whose
-interests take priority when they conflict? Look for: advertiser
-relationships, employer/recruiter tiers, data sharing with third parties,
-algorithmic ranking influenced by payment, any documented instances of
-user interests being subordinated to paying customers. If the platform
-hosts third-party content, also look for: content moderation policies
-and how they are applied, documented instances where moderation decisions
-appeared to favour revenue over user safety, and any evidence the
-platform earns revenue from users causing harm to other users.
+Does this company serve more than one customer group? If so, whose interests take priority when they conflict? Look for: advertiser relationships, employer/recruiter tiers, data sharing with third parties, algorithmic ranking influenced by payment, any documented instances where user interests were subordinated to a paying customer or revenue relationship. Focus on commercial relationships and what happens when money is on the line — content moderation findings belong in dimension 6 unless they directly involve a paying customer relationship.
 
 ### 6. Algorithmic accountability
 Does the company take responsibility for what its systems surface and
@@ -284,10 +276,8 @@ determine whether it meets the threshold for inclusion.
   usage, built into the core product at cost to engagement metrics
 
 **Dimension 5 — Multi-sided tension**
-- Negative: evidence the platform directly earns revenue from users
-  causing documented harm to other users, with named examples
-- Positive: documented instance where the company sided with users
-  against a paying customer or advertiser at measurable commercial cost
+- Negative: documented evidence the company's commercial relationships with third parties consistently override user interests — paying customers receiving preferential treatment at direct cost to users, user data sold or shared with third parties without meaningful disclosure, or revenue relationships that structurally subordinate user interests
+- Positive: documented instance where the company sided with users against a paying customer or advertiser at measurable commercial cost
 
 **Dimension 6 — Algorithmic accountability**
 - Negative: specific documented instance where the algorithm promoted
@@ -305,6 +295,12 @@ determine whether it meets the threshold for inclusion.
   values or user interests, confirmed and named
 - Positive: legally binding mission-lock or equivalent structure
   confirmed by an assessed source
+
+**Flags not tied to a scored dimension**
+
+Watch for the following even if they do not map to any of the seven dimensions. Tag these as NODIM in the FLAGS OBSERVED section.
+
+- **Data security incident:** a confirmed breach, unauthorised access, or significant data exposure affecting user data. Note the nature of data exposed, approximate scale, time between incident and public disclosure, and whether the company disclosed proactively or in response to external reporting.
 
 ## Output format
 
@@ -350,7 +346,7 @@ List any dimension for which exhaustive search found nothing credible.
 Do not fill gaps with guesses — name them explicitly.
 
 **FLAGS OBSERVED**
-List any flag candidates, each with its URL, date, and dimension code.
+List any flag candidates, each with its URL, date, and dimension code. If a flag candidate does not map to any of the seven dimensions — for example a data security incident — tag it NODIM rather than omitting it. Phase 2 will carry it forward as a standalone flag.
 
 **SEARCH LOG**
 List every search query you ran, in order. For each entry include:

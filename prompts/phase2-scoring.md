@@ -1,5 +1,5 @@
 # The Rake — Phase 2: Scoring Prompt
-**Version 1.3 — April 2026**
+**Version 1.4 — April 2026**
 
 ---
 
@@ -128,34 +128,17 @@ does engagement reflect genuine user value?*
 > questions.
 
 ### 5. Multi-sided tension
-*When the interests of different customer groups conflict — including 
-through platform safety and content decisions — whose side does the 
-company take?*
+*When the company serves more than one customer group, whose interests take priority when they conflict?*
 
-- **1 — Users are the product.** Users are actively sold to the paying 
-  party, or the platform's content and moderation decisions consistently 
-  favour paying or high-revenue users over the safety and interests of 
-  the broader user base. Recommendations driven by advertiser spend or 
-  platform commercial preferences; user data sold or shared with third 
-  parties; no meaningful recourse when interests conflict.
-- **2 — Mixed record.** Nominal user protections exist but the company's 
-  track record when interests conflict is ambiguous or unresolved. This 
-  includes platforms where moderation policy exists on paper but 
-  documented incidents suggest consistent prioritisation of revenue over 
-  user safety.
-- **3 — Users defended.** No advertiser relationship, or clear structural 
-  protections when interests conflict. Track record of siding with users 
-  — including enforcing content and safety standards — when it costs the 
-  company something.
+- **1 — Users are the product.** The company's primary commercial relationship is with a party other than the end user, and user interests are structurally subordinated to that relationship. Users are the inventory — their attention, data, or behaviour is what is being sold. When interests conflict between users and paying customers, the paying customer wins by default.
 
-> When a platform hosts third-party content, its content moderation 
-> decisions are treated as a form of taking sides between user groups. 
-> A policy of deliberate non-intervention is a scoreable stance, not a 
-> neutral one — particularly when the platform earns revenue from the 
-> content it declines to moderate.
+- **2 — Mixed record.** The company serves more than one customer group and nominal protections exist, but the track record when commercial interests conflict is ambiguous or unresolved. The company may make choices that create indirect harm to users as a by-product of serving paying customers, without this being the explicit intent.
 
-> If a company is not multi-sided and hosts no third-party content, mark 
-> this dimension N/A.
+- **3 — Users defended.** The company either has no third-party commercial relationships that create tension with user interests, or has a documented track record of siding with users when those interests conflict — including at measurable commercial cost to itself.
+
+> This dimension asks specifically about commercial relationships and what happens when money is on the line. Content moderation and algorithmic decisions are covered in dimension 6. A finding is relevant here when it involves the company prioritising a paying customer or revenue relationship over user interests — not simply when the platform hosts content some users find harmful.
+
+> If a company is not multi-sided and has no third-party commercial relationships, mark this dimension N/A.
 
 ### 6. Algorithmic accountability
 *Does the company take responsibility for what its systems surface and 
@@ -221,10 +204,11 @@ position.
 | 61–80    | Aligned        | This product makes money when you get value — its incentives and your interests point in the same direction. |
 | 81–100   | Principled     | This product actively prioritises your interests, sometimes at cost to itself — the way it's built reflects values, not just incentives. |
 
-The label is editorial, not mechanical. It reflects a judgment about the 
-full picture, weighted toward incentive alignment as the core question. 
-Two companies with the same label can sit at meaningfully different 
-spectrum positions — use the full range within each band.
+The label is editorial, not mechanical. It reflects a judgment about the full picture, weighted toward incentive alignment and captivity as the core structural questions the framework is built around. A company that scores 3 on both can sit in Aligned even if other dimensions are weaker, provided those weaknesses are surfaced clearly in flags. Conversely, a score of 1 on incentive alignment is very difficult to overcome regardless of how other dimensions score.
+
+The spectrum position within the assigned band should reflect the full dimension profile, not only the anchor dimensions. A company with several 2s alongside strong anchor scores should sit toward the lower end of its band, not the middle.
+
+Moderation and algorithmic accountability findings inform label placement only when they represent a pattern serious enough to change the structural picture — not when they represent an isolated incident or an unresolved policy question. Those belong in flags.
 
 State your proposed label and spectrum position, then write 2–3 sentences 
 explaining the reasoning behind the placement, including which dimensions 
@@ -288,12 +272,8 @@ one-line reason (e.g. "insufficient evidence", "does not meet threshold",
   metrics. Requires assessed source.
 
 *Dimension 5 — Multi-sided tension*
-- Negative (Harmful user monetisation): platform earns revenue from users 
-  causing documented harm to other users. Named examples required. 
-  Assessed source preferred; named journalism acceptable.
-- Positive (User-side enforcement at commercial cost): company sided with 
-  users against a paying customer or advertiser at documented commercial 
-  cost. Requires confirmed source showing both the decision and the cost.
+- Negative (User interests structurally subordinated): documented evidence the company's commercial relationships with third parties consistently override user interests by default. Requires assessed source or multiple strong inferred sources showing a pattern — a single incident does not qualify.
+- Positive (User-side enforcement at commercial cost): company sided with users against a paying customer or advertiser at documented commercial cost. Requires confirmed source showing both the decision and the cost.
 
 *Dimension 6 — Algorithmic accountability*
 - Negative (Documented harmful amplification): specific incident where 
@@ -314,6 +294,12 @@ one-line reason (e.g. "insufficient evidence", "does not meet threshold",
 - Positive (Mission-lock structure): legally binding structure confirmed 
   by assessed source. Values documents and stated commitments do not 
   qualify.
+
+*Flags not tied to a scored dimension*
+
+Some flags are carried forward without mapping to a scored dimension. These appear in the FLAGS section of the scorecard with a note that they are not dimension-mapped. Do not attempt to force these into a dimension score.
+
+- **Data security incident:** a confirmed breach, unauthorised access, or significant data exposure affecting user data, confirmed by the company or a credible named source. Note the nature of data exposed, approximate scale, and any gap between incident and public disclosure.
 
 ---
 
@@ -341,6 +327,39 @@ COMPANY: [company name]
 
 ---
 
+PROFILE SUMMARY
+
+PROPOSED LABEL: [Adversarial / Extractive / Compromised / Aligned / 
+Principled]
+PROPOSED SPECTRUM POSITION: [0–100]
+DIMENSIONS SCORED: [n] of 7
+
+Revenue clarity             [1 / 2 / 3] — [Strong / Moderate / Weak / Blind]
+Incentive alignment         [1 / 2 / 3] — [Strong / Moderate / Weak / Blind]
+Captivity                   [1 / 2 / 3] — [Strong / Moderate / Weak / Blind]
+Engagement extraction       [1 / 2 / 3] — [Strong / Moderate / Weak / Blind]
+Multi-sided tension         [1 / 2 / 3 / N/A] — [Strong / Moderate / Weak / Blind / N/A]
+Algorithmic accountability  [1 / 2 / 3 / N/A] — [Strong / Moderate / Weak / Blind / N/A]
+Ownership pressure          [1 / 2 / 3] — [Strong / Moderate / Weak / Blind]
+
+REASONING: [2–3 sentences explaining the label and position, including 
+which dimensions drove the label and whether any tension exists between 
+dimensions]
+
+---
+
+OVERALL CONFIDENCE
+
+Total Phase 1 sources available: [n]
+Total sources cited in this report: [n]
+Assessed cited: [n] | Inferred cited: [n]
+
+Overall confidence: [High / Medium / Low]
+
+[One sentence stating which criteria determined the rating.]
+
+---
+
 DIMENSION SCORES
 
 For each dimension:
@@ -355,29 +374,6 @@ SOURCES:
 EVIDENCE STRENGTH: [Strong / Moderate / Weak / Blind] — [one sentence 
 explaining: how many sources, how many assessed, and why this rating 
 was assigned] | Omit if N/A.
-
----
-
-PROFILE SUMMARY
-
-PROPOSED LABEL: [Adversarial / Extractive / Compromised / Aligned / 
-Principled]
-PROPOSED SPECTRUM POSITION: [0–100]
-DIMENSIONS SCORED: [n] of 7
-
-Revenue clarity             [1 / 2 / 3]
-Incentive alignment         [1 / 2 / 3]
-Captivity                   [1 / 2 / 3]
-Engagement extraction       [1 / 2 / 3]
-Multi-sided tension         [1 / 2 / 3 / N/A — reason]
-Algorithmic accountability  [1 / 2 / 3 / N/A — reason]
-Ownership pressure          [1 / 2 / 3]
-
-Overall confidence: [High / Medium / Low]
-
-REASONING: [2–3 sentences explaining the label and position, including 
-which dimensions drove the label and whether any tension exists between 
-dimensions]
 
 ---
 
@@ -405,33 +401,6 @@ were carried forward, write "All flag candidates carried forward.")
 PERSONA TAKEAWAYS
 
 [One sentence per persona, starting with the company name]
-
----
-
-OVERALL CONFIDENCE
-
-Total Phase 1 sources available: [n]
-Total sources cited in this report: [n]
-Assessed cited: [n] | Inferred cited: [n]
-
-Per-dimension evidence strength:
-  Revenue clarity             [Strong / Moderate / Weak / Blind]
-  Incentive alignment         [Strong / Moderate / Weak / Blind]
-  Captivity                   [Strong / Moderate / Weak / Blind]
-  Engagement extraction       [Strong / Moderate / Weak / Blind]
-  Multi-sided tension         [Strong / Moderate / Weak / Blind / N/A]
-  Algorithmic accountability  [Strong / Moderate / Weak / Blind / N/A]
-  Ownership pressure          [Strong / Moderate / Weak / Blind]
-
-Overall confidence: [High / Medium / Low]
-
-Overall confidence is determined as follows:
-- High: 30+ total sources cited AND no dimension rated Weak or Blind
-- Medium: 15–29 total sources, OR 30+ with 1–2 Weak dimensions, OR 
-  fewer than 30 with all dimensions at Moderate or above
-- Low: fewer than 15 total sources, OR 3+ dimensions rated Weak or Blind
-
-State which criteria determined the rating.
 
 ---
 

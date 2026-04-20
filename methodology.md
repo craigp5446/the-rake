@@ -1,6 +1,6 @@
 # How The Rake scores companies
 
-**Version 1.2 — April 2026 — Open methodology**
+**Version 1.4 — April 2026 — Open methodology**
 
 ---
 
@@ -12,7 +12,11 @@ This document describes that system in full. If you disagree with a score, the m
 
 ## The five profile labels
 
-Every company receives a spectrum position from 0–100 and a corresponding profile label. The label is editorial, not mechanical. It reflects a judgment about the full picture, weighted toward incentive alignment as the core question. The spectrum position conveys where within a band a company sits; two companies with the same label can occupy meaningfully different positions.
+Every company receives a spectrum position from 0–100 and a corresponding profile label. The label is editorial, not mechanical. It reflects a judgment about the full picture, weighted toward incentive alignment and captivity as the core structural questions the framework is built around. A company that scores 3 on both can sit in Aligned even if other dimensions are weaker, provided those weaknesses are surfaced clearly in flags. Conversely, a score of 1 on incentive alignment is very difficult to overcome regardless of how other dimensions score.
+
+The spectrum position within the assigned band should reflect the full dimension profile, not only the anchor dimensions. A company with several 2s alongside strong anchor scores should sit toward the lower end of its band, not the middle.
+
+Moderation and algorithmic accountability findings inform label placement only when they represent a pattern serious enough to change the structural picture — not when they represent an isolated incident or an unresolved policy question. Those belong in flags.
 
 | Band | Label | Definition |
 |---|---|---|
@@ -87,15 +91,17 @@ A score of 1 means the product is **actively working against the user on this di
 > Note: this dimension asks about product design decisions, not business model structure. A company can score neutrally on incentive alignment (flat subscription) while scoring poorly on engagement extraction if its product is deliberately engineered to override user judgment. These are different questions.
 
 ### 5. Multi-sided tension
-*When the interests of different customer groups conflict — including through platform safety and content decisions — whose side does the company take?*
+*When the company serves more than one customer group, whose interests take priority when they conflict?*
 
-- **1 — Users are the product.** Users are actively sold to the paying party, or the platform's content and moderation decisions consistently favour paying or high-revenue users over the safety and interests of the broader user base. Recommendations are driven by advertiser spend or platform commercial preferences; user data is sold or shared with third parties in ways users cannot see or contest; there is no meaningful recourse when interests conflict.
-- **2 — Mixed record.** Nominal user protections exist but the company's track record when interests conflict is ambiguous or unresolved. This includes platforms where moderation policy exists on paper but documented incidents suggest consistent prioritisation of revenue over user safety.
-- **3 — Users defended.** No advertiser relationship, or clear structural protections when interests conflict. Track record of siding with users — including enforcing content and safety standards — when it costs the company something.
+- **1 — Users are the product.** The company's primary commercial relationship is with a party other than the end user, and user interests are structurally subordinated to that relationship. Users are the inventory — their attention, data, or behaviour is what is being sold. When interests conflict between users and paying customers, the paying customer wins by default.
 
-> When a platform hosts third-party content, its content moderation decisions are treated as a form of taking sides between user groups. A policy of deliberate non-intervention is a scoreable stance, not a neutral one — particularly when the platform earns revenue from the content it declines to moderate.
+- **2 — Mixed record.** The company serves more than one customer group and nominal protections exist, but the track record when commercial interests conflict is ambiguous or unresolved. The company may make choices that create indirect harm to users as a by-product of serving paying customers, without this being the explicit intent.
 
-> If a company is not multi-sided and hosts no third-party content, this dimension is marked N/A.
+- **3 — Users defended.** The company either has no third-party commercial relationships that create tension with user interests, or has a documented track record of siding with users when those interests conflict — including at measurable commercial cost to itself.
+
+> This dimension asks specifically about commercial relationships and what happens when money is on the line. Content moderation and algorithmic decisions are covered in dimension 6. A finding is relevant here when it involves the company prioritising a paying customer or revenue relationship over user interests — not simply when the platform hosts content some users find harmful.
+
+> If a company is not multi-sided and has no third-party commercial relationships, mark this dimension N/A.
 
 ### 6. Algorithmic accountability
 *Does the company take responsibility for what its systems surface and amplify?*
@@ -207,11 +213,9 @@ Look for: product features that actively help users reduce, cap, or become aware
 
 **Dimension 5 — Multi-sided tension**
 
-*Negative: Harmful user monetisation*
-Look for: evidence that the platform directly earns revenue from users who are causing documented harm to other users — hate groups with paid subscriptions, harassment accounts with monetised content, bad actors whose presence generates platform revenue. Threshold: requires evidence both that the harmful user exists on the platform and that the platform earns revenue from them. Named examples required. Assessed source strongly preferred; journalism with named examples acceptable.
+*Negative (User interests structurally subordinated):* documented evidence the company's commercial relationships with third parties consistently override user interests by default. Requires assessed source or multiple strong inferred sources showing a pattern — a single incident does not qualify.
 
-*Positive: User-side enforcement at commercial cost*
-Look for: documented instances where the company enforced user protections, removed a paying customer, or sided with users against an advertiser or business customer at a measurable cost to its own revenue. Threshold: the commercial cost must be real and documented — not a PR statement about values. Requires at least one assessed or strong inferred source confirming both the decision and the cost.
+*Positive (User-side enforcement at commercial cost):* company sided with users against a paying customer or advertiser at documented commercial cost. Requires confirmed source showing both the decision and the cost.
 
 ---
 
@@ -235,6 +239,15 @@ Look for: personal investments, public associations, or documented behaviour by 
 
 *Positive: Mission-lock structure*
 Look for: legally binding structural commitments that constrain the company's ability to prioritise extraction over user interests — benefit corporation status, statutory mission lock, employee or cooperative ownership, endowment funding with independence conditions. Threshold: must be a legal structure, not a stated commitment or values document. Requires assessed source confirming the structure exists and what it constrains.
+
+---
+
+### Flags not tied to a scored dimension
+
+Some flag categories surface findings that are relevant to user trust but do not map cleanly to any of the seven scored dimensions. These are carried forward as standalone flags in the scorecard and noted in the narrative, but do not affect dimension scores.
+
+**Data security incident**
+Look for: a confirmed breach, unauthorised access, or significant data exposure affecting user data. Threshold: must be confirmed by the company or a credible named source — not unverified claims. The flag notes the nature of the data exposed, approximate scale, and any gap between the incident and public disclosure. This flag does not map to a scored dimension.
 
 ---
 
