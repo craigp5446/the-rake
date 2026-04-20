@@ -1,5 +1,5 @@
 # The Rake — Phase 2: Scoring Prompt
-**Version 1.2 — April 2026**
+**Version 1.3 — April 2026**
 
 ---
 
@@ -33,13 +33,19 @@ For each dimension, you must:
   forward from Phase 1
 - Tag each source as ASSESSED or INFERRED (inherit the tag from Phase 1 — 
   do not reclassify)
-- State the confidence split for this dimension: total sources used, how 
-  many assessed, how many inferred, and the resulting confidence level
+- State the evidence strength for this dimension using the scale below
 
-**Confidence levels:**
-- High confidence: 70%+ of sources assessed
-- Medium confidence: 40–70% assessed
-- Low confidence: below 40% assessed
+**Per-dimension evidence strength:**
+- **Strong** — 2 or more assessed sources cited for this dimension
+- **Moderate** — 1 assessed source plus any inferred; or 4+ inferred with 
+  no assessed sources
+- **Weak** — fewer than 4 inferred sources and no assessed sources
+- **Blind** — no sources at all for this dimension
+
+Both the count and type of sources matter. A dimension with 1 assessed 
+and 6 inferred sources is Moderate, not Weak — volume of corroborating 
+evidence counts. Do not penalise a dimension for having many inferred 
+sources alongside assessed ones.
 
 If a dimension has no usable evidence in the Phase 1 document, leave it 
 unscored and note why. Opacity is itself a signal — note it as such.
@@ -239,9 +245,12 @@ from 2 to 1, or a structural commitment is what earns a 3. If a finding
 is not significant enough to affect how a dimension score is read, it is 
 not a flag.
 
-Both negative and positive flags are applied. Drop any flag candidate 
-from Phase 1 that is not supported by at least one cited source, or that 
-does not meet the threshold below.
+Both negative and positive flags are applied. Every flag must clear the 
+threshold below and be supported by at least one cited source. Drop any 
+that do not qualify — but when you drop a flag candidate from Phase 1, 
+note it explicitly in a FLAGS NOT CARRIED FORWARD section with a 
+one-line reason (e.g. "insufficient evidence", "does not meet threshold", 
+"subsumed by stronger flag"). Do not silently omit flag candidates.
 
 **Flag categories and thresholds:**
 
@@ -343,8 +352,9 @@ dimension. Factual and specific. No editorial framing. Omit if N/A.]
 SOURCES:
   - [URL] | [date] | [ASSESSED or INFERRED]
   - [URL] | [date] | [ASSESSED or INFERRED]
-CONFIDENCE: [n] sources — [n] assessed, [n] inferred = [x]% assessed 
-→ [High / Medium / Low] confidence | Omit if N/A.
+EVIDENCE STRENGTH: [Strong / Moderate / Weak / Blind] — [one sentence 
+explaining: how many sources, how many assessed, and why this rating 
+was assigned] | Omit if N/A.
 
 ---
 
@@ -363,7 +373,7 @@ Multi-sided tension         [1 / 2 / 3 / N/A — reason]
 Algorithmic accountability  [1 / 2 / 3 / N/A — reason]
 Ownership pressure          [1 / 2 / 3]
 
-Overall confidence: [High / Medium / Low] ([x]% assessed)
+Overall confidence: [High / Medium / Low]
 
 REASONING: [2–3 sentences explaining the label and position, including 
 which dimensions drove the label and whether any tension exists between 
@@ -382,6 +392,16 @@ SOURCE: [URL] | [date] | [ASSESSED or INFERRED]
 
 ---
 
+FLAGS NOT CARRIED FORWARD
+
+FLAG CANDIDATE: [flag name from Phase 1]
+REASON NOT CARRIED: [one sentence]
+
+(Repeat for each dropped flag candidate. If all Phase 1 flag candidates 
+were carried forward, write "All flag candidates carried forward.")
+
+---
+
 PERSONA TAKEAWAYS
 
 [One sentence per persona, starting with the company name]
@@ -390,10 +410,41 @@ PERSONA TAKEAWAYS
 
 OVERALL CONFIDENCE
 
-Total sources across all scored dimensions: [n]
-Assessed: [n] | Inferred: [n]
-Overall assessed %: [x]%
-Overall confidence level: [High / Medium / Low]
+Total Phase 1 sources available: [n]
+Total sources cited in this report: [n]
+Assessed cited: [n] | Inferred cited: [n]
+
+Per-dimension evidence strength:
+  Revenue clarity             [Strong / Moderate / Weak / Blind]
+  Incentive alignment         [Strong / Moderate / Weak / Blind]
+  Captivity                   [Strong / Moderate / Weak / Blind]
+  Engagement extraction       [Strong / Moderate / Weak / Blind]
+  Multi-sided tension         [Strong / Moderate / Weak / Blind / N/A]
+  Algorithmic accountability  [Strong / Moderate / Weak / Blind / N/A]
+  Ownership pressure          [Strong / Moderate / Weak / Blind]
+
+Overall confidence: [High / Medium / Low]
+
+Overall confidence is determined as follows:
+- High: 30+ total sources cited AND no dimension rated Weak or Blind
+- Medium: 15–29 total sources, OR 30+ with 1–2 Weak dimensions, OR 
+  fewer than 30 with all dimensions at Moderate or above
+- Low: fewer than 15 total sources, OR 3+ dimensions rated Weak or Blind
+
+State which criteria determined the rating.
+
+---
+
+SOURCES REVIEWED BUT NOT CITED
+
+List every source from the Phase 1 document that you reviewed but did 
+not cite in any dimension. For each, give a one-line reason:
+
+  - [URL] — [reason, e.g. "no scoreable finding for any dimension", 
+    "duplicate of SOURCE 12", "inaccessible / fetch failed"]
+
+This section is required. If all Phase 1 sources were cited, write 
+"All Phase 1 sources cited." Do not silently omit sources.
 
 ---
 
