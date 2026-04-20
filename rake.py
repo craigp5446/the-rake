@@ -9,7 +9,7 @@ MODEL = "claude-opus-4-5"
 MAX_TOKENS = 8000
 PROMPTS_DIR = "prompts"
 ISSUES_DIR = "issues"
-METHODOLOGY_VERSION = "1.2"  # Update this when the methodology changes
+METHODOLOGY_VERSION = "1.3"  # Update this when the methodology changes
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 def load_prompt(filename):
@@ -21,7 +21,8 @@ def save_output(company_slug, phase, content):
     folder = os.path.join(ISSUES_DIR, company_slug)
     os.makedirs(folder, exist_ok=True)
     date = datetime.today().strftime("%Y-%m-%d")
-    filename = f"{date}-phase{phase}.md"
+    time = datetime.today().strftime("%H%M")
+    filename = f"{date}-{time}-phase{phase}.md"
     path = os.path.join(folder, filename)
     with open(path, "w") as f:
         f.write(content)
