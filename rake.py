@@ -5,7 +5,8 @@ import glob
 from datetime import datetime
 
 # ── config ──────────────────────────────────────────────────────────────────
-MODEL = "claude-opus-4-5"
+PHASE1_MODEL = "claude-opus-4-5"
+PHASE2_MODEL = "claude-sonnet-4-5"
 MAX_TOKENS = 8000
 PROMPTS_DIR = "prompts"
 ISSUES_DIR = "issues"
@@ -65,7 +66,7 @@ def run_phase1(company, company_slug, seed_urls=None):
     user_message += f"Research company: {company}"
 
     response = client.messages.create(
-        model=MODEL,
+        model=PHASE1_MODEL,
         max_tokens=MAX_TOKENS,
         system=system_prompt,
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
@@ -92,7 +93,7 @@ def run_phase2(company, company_slug, phase1_output):
     system_prompt = load_prompt("phase2-scoring.md")
 
     response = client.messages.create(
-        model=MODEL,
+        model=PHASE2_MODEL,
         max_tokens=MAX_TOKENS,
         system=system_prompt,
         messages=[{
