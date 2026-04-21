@@ -97,7 +97,7 @@ for (const dim of report.dimensions as Dimension[]) {
       <div class="masthead__title-row">
         <div class="masthead__logo">
           <img
-            src={`https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=1idvQn6L1yhlMg0jKfH`}
+            src={`https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}
             alt={report.company}
             width="64"
             height="64"

@@ -41,7 +41,7 @@ const labels = [
               <a href={`/reports/${r.slug}`} class="report-tile" style={`--accent: ${colour}`}>
                 <div class="report-tile__logo">
                   <img
-                    src={`https://cdn.brandfetch.io/${r.domain}/w/128/h/128?c=1idvQn6L1yhlMg0jKfH`}
+                    src={`https://cdn.brandfetch.io/${r.domain}/w/128/h/128?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}
                     alt={r.company}
                     width="48"
                     height="48"
