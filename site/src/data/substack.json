@@ -1,0 +1,184 @@
+{
+  "slug": "substack",
+  "company": "Substack",
+  "domain": "substack.com",
+  "issue": 1,
+  "published": "2026-04-21",
+  "methodologyVersion": "1.2",
+  "sourceCount": 28,
+  "label": "Compromised",
+  "score": 52,
+  "confidence": "Medium",
+  "assessedPct": 40,
+  "subtitle": "The newsletter platform that only makes money when you do — except when it doesn't",
+  "summary": "Substack's core revenue model is genuinely aligned with creator success, but a quiet pivot to advertising, a data breach, and a hands-off approach to extremist content complicate the picture.",
+  "introNarrative": [
+    "Substack arrived with a clear pitch: unlike the social media platforms that monetised your attention to sell it to advertisers, Substack would only make money when you did. Ten percent of your paid subscriptions, nothing else. If that model sounds almost aggressively simple, that was the point. In a landscape of deliberately obscured revenue structures, legibility was the product.",
+    "For several years, that pitch held. The platform took its cut, helped writers find readers, and mostly stayed out of the way. The data portability was genuine — you could leave with your full subscriber list at any time, and many writers did exactly that when competitors offered better economics. The algorithm, when Substack eventually built one, was designed to drive subscriptions rather than time-on-platform. These were real choices that cost something.",
+    "The picture has become more complicated since the $100 million Series C in July 2025. Advertising arrived four months later, announced not through a company press release but through a paywalled interview with a single creator. A data breach disclosed in February 2026 turned out to have occurred four months earlier. And the company's track record on content moderation — specifically its initial refusal to remove Nazi newsletters despite documented presence of white-supremacist content — revealed a philosophy of non-intervention that had real costs for users.",
+    "None of this undoes the genuine alignment in the core model. But it does suggest a company navigating a transition: from a tool that made money by helping writers, to a platform with the more complex incentives that platform scale tends to produce."
+  ],
+  "dimensions": [
+    {
+      "id": "revenue-clarity",
+      "name": "Revenue clarity",
+      "definition": "Can a user immediately understand how this company makes money?",
+      "score": 2,
+      "scoreLabel": "Partial",
+      "assessedCount": 3,
+      "inferredCount": 3,
+      "evidenceStrength": "Strong",
+      "rationale": "Substack's primary revenue stream — a 10% platform fee on paid subscriptions — is clearly disclosed on the company website and pricing pages. However, the December 2025 advertising pilot was announced through a paywalled interview with a single creator rather than an official company announcement, and the company's evolving stance on advertising represents a secondary revenue stream that is not prominently surfaced to users. The shift toward advertising revenue is material but has not been transparently communicated.",
+      "findings": ["hidden-ad-revenue"]
+    },
+    {
+      "id": "incentive-alignment",
+      "name": "Incentive alignment",
+      "definition": "Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?",
+      "score": 3,
+      "scoreLabel": "Aligned",
+      "assessedCount": 1,
+      "inferredCount": 3,
+      "evidenceStrength": "Moderate",
+      "rationale": "Substack's core business model creates direct alignment: the platform earns revenue only when creators earn paid subscription revenue, taking 10% of creator earnings. This means the company makes more money when users succeed at monetising their work. While high churn rates and creator defections to competitors suggest imperfect alignment at scale, the fundamental incentive structure rewards creator success rather than extracting value through alternate means.",
+      "findings": ["outcomes-pricing"]
+    },
+    {
+      "id": "captivity",
+      "name": "Captivity",
+      "definition": "How easy is it to leave? Is data portable? Is cancellation straightforward?",
+      "score": 3,
+      "scoreLabel": "Portable",
+      "assessedCount": 4,
+      "inferredCount": 1,
+      "evidenceStrength": "Strong",
+      "rationale": "Substack provides full data export of posts and subscriber lists in standard formats (CSV for subscribers, ZIP for posts), with comprehensive subscriber data including email addresses, subscription status, and engagement metrics. Paid subscription cancellation is self-serve through account settings with no phone call required, and users can pause subscriptions rather than cancel outright. While migrating paid subscriptions to competitors requires more complex Stripe account transfers, the platform does not deliberately trap users or create artificial switching barriers.",
+      "findings": ["data-portability"]
+    },
+    {
+      "id": "engagement-extraction",
+      "name": "Engagement extraction",
+      "definition": "Is the product engineered to defeat the user's ability to disengage, or does engagement reflect genuine user value?",
+      "score": 3,
+      "scoreLabel": "Value-driven",
+      "assessedCount": 3,
+      "inferredCount": 2,
+      "evidenceStrength": "Strong",
+      "rationale": "According to Substack's head of machine learning, the Notes algorithm is explicitly optimised for subscriptions rather than time spent or endless scrolling — a deliberate contrast with ad-supported social platforms. Users have control over notification settings and can disable email and push notifications. No evidence was found of deliberate engagement extraction mechanics such as streaks, gamification, or reward schedules designed to defeat user disengagement.",
+      "findings": []
+    },
+    {
+      "id": "multi-sided-tension",
+      "name": "Multi-sided tension",
+      "definition": "When the interests of different customer groups conflict — including through platform safety and content decisions — whose side does the company take?",
+      "score": 2,
+      "scoreLabel": "Mixed record",
+      "assessedCount": 1,
+      "inferredCount": 4,
+      "evidenceStrength": "Moderate",
+      "rationale": "Substack historically served only creators, but the December 2025 advertising pilot introduces advertisers as a second customer group, creating potential tension. Content moderation is largely delegated to individual writers, and the platform's initial refusal to remove Nazi newsletters despite documented presence of white-supremacist content demonstrates a mixed record on protecting users from harmful content. The platform eventually removed five newsletters in January 2024 after investigative reporting and creator pressure, but only after initial resistance.",
+      "findings": ["harmful-amplification"]
+    },
+    {
+      "id": "algorithmic-accountability",
+      "name": "Algorithmic accountability",
+      "definition": "Does the company take responsibility for what its systems surface and amplify?",
+      "score": 2,
+      "scoreLabel": "Partial accountability",
+      "assessedCount": 1,
+      "inferredCount": 5,
+      "evidenceStrength": "Moderate",
+      "rationale": "Substack has published explanations of its Notes algorithm through its head of machine learning, providing meaningful detail about how recommendations are generated. However, the company's content moderation policies have been inconsistently applied — CEO Chris Best declined to answer direct questions about moderation in a 2023 interview, and the platform initially refused to remove Nazi content despite documented presence. The company eventually acted under sustained pressure, indicating policies exist but enforcement was reactive rather than proactive.",
+      "findings": ["harmful-amplification"]
+    },
+    {
+      "id": "ownership-pressure",
+      "name": "Ownership pressure",
+      "definition": "Who owns this company, and what structural pressures are they under to extract value from users?",
+      "score": 2,
+      "scoreLabel": "Moderate pressure",
+      "assessedCount": 4,
+      "inferredCount": 2,
+      "evidenceStrength": "Strong",
+      "rationale": "Substack is a mid-stage venture-backed company with approximately $200 million raised across six funding rounds, reaching a $1.1 billion valuation in July 2025. Key investors include Andreessen Horowitz and The Chernin Group. The company reached positive cash flow in Q1 2025, reducing immediate return pressure, but the unicorn valuation and VC investor base create expectations for significant returns. The founders retain significant stakes and rejected an acquisition offer from Elon Musk in 2023, indicating some insulation from pure shareholder pressure.",
+      "findings": []
+    }
+  ],
+  "analysis": [
+    "The pattern across these seven dimensions is unusually coherent for a platform of Substack's scale. The strong scores on captivity and engagement extraction aren't accidents — they reflect deliberate product choices that cost something. Full data portability means creators can and do leave. An algorithm optimised for subscriptions rather than time-on-platform means Substack actively gives up engagement revenue it could extract. These are real commitments.",
+    "What makes the Compromised placement feel right rather than Aligned is the trajectory. The introduction of advertising in December 2025, announced obliquely through a paywalled interview rather than transparently disclosed, is the kind of thing that looks like a first move rather than a one-off. The Series C at $1.1 billion brings investor expectations that the 10% subscription model alone may not satisfy. The data breach — with a four-month gap between occurrence and disclosure — suggests that the opacity around advertising is part of a broader pattern rather than an isolated communication failure.",
+    "The content moderation record is the clearest present-tense problem. The initial position — that hosting Nazi content was a principled stance rather than a failure of responsibility — and the eventual reversal under pressure, suggest a company whose stated philosophy of non-intervention can produce real harm to users. A platform that earns revenue from subscriptions is also, by definition, earning revenue from harmful actors who pay to publish. That the harm was eventually addressed doesn't change the structural dynamic that produced it."
+  ],
+  "findings": [
+    {
+      "id": "hidden-ad-revenue",
+      "type": "negative",
+      "dimension": "revenue-clarity",
+      "dimensionLabel": "Revenue clarity",
+      "title": "Advertising introduced without public announcement",
+      "text": "Substack's December 2025 advertising pilot was announced through a paywalled interview with a single creator rather than an official company announcement, despite representing a material shift away from the company's founding anti-advertising positioning.",
+      "source": "AdWeek",
+      "sourceUrl": "https://www.adweek.com/media/substack-ads-sponsorship-newsletters/",
+      "sourceDate": "December 9, 2025",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "data-breach",
+      "type": "watch",
+      "dimension": null,
+      "dimensionLabel": null,
+      "title": "Data breach: 697,000 records, four-month dwell time",
+      "text": "In October 2025, an unauthorised third party accessed email addresses, phone numbers, and internal metadata for approximately 697,000 users. The breach was not discovered or disclosed until February 2026 — a four-month gap that security researchers flagged as significant.",
+      "source": "TechCrunch",
+      "sourceUrl": "https://techcrunch.com/2026/02/05/substack-confirms-data-breach-affecting-email-addresses-and-phone-numbers/",
+      "sourceDate": "February 5, 2026",
+      "sourceType": "ASSESSED"
+    },
+    {
+      "id": "harmful-amplification",
+      "type": "negative",
+      "dimension": "algorithmic-accountability",
+      "dimensionLabel": "Algorithmic accountability",
+      "title": "Nazi newsletters documented; removal only after sustained pressure",
+      "text": "In late 2023, The Atlantic documented scores of white-supremacist and explicitly Nazi newsletters on the platform. Substack co-founder initially stated the platform would continue hosting such content under its non-intervention philosophy; five newsletters were removed in January 2024 only after sustained creator pressure and investigative reporting.",
+      "source": "TechCrunch",
+      "sourceUrl": "https://techcrunch.com/2024/01/09/substack-nazi-content-policies-controversy/",
+      "sourceDate": "January 10, 2024",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "outcomes-pricing",
+      "type": "positive",
+      "dimension": "incentive-alignment",
+      "dimensionLabel": "Incentive alignment",
+      "title": "Outcomes-based pricing: Substack earns only when creators do",
+      "text": "Substack charges only a percentage of creator earnings from paid subscriptions, meaning the platform earns revenue only when creators successfully monetise their work. The company earns nothing from free newsletters.",
+      "source": "Substack",
+      "sourceUrl": "https://substack.com/about",
+      "sourceDate": "Retrieved April 2026",
+      "sourceType": "ASSESSED"
+    },
+    {
+      "id": "data-portability",
+      "type": "positive",
+      "dimension": "captivity",
+      "dimensionLabel": "Captivity",
+      "title": "Full data portability: subscriber lists exportable in open formats",
+      "text": "Substack provides full export of posts (ZIP) and subscriber lists (CSV) including email addresses, subscription status, payment information, and engagement data in standard formats. The company explicitly states that subscriber lists and payment relationships belong to the writer.",
+      "source": "Substack Support",
+      "sourceUrl": "https://support.substack.com/hc/en-us/articles/360037466012-How-do-I-export-my-posts",
+      "sourceDate": "December 12, 2023",
+      "sourceType": "ASSESSED"
+    }
+  ],
+  "personas": [
+    {
+      "label": "For writers and creators",
+      "text": "Substack's business model is genuinely aligned with your success — the company makes money only when you do — and you can leave with your full subscriber list whenever you want, though the platform's quiet pivot toward advertising deserves watching as a leading indicator of where the incentives are heading."
+    },
+    {
+      "label": "For readers and subscribers",
+      "text": "Substack doesn't use engagement tricks to keep you scrolling, and cancelling subscriptions is straightforward, but the platform's hands-off approach to content moderation means you may encounter extremist content in recommendations, and the company's track record suggests it moves slowly on removing harmful material unless pressured."
+    }
+  ]
+}

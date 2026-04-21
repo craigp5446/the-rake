@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About — The Rake" description="The Rake is a transparency project for tech business models. Each report scores one company on how its revenue model relates to its users.">
+
+<main class="about-page">
+  <div class="about-page__inner">
+
+    <header class="about-header">
+      <p class="mono muted about-kicker">About The Rake</p>
+      <h1 class="about-title">A transparency project for tech revenue models and user alignment</h1>
+    </header>
+
+    <div class="about-body">
+
+      <section class="about-section">
+        <h2>The problem</h2>
+        <p>Most people have no framework for understanding how the tech products they use actually make money — or who those products are really optimising for. An app can look helpful, feel generous, and still be structurally designed to work against the user's interests. Sometimes that's obvious. Most of the time it's obscured by design.</p>
+        <p>The Rake is an accountability layer for tech business models. It scores companies on how they make money, who benefits, and how much pressure they're under to extract value from users rather than deliver it.</p>
+      </section>
+
+      <section class="about-section">
+        <h2>The format</h2>
+        <p>A newsletter. One company report at a time, run through a published scoring framework, with sources cited and methodology open. Each issue covers one company in depth: its revenue model, ownership structure, design decisions, and where its incentives align or conflict with the people using it.</p>
+        <p>Everything is grounded in public information: funding records, pricing pages, terms of service, investor reports, published research. No speculation presented as fact. Conclusions are clearly framed as analysis, not accusation.</p>
+        <p>The research and scoring is done systematically using a three-phase process: an AI agent collects and organises public evidence, a second agent applies the scoring framework. A human reviews, checks sources, applies final judgment, and writes the narrative. That final step matters — nothing gets published without it.</p>
+      </section>
+
+      <section class="about-section">
+        <h2>The scoring framework</h2>
+        <p>Each company is rated across seven dimensions. Scores are not collapsed into a single number. The profile across dimensions is more revealing than any aggregate.</p>
+
+        <div class="dimensions-list">
+          {[
+            ['Revenue clarity',        'Can a user immediately understand how this company makes money?'],
+            ['Incentive alignment',     'Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?'],
+            ['Captivity',               'How easy is it to leave? Is data portable? Is cancellation straightforward?'],
+            ['Engagement extraction',   'Is the product engineered to defeat the user\'s ability to disengage, or does engagement reflect genuine user value?'],
+            ['Multi-sided tension',     'When the interests of different customer groups conflict, whose side does the company take?'],
+            ['Algorithmic accountability', 'Does the company take responsibility for what its systems surface and amplify?'],
+            ['Ownership pressure',      'Who owns this company, and what structural pressures are they under to extract value from users?'],
+          ].map(([name, def]) => (
+            <div class="dim-row">
+              <span class="dim-row__name">{name}</span>
+              <span class="dim-row__def">{def}</span>
+            </div>
+          ))}
+        </div>
+
+        <p>Every profile also includes a label — one of five editorial categories from Adversarial to Principled — and a spectrum position (0–100) within that label. Two companies can share a label while sitting at meaningfully different positions.</p>
+      </section>
+
+      <section class="about-section">
+        <h2>Source confidence</h2>
+        <p>Every source is classified as either <strong>Assessed</strong> (primary sources: company websites, filings, terms of service) or <strong>Inferred</strong> (secondary sources: journalism, logical deduction, community reports). Each dimension shows this split. A company that is hard to score confidently is exhibiting opacity — which is itself worth surfacing.</p>
+      </section>
+
+      <section class="about-section">
+        <h2>Open methodology</h2>
+        <p>The scoring framework, research prompts, and versioning history are all public on GitHub. You can't build a transparency tool with an opaque methodology. If you disagree with a score, the methodology is your starting point.</p>
+        <p>
+          <a href="https://github.com" target="_blank" rel="noopener" class="about-link">Read the full methodology on GitHub →</a>
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>What The Rake is not</h2>
+        <ul>
+          <li>It is not a legal document or regulatory filing</li>
+          <li>It is not a claim about what companies do in private</li>
+          <li>It is not a campaign to get companies shut down</li>
+          <li>It is not affiliated with any company, investor, or advocacy group</li>
+        </ul>
+        <p>It is analysis, applied consistently, in public, with sources.</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+</Base>
+
+<style>
+.about-page {
+  padding: 0 var(--gutter);
+}
+.about-page__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.about-header {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.about-kicker { margin-bottom: 1rem; }
+.about-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+}
+.about-body { padding: 0 0 4rem; }
+.about-section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.about-section:last-child { border-bottom: none; }
+.about-section h2 {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.about-section p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  margin-bottom: 1em;
+}
+.about-section p:last-child { margin-bottom: 0; }
+.about-section ul {
+  list-style: none;
+  margin-bottom: 1em;
+}
+.about-section ul li {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.about-section ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+.about-link {
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+.about-link:hover { border-color: var(--text); }
+
+.dimensions-list {
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+.dim-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.dim-row:last-child { border-bottom: none; }
+.dim-row__name {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.dim-row__def {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .dim-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+</style>

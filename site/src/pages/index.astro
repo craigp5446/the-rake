@@ -1,0 +1,209 @@
+---
+import Base from '../layouts/Base.astro';
+import reports from '../data/reports.json';
+
+const labelSlug = (label: string) => label.toLowerCase();
+
+const labelColour: Record<string, string> = {
+  adversarial: '#E24B4A',
+  extractive:  '#EF9F27',
+  compromised: '#CECE30',
+  aligned:     '#639922',
+  principled:  '#1D9E75',
+};
+
+const labels = [
+  { name: 'Adversarial', range: '0–20',   colour: '#E24B4A', def: 'Designed to work against you' },
+  { name: 'Extractive',  range: '21–40',  colour: '#EF9F27', def: 'Takes more than it delivers' },
+  { name: 'Compromised', range: '41–60',  colour: '#CECE30', def: 'Genuine value, not fully on your side' },
+  { name: 'Aligned',     range: '61–80',  colour: '#639922', def: 'Makes money when you get value' },
+  { name: 'Principled',  range: '81–100', colour: '#1D9E75', def: 'Actively prioritises your interests' },
+];
+---
+
+<Base title="The Rake — tech business model transparency">
+
+  <main>
+    <section class="hero">
+      <div class="hero__inner">
+        <p class="hero__label mono muted">A transparency project</p>
+        <h1 class="hero__headline">Each report scores one tech company on how its business model relates to the people who use it.</h1>
+      </div>
+    </section>
+
+    <section class="grid-section">
+      <div class="grid-section__inner">
+        <div class="report-grid">
+          {reports.map(r => {
+            const slug = labelSlug(r.label);
+            const colour = labelColour[slug] ?? '#9A9994';
+            return (
+              <a href={`/reports/${r.slug}`} class="report-tile" style={`--accent: ${colour}`}>
+                <div class="report-tile__logo">
+                  <img
+                    src={`https://cdn.brandfetch.io/${r.domain}/w/128/h/128?c=1idvQn6L1yhlMg0jKfH`}
+                    alt={r.company}
+                    width="48"
+                    height="48"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                  />
+                  <span class="report-tile__logo-fallback">{r.company[0]}</span>
+                </div>
+                <div class="report-tile__body">
+                  <p class="report-tile__issue mono faint">Issue {r.issue}</p>
+                  <h2 class="report-tile__company">{r.company}</h2>
+                  <p class="report-tile__subtitle">{r.subtitle}</p>
+                </div>
+                <div class="report-tile__verdict">
+                  <span class="report-tile__label mono">{r.label}</span>
+                  <span class="report-tile__score mono">{r.score}<span class="faint">/100</span></span>
+                </div>
+              </a>
+            );
+          })}
+
+          {Array.from({ length: Math.max(0, 3 - reports.length) }).map(() => (
+            <div class="report-tile report-tile--placeholder">
+              <div class="report-tile__body">
+                <p class="report-tile__issue mono faint">Coming soon</p>
+                <h2 class="report-tile__company" style="color: var(--text-faint)">—</h2>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="legend-section">
+      <div class="legend-section__inner">
+        <p class="legend-section__heading mono muted">The five profile labels</p>
+        <div class="legend">
+          {labels.map(l => (
+            <div class="legend__item">
+              <span class="legend__dot" style={`background: ${l.colour}`}></span>
+              <span class="legend__name ui" style={`color: ${l.colour}`}>{l.name}</span>
+              <span class="legend__range mono faint">{l.range}</span>
+              <span class="legend__def muted">{l.def}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+</Base>
+
+<style>
+.hero {
+  padding: 5rem var(--gutter) 4rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero__inner {
+  max-width: var(--max-w-wide);
+  margin: 0 auto;
+}
+.hero__label { margin-bottom: 1rem; }
+.hero__headline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  max-width: 680px;
+}
+
+.grid-section { padding: 3rem var(--gutter); }
+.grid-section__inner { max-width: var(--max-w-wide); margin: 0 auto; }
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+
+.report-tile {
+  background: var(--bg);
+  padding: 1.75rem;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-left: 3px solid var(--accent, var(--border));
+  transition: background 0.15s;
+}
+.report-tile:hover { background: var(--bg-raised); }
+
+.report-tile--placeholder {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+  border-left-color: var(--border-strong);
+}
+
+.report-tile__logo { width: 48px; height: 48px; }
+.report-tile__logo img {
+  width: 48px; height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.report-tile__logo-fallback {
+  display: none;
+  width: 48px; height: 48px;
+  background: var(--bg-subtle);
+  border-radius: 8px;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+.report-tile__body { flex: 1; }
+.report-tile__issue { margin-bottom: 0.25rem; }
+.report-tile__company {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.report-tile__subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-style: italic;
+}
+.report-tile__verdict {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.report-tile__label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.report-tile__score { font-size: 1.125rem; }
+
+.legend-section {
+  padding: 3rem var(--gutter) 4rem;
+  border-top: 1px solid var(--border);
+}
+.legend-section__inner { max-width: var(--max-w-wide); margin: 0 auto; }
+.legend-section__heading { margin-bottom: 1.25rem; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; }
+.legend__item { display: flex; align-items: baseline; gap: 0.5rem; }
+.legend__dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  flex-shrink: 0; position: relative; top: -1px;
+}
+.legend__name { font-family: var(--font-ui); font-size: 0.8125rem; font-weight: 600; }
+.legend__range { font-size: 0.75rem; }
+.legend__def { font-size: 0.875rem; }
+</style>

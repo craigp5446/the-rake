@@ -1,0 +1,709 @@
+---
+import Base from '../../layouts/Base.astro';
+import type { GetStaticPaths } from 'astro';
+import { readdir, readFile } from 'fs/promises';
+import { join } from 'path';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const dataDir = join(process.cwd(), 'src/data');
+  const files = await readdir(dataDir);
+  const reportFiles = files.filter(f => f !== 'reports.json' && f.endsWith('.json'));
+
+  const paths = await Promise.all(reportFiles.map(async (file) => {
+    const content = await readFile(join(dataDir, file), 'utf-8');
+    const data = JSON.parse(content);
+    return { params: { slug: data.slug }, props: { report: data } };
+  }));
+
+  return paths;
+};
+
+const { report } = Astro.props;
+
+type Finding = {
+  id: string;
+  type: 'negative' | 'positive' | 'watch';
+  dimension: string | null;
+  dimensionLabel: string | null;
+  title: string;
+  text: string;
+  source: string;
+  sourceUrl: string;
+  sourceDate: string;
+  sourceType: string;
+};
+
+type Dimension = {
+  id: string;
+  name: string;
+  definition: string;
+  score: number;
+  scoreLabel: string;
+  assessedCount: number;
+  inferredCount: number;
+  evidenceStrength: string;
+  rationale: string;
+  findings: string[];
+};
+
+const labelColours: Record<string, string> = {
+  adversarial: '#E24B4A',
+  extractive:  '#EF9F27',
+  compromised: '#CECE30',
+  aligned:     '#639922',
+  principled:  '#1D9E75',
+};
+
+const findingColours: Record<string, string> = {
+  negative: '#E24B4A',
+  positive: '#639922',
+  watch:    '#3B82F6',
+};
+
+const labelColour = labelColours[report.label.toLowerCase()] ?? '#9A9994';
+const spectrumBands = [
+  { label: 'Adversarial', start: 0,  end: 20 },
+  { label: 'Extractive',  start: 20, end: 40 },
+  { label: 'Compromised', start: 40, end: 60 },
+  { label: 'Aligned',     start: 60, end: 80 },
+  { label: 'Principled',  start: 80, end: 100 },
+];
+
+const formatDate = (d: string) => new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Pre-compute which findings link to each dimension
+const findingMap: Record<string, Finding[]> = {};
+for (const dim of report.dimensions as Dimension[]) {
+  findingMap[dim.id] = (dim.findings as string[]).map((fid: string) =>
+    (report.findings as Finding[]).find((f: Finding) => f.id === fid)
+  ).filter(Boolean) as Finding[];
+}
+---
+
+<Base
+  title={`${report.company} — The Rake Issue ${report.issue}`}
+  description={report.summary}
+>
+
+<article class="report">
+
+  {/* ── 1. Masthead ──────────────────────────────────────────── */}
+  <header class="masthead">
+    <div class="masthead__inner">
+      <div class="masthead__meta-top">
+        <span class="mono muted">The Rake / Issue {report.issue}</span>
+      </div>
+
+      <div class="masthead__title-row">
+        <div class="masthead__logo">
+          <img
+            src={`https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=1idvQn6L1yhlMg0jKfH`}
+            alt={report.company}
+            width="64"
+            height="64"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+          />
+          <span class="masthead__logo-fallback">{report.company[0]}</span>
+        </div>
+        <div>
+          <h1 class="masthead__company">{report.company}</h1>
+          <p class="masthead__subtitle">{report.subtitle}</p>
+        </div>
+      </div>
+
+      <div class="masthead__meta-bottom mono faint">
+        <span>{formatDate(report.published)}</span>
+        <span class="sep">·</span>
+        <a href="https://github.com" target="_blank" rel="noopener">Methodology v{report.methodologyVersion}</a>
+        <span class="sep">·</span>
+        <span>{report.sourceCount} sources</span>
+      </div>
+    </div>
+  </header>
+
+  {/* ── 2. Verdict block ─────────────────────────────────────── */}
+  <section class="verdict" style={`--label-colour: ${labelColour}`}>
+    <div class="verdict__inner">
+
+      <div class="verdict__top">
+        <div class="verdict__label-block">
+          <span class="verdict__label mono">{report.label}</span>
+          <span class="verdict__score">{report.score}<span class="verdict__total">/100</span></span>
+        </div>
+        <div class="verdict__confidence mono faint">
+          {report.confidence} confidence · {report.assessedPct}% assessed sources
+        </div>
+      </div>
+
+      <p class="verdict__summary">{report.summary}</p>
+
+      {/* Spectrum bar */}
+      <div class="spectrum" aria-label={`Score ${report.score} out of 100, ${report.label}`}>
+        <div class="spectrum__track">
+          {spectrumBands.map(band => (
+            <div
+              class="spectrum__band"
+              style={`
+                left: ${band.start}%;
+                width: ${band.end - band.start}%;
+                background: ${labelColours[band.label.toLowerCase()]};
+              `}
+              title={band.label}
+            ></div>
+          ))}
+          <div
+            class="spectrum__marker"
+            style={`left: ${report.score}%`}
+            title={`${report.score}/100 — ${report.label}`}
+          ></div>
+        </div>
+        <div class="spectrum__labels mono">
+          {spectrumBands.map(band => (
+            <span style={`left: ${band.start + (band.end - band.start)/2}%; color: ${labelColours[band.label.toLowerCase()]}`}>
+              {band.label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="report__body">
+    <div class="report__body-inner">
+
+      {/* ── 3. Intro narrative ─────────────────────────────────── */}
+      <section class="narrative-section">
+        {report.introNarrative.map((para: string) => (
+          <p>{para}</p>
+        ))}
+      </section>
+
+      <hr class="divider" />
+
+      {/* ── 4. Dimensions ──────────────────────────────────────── */}
+      <section class="dimensions-section">
+        <h2 class="section-heading mono muted">Seven dimensions</h2>
+
+        {(report.dimensions as Dimension[]).map((dim) => {
+          const scoreColour = dim.score === 3 ? 'var(--c-score-3)' : dim.score === 2 ? 'var(--c-score-2)' : 'var(--c-score-1)';
+          const relatedFindings = findingMap[dim.id] ?? [];
+          return (
+            <div class="dimension" id={`dim-${dim.id}`}>
+              <div class="dimension__header">
+                <div class="dimension__title-row">
+                  <h3 class="dimension__name" title={dim.definition}>
+                    {dim.name}
+                    <span class="dimension__def-tooltip" role="tooltip">{dim.definition}</span>
+                  </h3>
+                  <div class="dimension__score-block" style={`--score-colour: ${scoreColour}`}>
+                    <span class="dimension__score-num">{dim.score}</span>
+                    <span class="dimension__score-label mono">{dim.scoreLabel}</span>
+                  </div>
+                </div>
+                <p class="dimension__meta mono faint">
+                  {dim.assessedCount} assessed · {dim.inferredCount} inferred
+                  <span class="sep">·</span>
+                  <span class={`evidence-strength evidence-strength--${dim.evidenceStrength.toLowerCase()}`}>
+                    {dim.evidenceStrength}
+                  </span>
+                </p>
+              </div>
+
+              <p class="dimension__rationale">{dim.rationale}</p>
+
+              {relatedFindings.length > 0 && (
+                <div class="dimension__findings-pills">
+                  {relatedFindings.map((f: Finding) => (
+                    <a
+                      href={`#finding-${f.id}`}
+                      class="finding-pill"
+                      data-type={f.type}
+                      style={`--pill-colour: ${findingColours[f.type]}`}
+                    >
+                      <span class="finding-pill__icon">
+                        {f.type === 'negative' ? '!' : f.type === 'positive' ? '✓' : '◎'}
+                      </span>
+                      {f.title}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </section>
+
+      <hr class="divider" />
+
+      {/* ── 5. Analysis ────────────────────────────────────────── */}
+      <section class="narrative-section analysis-section">
+        <h2 class="section-heading mono muted">Analysis</h2>
+        {report.analysis.map((para: string) => (
+          <p>{para}</p>
+        ))}
+      </section>
+
+      <hr class="divider" />
+
+      {/* ── 6. Significant findings ────────────────────────────── */}
+      <section class="findings-section">
+        <h2 class="section-heading mono muted">Significant findings</h2>
+
+        <div class="findings-list">
+          {(report.findings as Finding[]).map((f: Finding) => (
+            <div
+              class="finding"
+              id={`finding-${f.id}`}
+              data-type={f.type}
+              style={`border-left-color: ${findingColours[f.type]}`}
+            >
+              <div class="finding__header">
+                <div class="finding__type-row">
+                  <span class="finding__type-badge mono" style={`color: ${findingColours[f.type]}`}>
+                    {f.type === 'negative' ? '! Negative' : f.type === 'positive' ? '✓ Positive' : '◎ Watch'}
+                  </span>
+                  {f.dimensionLabel && (
+                    <a href={`#dim-${f.dimension}`} class="finding__dim-tag mono faint">
+                      {f.dimensionLabel}
+                    </a>
+                  )}
+                  {!f.dimensionLabel && (
+                    <span class="finding__dim-tag mono faint">No dimension</span>
+                  )}
+                </div>
+                <h3 class="finding__title">{f.title}</h3>
+              </div>
+              <p class="finding__text">{f.text}</p>
+              <p class="finding__source mono faint">
+                <a href={f.sourceUrl} target="_blank" rel="noopener">{f.source}</a>
+                <span class="sep">·</span>
+                {f.sourceDate}
+                <span class="sep">·</span>
+                {f.sourceType}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      {/* ── 7. Who this is for ─────────────────────────────────── */}
+      <section class="personas-section">
+        <h2 class="section-heading mono muted">Who this is for</h2>
+        {report.personas.map((p: { label: string; text: string }) => (
+          <div class="persona">
+            <p class="persona__label mono muted">{p.label}</p>
+            <p class="persona__text">{p.text}</p>
+          </div>
+        ))}
+      </section>
+
+    </div>
+  </div>
+
+</article>
+
+</Base>
+
+<style>
+/* ── Report shell ──────────────────────────────────────────── */
+.report {}
+
+/* ── Masthead ──────────────────────────────────────────────── */
+.masthead {
+  border-bottom: 1px solid var(--border);
+  padding: 3.5rem var(--gutter) 2.5rem;
+}
+.masthead__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.masthead__meta-top { margin-bottom: 1.5rem; }
+.masthead__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.masthead__logo {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+.masthead__logo img {
+  width: 64px; height: 64px;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.masthead__logo-fallback {
+  display: none;
+  width: 64px; height: 64px;
+  background: var(--bg-subtle);
+  border-radius: 12px;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+.masthead__company {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+.masthead__subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.masthead__meta-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+}
+.masthead__meta-bottom a {
+  text-decoration: none;
+  color: var(--text-faint);
+}
+.masthead__meta-bottom a:hover { color: var(--text-muted); }
+.sep { opacity: 0.4; }
+
+/* ── Verdict ───────────────────────────────────────────────── */
+.verdict {
+  padding: 2.5rem var(--gutter);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+.verdict__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.verdict__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.verdict__label-block {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+.verdict__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--label-colour);
+}
+.verdict__score {
+  font-family: var(--font-mono);
+  font-size: 2.25rem;
+  color: var(--label-colour);
+  line-height: 1;
+}
+.verdict__total {
+  font-size: 1rem;
+  color: var(--text-faint);
+}
+.verdict__confidence {
+  font-size: 0.75rem;
+  padding-top: 0.5rem;
+}
+.verdict__summary {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* Spectrum */
+.spectrum { user-select: none; }
+.spectrum__track {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--bg-subtle);
+  margin-bottom: 0.75rem;
+}
+.spectrum__band {
+  position: absolute;
+  top: 0; bottom: 0;
+  opacity: 0.35;
+}
+.spectrum__marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px; height: 14px;
+  background: var(--label-colour);
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--label-colour);
+  z-index: 2;
+}
+.spectrum__labels {
+  position: relative;
+  height: 1.2rem;
+}
+.spectrum__labels span {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+/* ── Body ──────────────────────────────────────────────────── */
+.report__body {
+  padding: 0 var(--gutter);
+}
+.report__body-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* ── Narrative ─────────────────────────────────────────────── */
+.narrative-section {
+  padding: 3rem 0;
+}
+.narrative-section p {
+  margin-bottom: 1.25em;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.narrative-section p:last-child { margin-bottom: 0; }
+
+.analysis-section {}
+
+.section-heading {
+  margin-bottom: 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Dimensions ────────────────────────────────────────────── */
+.dimensions-section { padding: 3rem 0; }
+
+.dimension {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.dimension:last-child { border-bottom: none; }
+.dimension:first-of-type { padding-top: 0; }
+
+.dimension__header { margin-bottom: 0.75rem; }
+
+.dimension__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.dimension__name {
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+  cursor: default;
+  position: relative;
+}
+
+.dimension__def-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-serif);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  border-radius: 3px;
+  white-space: normal;
+  width: max-content;
+  max-width: 280px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.dimension__name:hover .dimension__def-tooltip { display: block; }
+
+.dimension__score-block {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.dimension__score-num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--score-colour);
+  line-height: 1;
+}
+.dimension__score-label {
+  font-size: 0.75rem;
+  color: var(--score-colour);
+  letter-spacing: 0.04em;
+}
+
+.dimension__meta { font-size: 0.75rem; }
+
+.evidence-strength { font-weight: 500; }
+.evidence-strength--strong  { color: var(--c-score-3); }
+.evidence-strength--moderate { color: var(--c-score-2); }
+.evidence-strength--weak    { color: var(--c-score-1); }
+.evidence-strength--blind   { color: var(--c-score-1); }
+
+.dimension__rationale {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.dimension__findings-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.finding-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--pill-colour);
+  color: var(--pill-colour);
+  border-radius: 2px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 0.15s, color 0.15s;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.finding-pill:hover {
+  background: var(--pill-colour);
+  color: var(--bg);
+}
+.finding-pill__icon { font-style: normal; flex-shrink: 0; }
+
+/* ── Findings ──────────────────────────────────────────────── */
+.findings-section { padding: 3rem 0; }
+.findings-list { display: flex; flex-direction: column; gap: 0; }
+
+.finding {
+  padding: 1.5rem 0 1.5rem 1.25rem;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 5rem;
+  transition: background 0.3s;
+}
+.finding:last-child { border-bottom: none; }
+
+.finding.highlight {
+  background: var(--bg-raised);
+  border-radius: 0 4px 4px 0;
+}
+
+.finding__header { margin-bottom: 0.6rem; }
+.finding__type-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+.finding__type-badge {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.finding__dim-tag {
+  font-size: 0.7rem;
+  text-decoration: none;
+  padding: 0.1rem 0.4rem;
+  background: var(--bg-subtle);
+  border-radius: 2px;
+  color: var(--text-faint);
+}
+.finding__dim-tag:hover { color: var(--text-muted); }
+
+.finding__title {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 400;
+}
+.finding__text {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.finding__source {
+  font-size: 0.75rem;
+}
+.finding__source a {
+  text-decoration: none;
+  color: var(--text-muted);
+}
+.finding__source a:hover { color: var(--text); }
+
+/* ── Personas ──────────────────────────────────────────────── */
+.personas-section { padding: 3rem 0; }
+.persona { margin-bottom: 1.75rem; }
+.persona:last-child { margin-bottom: 0; }
+.persona__label { margin-bottom: 0.4rem; font-size: 0.75rem; letter-spacing: 0.04em; }
+.persona__text {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+</style>
+
+<script>
+  // Highlight finding when navigated to via pill link
+  document.querySelectorAll('.finding-pill').forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (!href) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      target.classList.add('highlight');
+      setTimeout(() => target.classList.remove('highlight'), 2000);
+    });
+  });
+</script>
