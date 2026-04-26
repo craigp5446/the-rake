@@ -1,1 +1,8 @@
 issues/
+.env
+.env.*
+__pycache__/
+*.pyc
+.DS_Store
+.claude/
+the-rake-site.zip
