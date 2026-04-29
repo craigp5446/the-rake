@@ -4,7 +4,7 @@ interface Props {
   description?: string;
   ogImage?: string;
 }
-const { title, description = "Each report scores one tech company on how its business model relates to the people who use it.", ogImage } = Astro.props;
+const { title, description = "Each issue scores one tech company on how its business model relates to the people who use it.", ogImage } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>

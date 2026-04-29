@@ -7,12 +7,12 @@ import { join } from 'path';
 export const getStaticPaths: GetStaticPaths = async () => {
   const dataDir = join(process.cwd(), 'src/data');
   const files = await readdir(dataDir);
-  const reportFiles = files.filter(f => f !== 'reports.json' && f.endsWith('.json'));
+  const issueFiles = files.filter(f => f !== 'issues.json' && f.endsWith('.json'));
 
-  const paths = await Promise.all(reportFiles.map(async (file) => {
+  const paths = await Promise.all(issueFiles.map(async (file) => {
     const content = await readFile(join(dataDir, file), 'utf-8');
     const data = JSON.parse(content);
-    return { params: { slug: data.slug }, props: { report: data } };
+    return { params: { issue: String(data.issue) }, props: { report: data } };
   }));
 
   return paths;
@@ -81,7 +81,7 @@ for (const dim of report.dimensions as Dimension[]) {
 ---
 
 <Base
-  title={`${report.company} — The Rake Issue ${report.issue}`}
+  title={`Issue ${report.issue}: ${report.company} — The Rake`}
   description={report.summary}
 >
 

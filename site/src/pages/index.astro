@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import reports from '../data/reports.json';
+import reports from '../data/issues.json';
 
 const labelSlug = (label: string) => label.toLowerCase();
 
@@ -27,7 +27,7 @@ const labels = [
     <section class="hero">
       <div class="hero__inner">
         <p class="hero__label mono muted">A transparency project</p>
-        <h1 class="hero__headline">Each report scores one tech company on how its business model relates to the people who use it.</h1>
+        <h1 class="hero__headline">Each issue scores one tech company on how its business model relates to the people who use it.</h1>
       </div>
     </section>
 
@@ -38,7 +38,7 @@ const labels = [
             const slug = labelSlug(r.label);
             const colour = labelColour[slug] ?? '#9A9994';
             return (
-              <a href={`/reports/${r.slug}`} class="report-tile" style={`--accent: ${colour}`}>
+              <a href={`/issues/${r.issue}`} class="report-tile" style={`--accent: ${colour}`}>
                 <div class="report-tile__logo">
                   <img
                     src={`https://cdn.brandfetch.io/${r.domain}/w/128/h/128?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}

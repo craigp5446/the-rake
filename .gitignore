@@ -1,4 +1,4 @@
-issues/
+/issues/
 .env
 .env.*
 __pycache__/
