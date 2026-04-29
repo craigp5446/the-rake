@@ -12,11 +12,14 @@
   "assessedPct": 40,
   "subtitle": "The newsletter platform that only makes money when you do — except when it doesn't",
   "summary": "Substack's core revenue model is genuinely aligned with creator success, but a quiet pivot to advertising, a data breach, and a hands-off approach to extremist content complicate the picture.",
-  "introNarrative": [
+  "narrative": [
     "Substack arrived with a clear pitch: unlike the social media platforms that monetised your attention to sell it to advertisers, Substack would only make money when you did. Ten percent of your paid subscriptions, nothing else. If that model sounds almost aggressively simple, that was the point. In a landscape of deliberately obscured revenue structures, legibility was the product.",
     "For several years, that pitch held. The platform took its cut, helped writers find readers, and mostly stayed out of the way. The data portability was genuine — you could leave with your full subscriber list at any time, and many writers did exactly that when competitors offered better economics. The algorithm, when Substack eventually built one, was designed to drive subscriptions rather than time-on-platform. These were real choices that cost something.",
     "The picture has become more complicated since the $100 million Series C in July 2025. Advertising arrived four months later, announced not through a company press release but through a paywalled interview with a single creator. A data breach disclosed in February 2026 turned out to have occurred four months earlier. And the company's track record on content moderation — specifically its initial refusal to remove Nazi newsletters despite documented presence of white-supremacist content — revealed a philosophy of non-intervention that had real costs for users.",
-    "None of this undoes the genuine alignment in the core model. But it does suggest a company navigating a transition: from a tool that made money by helping writers, to a platform with the more complex incentives that platform scale tends to produce."
+    "None of this undoes the genuine alignment in the core model. But it does suggest a company navigating a transition: from a tool that made money by helping writers, to a platform with the more complex incentives that platform scale tends to produce.",
+    "The pattern across these seven dimensions is unusually coherent for a platform of Substack's scale. The strong scores on captivity and engagement extraction aren't accidents — they reflect deliberate product choices that cost something. Full data portability means creators can and do leave. An algorithm optimised for subscriptions rather than time-on-platform means Substack actively gives up engagement revenue it could extract. These are real commitments.",
+    "What makes the Compromised placement feel right rather than Aligned is the trajectory. The introduction of advertising in December 2025, announced obliquely through a paywalled interview rather than transparently disclosed, is the kind of thing that looks like a first move rather than a one-off. The Series C at $1.1 billion brings investor expectations that the 10% subscription model alone may not satisfy. The data breach — with a four-month gap between occurrence and disclosure — suggests that the opacity around advertising is part of a broader pattern rather than an isolated communication failure.",
+    "The content moderation record is the clearest present-tense problem. The initial position — that hosting Nazi content was a principled stance rather than a failure of responsibility — and the eventual reversal under pressure, suggest a company whose stated philosophy of non-intervention can produce real harm to users. A platform that earns revenue from subscriptions is also, by definition, earning revenue from harmful actors who pay to publish. That the harm was eventually addressed doesn't change the structural dynamic that produced it."
   ],
   "dimensions": [
     {
@@ -104,11 +107,6 @@
       "findings": []
     }
   ],
-  "analysis": [
-    "The pattern across these seven dimensions is unusually coherent for a platform of Substack's scale. The strong scores on captivity and engagement extraction aren't accidents — they reflect deliberate product choices that cost something. Full data portability means creators can and do leave. An algorithm optimised for subscriptions rather than time-on-platform means Substack actively gives up engagement revenue it could extract. These are real commitments.",
-    "What makes the Compromised placement feel right rather than Aligned is the trajectory. The introduction of advertising in December 2025, announced obliquely through a paywalled interview rather than transparently disclosed, is the kind of thing that looks like a first move rather than a one-off. The Series C at $1.1 billion brings investor expectations that the 10% subscription model alone may not satisfy. The data breach — with a four-month gap between occurrence and disclosure — suggests that the opacity around advertising is part of a broader pattern rather than an isolated communication failure.",
-    "The content moderation record is the clearest present-tense problem. The initial position — that hosting Nazi content was a principled stance rather than a failure of responsibility — and the eventual reversal under pressure, suggest a company whose stated philosophy of non-intervention can produce real harm to users. A platform that earns revenue from subscriptions is also, by definition, earning revenue from harmful actors who pay to publish. That the harm was eventually addressed doesn't change the structural dynamic that produced it."
-  ],
   "findings": [
     {
       "id": "hidden-ad-revenue",
@@ -180,5 +178,35 @@
       "label": "For readers and subscribers",
       "text": "Substack doesn't use engagement tricks to keep you scrolling, and cancelling subscriptions is straightforward, but the platform's hands-off approach to content moderation means you may encounter extremist content in recommendations, and the company's track record suggests it moves slowly on removing harmful material unless pressured."
     }
+  ],
+  "sources": [
+    { "url": "https://substack.com/going-paid", "title": "Substack — Going Paid", "date": "Retrieved April 2026", "type": "ASSESSED" },
+    { "url": "https://substack.com/about", "title": "Substack — About", "date": "Retrieved April 2026", "type": "ASSESSED" },
+    { "url": "https://support.substack.com/hc/en-us/articles/360037607131-How-much-does-Substack-cost", "title": "Substack Support — How much does Substack cost?", "date": "December 16, 2025", "type": "ASSESSED" },
+    { "url": "https://support.substack.com/hc/en-us/articles/360037466012-How-do-I-export-my-posts", "title": "Substack Support — How do I export my posts?", "date": "December 12, 2023", "type": "ASSESSED" },
+    { "url": "https://support.substack.com/hc/en-us/articles/6314498343700-How-do-I-export-my-email-list-on-Substack", "title": "Substack Support — How do I export my email list?", "date": "September 8, 2025", "type": "ASSESSED" },
+    { "url": "https://substack.com/book", "title": "Substack — The Substack Book", "date": "Retrieved April 2026", "type": "ASSESSED" },
+    { "url": "https://support.substack.com/hc/en-us/articles/360037489252-How-do-I-cancel-my-paid-subscription-on-Substack", "title": "Substack Support — How do I cancel my paid subscription?", "date": "June 25, 2025", "type": "ASSESSED" },
+    { "url": "https://support.substack.com/hc/en-us/articles/14739792289172-What-notifications-do-I-get-about-Substack-Notes", "title": "Substack Support — Notes notifications", "date": "June 16, 2025", "type": "ASSESSED" },
+    { "url": "https://support.substack.com/hc/en-us/articles/14742669397396-Do-my-subscribers-get-notifications-about-my-notes", "title": "Substack Support — Subscriber notifications for Notes", "date": "May 6, 2025", "type": "ASSESSED" },
+    { "url": "https://support.substack.com/hc/en-us/articles/14564821756308-Getting-started-on-Substack-Notes", "title": "Substack Support — Getting started on Notes", "date": "April 2026", "type": "ASSESSED" },
+    { "url": "https://on.substack.com/p/substacks-view-of-content-moderation", "title": "Substack — Our view of content moderation", "date": "December 22, 2020", "type": "ASSESSED" },
+    { "url": "https://substack.com/content", "title": "Substack — Content guidelines", "date": "March 2026", "type": "ASSESSED" },
+    { "url": "https://on.substack.com/p/wefunder", "title": "Substack — Community investment round", "date": "March 28, 2023", "type": "ASSESSED" },
+    { "url": "https://variety.com/2025/digital/news/substack-raises-100-million-chernin-group-skims-investors-1236463721/", "title": "Variety — Substack raises $100 million", "date": "July 17, 2025", "type": "ASSESSED" },
+    { "url": "https://tracxn.com/d/companies/substack/__p24iniy6ZkhjH1kHKlzDUc3zpmnVgDfLZNx8RkxXs2I/funding-and-investors", "title": "Tracxn — Substack funding and investors", "date": "April 2026", "type": "ASSESSED" },
+    { "url": "https://en.wikipedia.org/wiki/Substack", "title": "Wikipedia — Substack", "date": "April 2026", "type": "ASSESSED" },
+    { "url": "https://techcrunch.com/2026/02/05/substack-confirms-data-breach-affecting-email-addresses-and-phone-numbers/", "title": "TechCrunch — Substack confirms data breach", "date": "February 5, 2026", "type": "ASSESSED" },
+    { "url": "https://www.adweek.com/media/substack-ads-sponsorship-newsletters/", "title": "AdWeek — Substack advertising pilot", "date": "December 9, 2025", "type": "INFERRED" },
+    { "url": "https://edokwin.substack.com/p/native-sponsorships-substack-introduces", "title": "Ed Okwin — Native sponsorships: Substack introduces advertising", "date": "December 10, 2025", "type": "INFERRED" },
+    { "url": "https://ppc.land/substack-explores-advertising-strategy-with-100-million-funding-boost/", "title": "PPC Land — Substack advertising strategy", "date": "July 18, 2025", "type": "INFERRED" },
+    { "url": "https://sacra.com/c/substack/", "title": "Sacra — Substack company profile", "date": "Retrieved April 2026", "type": "INFERRED" },
+    { "url": "https://research.contrary.com/company/substack", "title": "Contrary Research — Substack", "date": "September 5, 2024", "type": "INFERRED" },
+    { "url": "https://www.cityam.com/substack-implements-native-advertising-following-1-1bn-valuation/", "title": "City A.M. — Substack implements native advertising", "date": "December 12, 2025", "type": "INFERRED" },
+    { "url": "https://www.nbcnews.com/tech/tech-news/substack-removed-newsletters-criticism-nazi-content-rcna132963", "title": "NBC News — Substack removed newsletters after Nazi content criticism", "date": "January 9, 2024", "type": "INFERRED" },
+    { "url": "https://techcrunch.com/2024/01/09/substack-nazi-content-policies-controversy/", "title": "TechCrunch — Substack Nazi content policies controversy", "date": "January 10, 2024", "type": "INFERRED" },
+    { "url": "https://disconnect.blog/substack-is-wrong-about-moderation/", "title": "Disconnect — Substack is wrong about moderation", "date": "August 28, 2025", "type": "INFERRED" },
+    { "url": "https://pubstacksuccess.substack.com/p/the-notes-algorithm-explained-by", "title": "Pubstack Success — The Notes algorithm explained", "date": "November 1, 2025", "type": "INFERRED" },
+    { "url": "https://courtneyworks.substack.com/p/substack-ownership", "title": "Courtney Works — Substack ownership breakdown", "date": "September 20, 2025", "type": "INFERRED" }
   ]
 }

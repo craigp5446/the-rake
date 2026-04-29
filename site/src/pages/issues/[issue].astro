@@ -46,6 +46,13 @@ type Dimension = {
   findings: string[];
 };
 
+type Source = {
+  url: string;
+  title: string;
+  date: string;
+  type: 'ASSESSED' | 'INFERRED';
+};
+
 const labelColours: Record<string, string> = {
   adversarial: '#E24B4A',
   extractive:  '#EF9F27',
@@ -78,6 +85,10 @@ for (const dim of report.dimensions as Dimension[]) {
     (report.findings as Finding[]).find((f: Finding) => f.id === fid)
   ).filter(Boolean) as Finding[];
 }
+
+// Separate assessed and inferred sources for the sources section
+const assessedSources = (report.sources as Source[]).filter(s => s.type === 'ASSESSED');
+const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INFERRED');
 ---
 
 <Base
@@ -172,9 +183,9 @@ for (const dim of report.dimensions as Dimension[]) {
   <div class="report__body">
     <div class="report__body-inner">
 
-      {/* ── 3. Intro narrative ─────────────────────────────────── */}
+      {/* ── 3. Narrative ───────────────────────────────────────── */}
       <section class="narrative-section">
-        {report.introNarrative.map((para: string) => (
+        {report.narrative.map((para: string) => (
           <p>{para}</p>
         ))}
       </section>
@@ -236,17 +247,7 @@ for (const dim of report.dimensions as Dimension[]) {
 
       <hr class="divider" />
 
-      {/* ── 5. Analysis ────────────────────────────────────────── */}
-      <section class="narrative-section analysis-section">
-        <h2 class="section-heading mono muted">Analysis</h2>
-        {report.analysis.map((para: string) => (
-          <p>{para}</p>
-        ))}
-      </section>
-
-      <hr class="divider" />
-
-      {/* ── 6. Significant findings ────────────────────────────── */}
+      {/* ── 5. Significant findings ────────────────────────────── */}
       <section class="findings-section">
         <h2 class="section-heading mono muted">Significant findings</h2>
 
@@ -289,7 +290,7 @@ for (const dim of report.dimensions as Dimension[]) {
 
       <hr class="divider" />
 
-      {/* ── 7. Who this is for ─────────────────────────────────── */}
+      {/* ── 6. Who this is for ─────────────────────────────────── */}
       <section class="personas-section">
         <h2 class="section-heading mono muted">Who this is for</h2>
         {report.personas.map((p: { label: string; text: string }) => (
@@ -300,6 +301,37 @@ for (const dim of report.dimensions as Dimension[]) {
         ))}
       </section>
 
+      <hr class="divider" />
+
+      {/* ── 7. Sources ─────────────────────────────────────────── */}
+      <section class="sources-section">
+        <h2 class="section-heading mono muted">Sources</h2>
+        <div class="sources-columns">
+          <div class="sources-group">
+            <p class="sources-group__label mono faint">Assessed ({assessedSources.length})</p>
+            <ol class="sources-list">
+              {assessedSources.map((s: Source) => (
+                <li class="source-item">
+                  <a href={s.url} target="_blank" rel="noopener">{s.title}</a>
+                  <span class="source-item__date mono faint">{s.date}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div class="sources-group">
+            <p class="sources-group__label mono faint">Inferred ({inferredSources.length})</p>
+            <ol class="sources-list">
+              {inferredSources.map((s: Source) => (
+                <li class="source-item">
+                  <a href={s.url} target="_blank" rel="noopener">{s.title}</a>
+                  <span class="source-item__date mono faint">{s.date}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 
@@ -308,9 +340,6 @@ for (const dim of report.dimensions as Dimension[]) {
 </Base>
 
 <style>
-/* ── Report shell ──────────────────────────────────────────── */
-.report {}
-
 /* ── Masthead ──────────────────────────────────────────────── */
 .masthead {
   border-bottom: 1px solid var(--border);
@@ -469,26 +498,20 @@ for (const dim of report.dimensions as Dimension[]) {
 }
 
 /* ── Body ──────────────────────────────────────────────────── */
-.report__body {
-  padding: 0 var(--gutter);
-}
+.report__body { padding: 0 var(--gutter); }
 .report__body-inner {
   max-width: var(--max-w);
   margin: 0 auto;
 }
 
 /* ── Narrative ─────────────────────────────────────────────── */
-.narrative-section {
-  padding: 3rem 0;
-}
+.narrative-section { padding: 3rem 0; }
 .narrative-section p {
   margin-bottom: 1.25em;
   font-size: 1.0625rem;
   line-height: 1.75;
 }
 .narrative-section p:last-child { margin-bottom: 0; }
-
-.analysis-section {}
 
 .section-heading {
   margin-bottom: 2rem;
@@ -555,7 +578,6 @@ for (const dim of report.dimensions as Dimension[]) {
   z-index: 10;
   pointer-events: none;
 }
-
 .dimension__name:hover .dimension__def-tooltip { display: block; }
 
 .dimension__score-block {
@@ -579,10 +601,10 @@ for (const dim of report.dimensions as Dimension[]) {
 .dimension__meta { font-size: 0.75rem; }
 
 .evidence-strength { font-weight: 500; }
-.evidence-strength--strong  { color: var(--c-score-3); }
+.evidence-strength--strong   { color: var(--c-score-3); }
 .evidence-strength--moderate { color: var(--c-score-2); }
-.evidence-strength--weak    { color: var(--c-score-1); }
-.evidence-strength--blind   { color: var(--c-score-1); }
+.evidence-strength--weak     { color: var(--c-score-1); }
+.evidence-strength--blind    { color: var(--c-score-1); }
 
 .dimension__rationale {
   font-size: 0.9375rem;
@@ -691,6 +713,67 @@ for (const dim of report.dimensions as Dimension[]) {
 .persona__text {
   font-size: 1.0625rem;
   line-height: 1.7;
+}
+
+/* ── Sources ───────────────────────────────────────────────── */
+.sources-section { padding: 3rem 0; }
+
+.sources-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .sources-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sources-group__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.sources-list {
+  list-style: none;
+  counter-reset: source-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.source-item {
+  counter-increment: source-counter;
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+  font-size: 0.8125rem;
+}
+
+.source-item::before {
+  content: counter(source-counter);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  padding-top: 0.1rem;
+}
+
+.source-item a {
+  text-decoration: none;
+  color: var(--text-muted);
+  line-height: 1.4;
+  word-break: break-word;
+}
+.source-item a:hover { color: var(--text); }
+
+.source-item__date {
+  grid-column: 2;
+  font-size: 0.7rem;
+  color: var(--text-faint);
 }
 </style>
 
