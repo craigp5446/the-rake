@@ -93,9 +93,9 @@ A score of 1 means the product is **actively working against the user on this di
 ### 5. Multi-sided tension
 *When the company serves more than one customer group, whose interests take priority when they conflict?*
 
-- **1 — Users are the product.** The company's primary commercial relationship is with a party other than the end user, and user interests are structurally subordinated to that relationship. Users are the inventory — their attention, data, or behaviour is what is being sold. When interests conflict between users and paying customers, the paying customer wins by default.
+- **1 — Users subordinated.** The company's primary commercial relationship is with a party other than the end user, and user interests are structurally subordinated to that relationship. Users are the inventory — their attention, data, or behaviour is what is being sold. When interests conflict between users and paying customers, the paying customer wins by default.
 
-- **2 — Mixed record.** The company serves more than one customer group and nominal protections exist, but the track record when commercial interests conflict is ambiguous or unresolved. The company may make choices that create indirect harm to users as a by-product of serving paying customers, without this being the explicit intent.
+- **2 — Interests unresolved.** The company serves more than one customer group and nominal protections exist, but the track record when commercial interests conflict is ambiguous or unresolved. The company may make choices that create indirect harm to users as a by-product of serving paying customers, without this being the explicit intent.
 
 - **3 — Users defended.** The company either has no third-party commercial relationships that create tension with user interests, or has a documented track record of siding with users when those interests conflict — including at measurable commercial cost to itself.
 
@@ -153,17 +153,17 @@ Overall confidence: Medium (62% assessed)
 
 ## Flags
 
-Flags surface the most significant positive and negative findings from the research — specific documented incidents or structural commitments that are important enough to affect how a dimension score should be read, but too specific or time-bound to change the score on their own.
+Flags surface the most significant positive and negative findings from the research — specific documented incidents, structural commitments, or directional signals that are important enough to affect how a dimension score should be read or how it might change in a future version.
 
 Every flag is:
-- **Tied to a specific dimension** — flags do not float free of the framework
-- **Significant enough to matter** — if it is not significant enough to affect how a dimension score is read, it is not a flag
+- **Tied to a specific dimension** — where the evidence allows; some trajectory flags may not map cleanly to a single dimension, but the connection to user interests must be made explicit
+- **Significant enough to matter** — if it is not significant enough to affect how a dimension score is read, or to qualify how that score might change, it is not a flag
 - **Grounded in a cited source** — flags require at least one source, assessed preferred
 - **Specific in the report** — flag categories are defined in the methodology; flag instances in reports are always named, dated, and sourced
 
-Flags come in two types: **negative** (a documented incident or structural problem serious enough to affect how the dimension score is read) and **positive** (a documented commitment or action that genuinely distinguishes a company from the norm). Both types are applied using the same evidence bar.
+Flags come in three types: **negative** (a documented incident or structural problem serious enough to affect how the dimension score is read), **positive** (a documented commitment or action that genuinely distinguishes a company from the norm), and **trajectory** (a directional signal — positive or negative in outcome — that does not yet affect the current score but could affect a future one if it comes to pass). All three types are applied using the same evidence bar.
 
-A flag does not mechanically modify the dimension score. Instead, it is the cited evidence that makes the analyst's reasoning legible — particularly when a documented incident is what justifies a score of 1 rather than 2, or a structural commitment is what earns a 3.
+A negative or positive flag does not mechanically modify the dimension score — it is the cited evidence that makes the analyst's reasoning legible, particularly when a documented incident is what justifies a score of 1 rather than 2, or a structural commitment is what earns a 3. A trajectory flag qualifies a score rather than justifying it: it surfaces evidence that the current score may not hold. A trajectory flag must point clearly toward a better or worse outcome — vague uncertainty does not qualify.
 
 ### Flag categories
 

@@ -507,9 +507,10 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 /* ── Narrative ─────────────────────────────────────────────── */
 .narrative-section { padding: 3rem 0; }
 .narrative-section p {
-  margin-bottom: 1.25em;
-  font-size: 1.0625rem;
-  line-height: 1.75;
+  margin-bottom: 1.4em;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  max-width: 65ch;
 }
 .narrative-section p:last-child { margin-bottom: 0; }
 
@@ -607,8 +608,8 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 .evidence-strength--blind    { color: var(--c-score-1); }
 
 .dimension__rationale {
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.75;
   color: var(--text-muted);
   margin-bottom: 1rem;
 }

@@ -1,0 +1,490 @@
+---
+import Base from '../layouts/Base.astro';
+const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.md';
+---
+
+<Base title="Methodology — The Rake" description="How The Rake scores tech companies on how their revenue models relate to the interests of the people who use them.">
+
+<main class="meth-page">
+  <div class="meth-page__inner">
+
+    <header class="meth-header">
+      <p class="mono muted meth-kicker">Open methodology · v1.4 · April 2026</p>
+      <h1 class="meth-title">How The Rake scores companies</h1>
+      <a href={githubUrl} target="_blank" rel="noopener" class="meth-github-link">
+        View methodology.md on GitHub →
+      </a>
+    </header>
+
+    <div class="meth-body">
+
+      <section class="meth-section">
+        <p>The Rake scores tech companies on how their revenue models relate to the interests of the people who use them. Every score is derived from public information, applied through a consistent framework, with sources cited and confidence levels shown. We are not publishing legal findings or making accusations. We are applying a transparent system to public facts.</p>
+        <p>If you disagree with a score, this methodology is your starting point.</p>
+      </section>
+
+      <section class="meth-section">
+        <h2>The five profile labels</h2>
+        <p>Every company receives a spectrum position from 0–100 and a corresponding profile label. The label is editorial, not mechanical — it reflects a judgment about the full picture, weighted toward incentive alignment and captivity as the core structural questions.</p>
+        <div class="label-table">
+          {[
+            { band: '0–20',   label: 'Adversarial', colour: '#E24B4A', def: 'This product is designed to work against you — it makes more money when you fail, stay confused, or can\'t leave.' },
+            { band: '21–40',  label: 'Extractive',  colour: '#EF9F27', def: 'This product takes more value from you than it delivers — engagement, data, or money are harvested in ways that don\'t serve your interests.' },
+            { band: '41–60',  label: 'Compromised', colour: '#CECE30', def: 'This product has genuine value but isn\'t fully on your side — trade-offs exist between what\'s good for you and what\'s good for the business.' },
+            { band: '61–80',  label: 'Aligned',     colour: '#639922', def: 'This product makes money when you get value — its incentives and your interests point in the same direction.' },
+            { band: '81–100', label: 'Principled',  colour: '#1D9E75', def: 'This product actively prioritises your interests, sometimes at cost to itself — the way it\'s built reflects values, not just incentives.' },
+          ].map(({ band, label, colour, def }) => (
+            <div class="label-row">
+              <div class="label-row__band mono faint">{band}</div>
+              <div class="label-row__label" style={`color: ${colour}`}>{label}</div>
+              <div class="label-row__def">{def}</div>
+            </div>
+          ))}
+        </div>
+        <p class="meth-note">Profiles are always displayed with their spectrum position — e.g. <strong>Compromised (43)</strong> and <strong>Compromised (58)</strong> are both Compromised, but the number makes the difference visible.</p>
+      </section>
+
+      <section class="meth-section">
+        <h2>The seven dimensions</h2>
+        <p>Each company is scored across seven dimensions on a 1–3 scale. Dimensions that genuinely do not apply are marked N/A and excluded from the profile calculation.</p>
+        <div class="dim-table">
+          {[
+            ['Revenue clarity',           'Can a user immediately understand how this company makes money?'],
+            ['Incentive alignment',        'Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?'],
+            ['Captivity',                  'How easy is it to leave? Is data portable? Is cancellation straightforward?'],
+            ['Engagement extraction',      'Is the product engineered to defeat the user\'s ability to disengage, or does engagement reflect genuine user value?'],
+            ['Multi-sided tension',        'When the interests of different customer groups conflict, whose side does the company take?'],
+            ['Algorithmic accountability', 'Does the company take responsibility for what its systems surface and amplify?'],
+            ['Ownership pressure',         'Who owns this company, and what structural pressures are they under to extract value from users? (Trajectory dimension)'],
+          ].map(([name, question]) => (
+            <div class="dim-row">
+              <span class="dim-row__name">{name}</span>
+              <span class="dim-row__question">{question}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="meth-section">
+        <h2>The scoring rubric</h2>
+        <p>Each dimension is scored 1, 2, or 3. There are no half-points. A score of 1 means the product is <strong>actively working against the user on this dimension</strong> — a present-tense harm, not a missed opportunity or future risk.</p>
+
+        <div class="rubric-list">
+
+          <div class="rubric">
+            <h3>1. Revenue clarity</h3>
+            <p class="rubric__question">Can a user immediately understand how this company makes money?</p>
+            <div class="rubric__scores">
+              <div class="rubric__score rubric__score--1"><span class="score-badge score-1">1</span><strong>Misleading.</strong> Revenue streams are actively disguised. Hidden fees surface at checkout; data monetisation is structurally concealed; "free" positioning deliberately obscures what is actually being sold.</div>
+              <div class="rubric__score rubric__score--2"><span class="score-badge score-2">2</span><strong>Partial.</strong> Primary model is broadly known or findable, but secondary streams are not surfaced to users.</div>
+              <div class="rubric__score rubric__score--3"><span class="score-badge score-3">3</span><strong>Clear.</strong> Revenue model stated plainly, including any secondary streams. A user can understand the full picture without research.</div>
+            </div>
+          </div>
+
+          <div class="rubric">
+            <h3>2. Incentive alignment</h3>
+            <p class="rubric__question">Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?</p>
+            <div class="rubric__scores">
+              <div class="rubric__score rubric__score--1"><span class="score-badge score-1">1</span><strong>Opposed.</strong> The business model structurally requires user failure or dependency. Revenue grows when users don't achieve their goal.</div>
+              <div class="rubric__score rubric__score--2"><span class="score-badge score-2">2</span><strong>Neutral.</strong> Revenue is not tied to user failure, but the company doesn't benefit from user success either. Flat subscriptions are the clearest example.</div>
+              <div class="rubric__score rubric__score--3"><span class="score-badge score-3">3</span><strong>Aligned.</strong> The company makes more money when users achieve outcomes — commission on successful transactions, outcomes-based pricing, or direct-purchase models.</div>
+            </div>
+          </div>
+
+          <div class="rubric">
+            <h3>3. Captivity</h3>
+            <p class="rubric__question">How easy is it to leave? Is data portable? Is cancellation straightforward?</p>
+            <div class="rubric__scores">
+              <div class="rubric__score rubric__score--1"><span class="score-badge score-1">1</span><strong>Deliberately trapped.</strong> Lock-in is engineered by design. Cancellation flows use dark patterns; data is locked in proprietary formats; deletion requests don't result in actual deletion.</div>
+              <div class="rubric__score rubric__score--2"><span class="score-badge score-2">2</span><strong>Friction.</strong> Leaving is possible but inconvenient. Data export exists but is incomplete; cancellation is accessible but not prominent.</div>
+              <div class="rubric__score rubric__score--3"><span class="score-badge score-3">3</span><strong>Portable.</strong> Data is exportable in usable formats; cancellation is self-serve and immediate; clear renewal notice; no meaningful penalty for leaving.</div>
+            </div>
+          </div>
+
+          <div class="rubric">
+            <h3>4. Engagement extraction</h3>
+            <p class="rubric__question">Is the product engineered to defeat the user's ability to disengage, or does engagement reflect genuine user value?</p>
+            <div class="rubric__scores">
+              <div class="rubric__score rubric__score--1"><span class="score-badge score-1">1</span><strong>Weaponised.</strong> The product is deliberately engineered to defeat the user's own ability to disengage. Psychological mechanisms are exploited to override user judgment — not to deliver value, but to extract time and attention.</div>
+              <div class="rubric__score rubric__score--2"><span class="score-badge score-2">2</span><strong>Extractive.</strong> Engagement mechanics exist and are tied to revenue, but stop short of deliberately exploiting psychological vulnerabilities.</div>
+              <div class="rubric__score rubric__score--3"><span class="score-badge score-3">3</span><strong>Value-driven.</strong> Engagement reflects genuine user value. The product is used when it is useful and does not employ mechanics designed to extend use beyond that.</div>
+            </div>
+          </div>
+
+          <div class="rubric">
+            <h3>5. Multi-sided tension</h3>
+            <p class="rubric__question">When the company serves more than one customer group, whose interests take priority when they conflict?</p>
+            <div class="rubric__scores">
+              <div class="rubric__score rubric__score--1"><span class="score-badge score-1">1</span><strong>Users subordinated.</strong> The company's primary commercial relationship is with a party other than the end user, and user interests are structurally subordinated. When interests conflict, the paying customer wins by default.</div>
+              <div class="rubric__score rubric__score--2"><span class="score-badge score-2">2</span><strong>Interests unresolved.</strong> The company serves more than one customer group and nominal protections exist, but the track record when commercial interests conflict is ambiguous or unresolved.</div>
+              <div class="rubric__score rubric__score--3"><span class="score-badge score-3">3</span><strong>Users defended.</strong> The company has a documented track record of siding with users when interests conflict — including at measurable commercial cost to itself.</div>
+            </div>
+          </div>
+
+          <div class="rubric">
+            <h3>6. Algorithmic accountability</h3>
+            <p class="rubric__question">Does the company take responsibility for what its systems surface and amplify?</p>
+            <div class="rubric__scores">
+              <div class="rubric__score rubric__score--1"><span class="score-badge score-1">1</span><strong>Unaccountable.</strong> The platform's algorithmic systems actively surface or amplify harmful content, and the company has chosen not to intervene despite awareness.</div>
+              <div class="rubric__score rubric__score--2"><span class="score-badge score-2">2</span><strong>Partial accountability.</strong> The company acknowledges responsibility and has moderation policies, but these are inconsistently applied or have a documented record of failing to prevent significant harm.</div>
+              <div class="rubric__score rubric__score--3"><span class="score-badge score-3">3</span><strong>Accountable.</strong> The company takes clear and documented responsibility for what its systems surface. Ranking signals are disclosed; paid placement is clearly labelled; moderation policies are published and consistently applied.</div>
+            </div>
+          </div>
+
+          <div class="rubric">
+            <h3>7. Ownership pressure <span class="rubric__tag">Trajectory</span></h3>
+            <p class="rubric__question">Who owns this company, and what structural pressures are they under to extract value from users?</p>
+            <div class="rubric__scores">
+              <div class="rubric__score rubric__score--1"><span class="score-badge score-1">1</span><strong>Maximum pressure.</strong> PE-owned; public company with ad-supported model under quarterly earnings pressure; late-stage VC with active return pressure; or parent company that has publicly redirected investment away from the product.</div>
+              <div class="rubric__score rubric__score--2"><span class="score-badge score-2">2</span><strong>Moderate pressure.</strong> Public company (subscription or mixed model); mid-stage VC; or founder-controlled public company with some insulation from pure shareholder pressure.</div>
+              <div class="rubric__score rubric__score--3"><span class="score-badge score-3">3</span><strong>Low pressure.</strong> Bootstrapped and profitable; co-op or employee-owned; nonprofit or mission-locked structure; early-stage with genuine long runway.</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="meth-section">
+        <h2>Flags</h2>
+        <p>Flags surface the most significant positive and negative findings from the research — specific documented incidents, structural commitments, or directional signals that are important enough to affect how a dimension score should be read or how it might change in a future version.</p>
+        <p>Every flag is tied to a specific dimension where the evidence allows, significant enough to affect how a score is read or might change, grounded in a cited source, and specific in the report — always named, dated, and sourced.</p>
+        <p>Flags come in three types:</p>
+        <ul>
+          <li><strong>Negative</strong> — a documented incident or structural problem serious enough to affect how the dimension score is read</li>
+          <li><strong>Positive</strong> — a documented commitment or action that genuinely distinguishes a company from the norm</li>
+          <li><strong>Trajectory</strong> — a directional signal that does not yet affect the current score but could affect a future one if it comes to pass; must point clearly toward a better or worse outcome — vague uncertainty does not qualify</li>
+        </ul>
+        <p>A negative or positive flag does not mechanically modify the dimension score — it is the cited evidence that makes the analyst's reasoning legible. A trajectory flag qualifies a score rather than justifying it: it surfaces evidence that the current score may not hold.</p>
+        <p>
+          <a href={githubUrl} target="_blank" rel="noopener" class="meth-link">Full flag categories and trigger conditions on GitHub →</a>
+        </p>
+      </section>
+
+      <section class="meth-section">
+        <h2>Confidence scoring</h2>
+        <p>Every source is classified as either <strong>Assessed</strong> (primary sources: company websites, filings, terms of service, pricing pages, official statements) or <strong>Inferred</strong> (secondary sources: journalism, logical deduction from business structure, community reports). The confidence split is displayed per dimension and as an aggregate.</p>
+        <p>High inferred ratios are themselves editorial information. A company that is hard to score confidently is exhibiting opacity — and that is worth surfacing.</p>
+        <div class="confidence-table">
+          {[
+            ['High confidence',   '70%+ assessed',  'Well-supported. Suitable for citation.'],
+            ['Medium confidence', '40–70% assessed', 'Reasonable but has meaningful inferred components. Treat as informed analysis.'],
+            ['Low confidence',    'Below 40% assessed', 'Largely structural inference. Flagged for priority community verification.'],
+          ].map(([level, threshold, meaning]) => (
+            <div class="conf-row">
+              <span class="conf-row__level">{level}</span>
+              <span class="conf-row__threshold mono faint">{threshold}</span>
+              <span class="conf-row__meaning">{meaning}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="meth-section">
+        <h2>How scores are produced</h2>
+        <div class="phases">
+          <div class="phase">
+            <span class="phase__num mono faint">Phase 1</span>
+            <h3 class="phase__title">Research collection</h3>
+            <p>An AI agent searches public sources systematically — company websites, filings, terms of service, press, regulatory records. It collects and organises all evidence relevant to the seven dimensions, tags each source as assessed or inferred, and produces a structured research document. The agent does not score anything.</p>
+          </div>
+          <div class="phase">
+            <span class="phase__num mono faint">Phase 2</span>
+            <h3 class="phase__title">Scoring</h3>
+            <p>A second AI agent takes the Phase 1 research document and applies the scoring framework. It scores each dimension 1–3 (or marks it N/A with a rationale), writes a rationale grounded in the evidence, produces a confidence split per dimension, proposes a profile label and spectrum position, and identifies flags. The agent works only from the Phase 1 document — it does not search the web.</p>
+          </div>
+          <div class="phase">
+            <span class="phase__num mono faint">Phase 3</span>
+            <h3 class="phase__title">Human analysis and narrative</h3>
+            <p>A human reviews the research and scorecard, checks sources, corrects errors, applies final judgment on the profile label and spectrum position, and writes the published narrative. This final step is completed by a human, not generated by an AI. The analyst's judgment determines what gets published.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="meth-section">
+        <h2>Versioning</h2>
+        <p>Every score is a snapshot. Entries are dated and versioned. When a score changes — due to new information, community input, or company response — a new version is published with a changelog explaining what changed and why. The historical record is preserved.</p>
+        <p>Ownership changes, acquisitions, and major business model shifts trigger a rescore review. A product that scores Aligned under one owner may score very differently under another.</p>
+      </section>
+
+      <section class="meth-section">
+        <h2>What The Rake is not</h2>
+        <ul>
+          <li>It is not a legal document or regulatory filing</li>
+          <li>It is not a claim about what companies do in private</li>
+          <li>It is not a campaign to get companies shut down</li>
+          <li>It is not affiliated with any company, investor, or advocacy group</li>
+        </ul>
+        <p>It is analysis, applied consistently, in public, with sources. Scores reflect the public record at a point in time. They are not verdicts.</p>
+        <p>
+          <a href={githubUrl} target="_blank" rel="noopener" class="meth-link">methodology.md on GitHub — fork it, critique it, improve it →</a>
+        </p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+</Base>
+
+<style>
+.meth-page {
+  padding: 0 var(--gutter);
+}
+.meth-page__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* Header */
+.meth-header {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.meth-kicker { margin-bottom: 1rem; }
+.meth-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+}
+.meth-github-link {
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+.meth-github-link:hover { border-color: var(--text); }
+
+/* Body */
+.meth-body { padding: 0 0 4rem; }
+.meth-section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.meth-section:last-child { border-bottom: none; }
+.meth-section h2 {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.meth-section p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.25em;
+}
+.meth-section p:last-child { margin-bottom: 0; }
+.meth-section ul {
+  list-style: none;
+  margin-bottom: 1.25em;
+}
+.meth-section ul li {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.4em;
+}
+.meth-section ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+.meth-note {
+  font-size: 0.9375rem !important;
+  color: var(--text-muted);
+  margin-top: 1rem;
+}
+.meth-link {
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+.meth-link:hover { border-color: var(--text); }
+
+/* Label table */
+.label-table {
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+.label-row {
+  display: grid;
+  grid-template-columns: 3.5rem 8rem 1fr;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.label-row:last-child { border-bottom: none; }
+.label-row__band { font-size: 0.75rem; padding-top: 0.1rem; }
+.label-row__label {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.label-row__def {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Dimension table */
+.dim-table {
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+.dim-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.dim-row:last-child { border-bottom: none; }
+.dim-row__name {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.dim-row__question {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Rubric list */
+.rubric-list { margin-top: 1.5rem; }
+.rubric {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.rubric:last-child { border-bottom: none; }
+.rubric h3 {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.rubric__tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  font-style: normal;
+}
+.rubric__question {
+  font-size: 0.9375rem !important;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem !important;
+  line-height: 1.55 !important;
+}
+.rubric__scores { display: flex; flex-direction: column; gap: 0.875rem; }
+.rubric__score {
+  position: relative;
+  padding-left: 2.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.rubric__score .score-badge {
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+}
+.score-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+.score-1 { background: color-mix(in srgb, var(--c-score-1) 12%, transparent); color: var(--c-score-1); }
+.score-2 { background: color-mix(in srgb, var(--c-score-2) 12%, transparent); color: var(--c-score-2); }
+.score-3 { background: color-mix(in srgb, var(--c-score-3) 12%, transparent); color: var(--c-score-3); }
+
+/* Confidence table */
+.confidence-table {
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+.conf-row {
+  display: grid;
+  grid-template-columns: 11rem 9rem 1fr;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.conf-row:last-child { border-bottom: none; }
+.conf-row__level {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.conf-row__threshold { font-size: 0.75rem; padding-top: 0.1rem; }
+.conf-row__meaning {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Phases */
+.phases { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }
+.phase {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.phase:last-child { border-bottom: none; }
+.phase__num { display: block; margin-bottom: 0.35rem; font-size: 0.75rem; }
+.phase__title {
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+.phase p {
+  font-size: 1rem !important;
+  line-height: 1.75 !important;
+  margin-bottom: 0 !important;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .label-row { grid-template-columns: 3rem 1fr; }
+  .label-row__def { grid-column: 1 / -1; padding-top: 0; margin-top: -0.25rem; }
+  .dim-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  .conf-row { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+</style>
