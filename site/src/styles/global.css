@@ -1,5 +1,5 @@
 /* ── Fonts ─────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Syne:wght@400;500;600;700&display=swap');
 
 /* ── Design tokens ─────────────────────────────────────────── */
 :root {
@@ -27,11 +27,12 @@
   --border:     #D6D5D0;
   --border-strong: #ABABAB;
   --text:       #111110;
-  --text-muted: #5C5B57;
+  --text-muted: #4A4945;
   --text-faint: #9A9994;
 
   /* Typography */
   --font-serif:  'Instrument Serif', Georgia, serif;
+  --font-body:   'Source Serif 4', Georgia, serif;
   --font-mono:   'IBM Plex Mono', 'Courier New', monospace;
   --font-ui:     'Syne', system-ui, sans-serif;
 
@@ -70,10 +71,14 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 1.0625rem;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 480px) {
+  body { font-size: 1rem; }
 }
 
 img, svg { display: block; max-width: 100%; }
