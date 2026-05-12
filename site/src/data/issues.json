@@ -7,6 +7,9 @@
     "published": "2026-04-21",
     "label": "Compromised",
     "score": 52,
-    "subtitle": "The newsletter platform that only makes money when you do — except when it doesn't"
+    "subtitle": "The newsletter platform that only makes money when you do — except when it doesn't",
+    "brandColor": "#FF6719",
+    "sourceCount": 28,
+    "confidence": "Medium"
   }
 ]
