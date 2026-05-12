@@ -26,7 +26,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <style is:global>
-    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Syne:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Space+Mono:wght@400;700&display=swap');
 
     /* ── Design tokens ─────────────────────────────────────────── */
     :root {
@@ -53,10 +53,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
       --text-muted: #4A4945;
       --text-faint: #9A9994;
 
-      --font-serif:  'Instrument Serif', Georgia, serif;
+      --font-serif:  'Cormorant Garamond', Georgia, serif;
       --font-body:   'Source Serif 4', Georgia, serif;
       --font-mono:   'IBM Plex Mono', 'Courier New', monospace;
-      --font-ui:     'Syne', system-ui, sans-serif;
 
       --max-w:      720px;
       --max-w-wide: 1100px;
@@ -94,7 +93,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     a { color: inherit; }
 
     .mono { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.01em; }
-    .ui   { font-family: var(--font-ui); }
     .muted { color: var(--text-muted); }
     .faint { color: var(--text-faint); }
 
@@ -115,7 +113,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/" class="site-header__wordmark">The Rake</a>
+    <a href="/" class="site-header__wordmark">
+      <img src="/therake.svg" alt="" class="site-header__mark" aria-hidden="true" />
+      The Rake
+    </a>
     <nav class="site-header__nav">
       <a href="/about">About</a>
       <a href="/methodology">Methodology</a>
@@ -155,13 +156,23 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   justify-content: space-between;
 }
 .site-header__wordmark {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-style: italic;
+  font-weight: 400;
   text-decoration: none;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.site-header__mark {
+  height: 0.75em;
+  width: auto;
+  display: inline-block;
+  flex-shrink: 0;
 }
 .site-header__nav {
   display: flex;
@@ -169,21 +180,18 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   gap: 1.5rem;
 }
 .site-header__nav a {
-  font-family: var(--font-ui);
-  font-size: 0.8125rem;
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
   text-decoration: none;
   color: var(--text-muted);
-  letter-spacing: 0.02em;
   transition: color 0.15s;
 }
 .site-header__nav a:hover { color: var(--text); }
 .subscribe-btn {
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   text-decoration: none;
   color: var(--bg) !important;
   background: var(--text);
@@ -217,6 +225,20 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   text-decoration: none;
 }
 .site-footer a:hover { color: var(--text); }
+
+/* ── Card hover ──────────────────────────────── */
+.rake-featured-card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  display: block;
+}
+.rake-featured-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(0,0,0,0.08);
+}
+.rake-list-card {
+  transition: opacity 0.15s ease;
+}
+.rake-list-card:hover { opacity: 0.55; }
 </style>
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* ── Fonts ─────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Syne:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap');
 
 /* ── Design tokens ─────────────────────────────────────────── */
 :root {
@@ -31,10 +31,9 @@
   --text-faint: #9A9994;
 
   /* Typography */
-  --font-serif:  'Instrument Serif', Georgia, serif;
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
   --font-body:   'Source Serif 4', Georgia, serif;
   --font-mono:   'IBM Plex Mono', 'Courier New', monospace;
-  --font-ui:     'Syne', system-ui, sans-serif;
 
   /* Spacing */
   --max-w:      720px;
@@ -93,7 +92,7 @@ a { color: inherit; }
 }
 
 .ui {
-  font-family: var(--font-ui);
+  font-family: var(--font-body);
 }
 
 .muted { color: var(--text-muted); }
@@ -131,7 +130,7 @@ a { color: inherit; }
 }
 
 .site-header__nav a {
-  font-family: var(--font-ui);
+  font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: 500;
   text-decoration: none;
@@ -143,7 +142,7 @@ a { color: inherit; }
 .site-header__nav a:hover { color: var(--text); }
 
 .subscribe-btn {
-  font-family: var(--font-ui);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
