@@ -133,7 +133,7 @@
     },
     {
       "id": "data-breach",
-      "type": "watch",
+      "type": "trajectory",
       "dimension": null,
       "dimensionLabel": null,
       "title": "Data breach: 697,000 records, four-month dwell time",

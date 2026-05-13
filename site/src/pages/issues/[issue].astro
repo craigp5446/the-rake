@@ -22,7 +22,7 @@ const { report } = Astro.props;
 
 type Finding = {
   id: string;
-  type: 'negative' | 'positive' | 'watch';
+  type: 'negative' | 'positive' | 'trajectory';
   dimension: string | null;
   dimensionLabel: string | null;
   title: string;
@@ -78,7 +78,45 @@ const confidenceGloss: Record<string, { range: string; description: string }> = 
 const findingColours: Record<string, string> = {
   negative: '#E24B4A',
   positive: '#639922',
-  watch:    '#3B82F6',
+  trajectory: '#3B82F6',
+};
+
+const dimScoreGloss: Record<string, Record<number, string>> = {
+  'revenue-clarity': {
+    1: 'Misleading. Revenue streams are actively disguised. Hidden fees surface at checkout; data monetisation is structurally concealed.',
+    2: 'Partial. Primary model is broadly known or findable, but secondary streams are not surfaced to users.',
+    3: 'Clear. Revenue model stated plainly, including any secondary streams. A user can understand the full picture without research.',
+  },
+  'incentive-alignment': {
+    1: 'Opposed. The business model structurally requires user failure or dependency.',
+    2: 'Neutral. Revenue is not tied to user failure, but the company doesn\'t benefit from user success either.',
+    3: 'Aligned. The company makes more money when users achieve outcomes.',
+  },
+  'captivity': {
+    1: 'Deliberately trapped. Lock-in is engineered by design. Cancellation uses dark patterns; data is locked in proprietary formats.',
+    2: 'Friction. Leaving is possible but inconvenient. Data export exists but is incomplete; cancellation is accessible but not prominent.',
+    3: 'Portable. Data is exportable in usable formats; cancellation is self-serve and immediate; no meaningful penalty for leaving.',
+  },
+  'engagement-extraction': {
+    1: 'Weaponised. The product is deliberately engineered to defeat the user\'s own ability to disengage.',
+    2: 'Extractive. Engagement mechanics exist and are tied to revenue, but stop short of deliberately exploiting psychological vulnerabilities.',
+    3: 'Value-driven. Engagement reflects genuine user value. The product is used when it is useful.',
+  },
+  'multi-sided-tension': {
+    1: 'Users subordinated. The company\'s primary commercial relationship is with a third party; user interests are structurally subordinated.',
+    2: 'Interests unresolved. The company serves more than one customer group; the track record when interests conflict is ambiguous.',
+    3: 'Users defended. The company has a documented track record of siding with users when interests conflict, including at commercial cost.',
+  },
+  'algorithmic-accountability': {
+    1: 'Unaccountable. Algorithmic systems actively surface or amplify harmful content and the company has chosen not to intervene.',
+    2: 'Partial accountability. The company acknowledges responsibility but policies are inconsistently applied or incompletely disclosed.',
+    3: 'Accountable. Clear and documented responsibility for what its systems surface; ranking signals disclosed; moderation consistently applied.',
+  },
+  'ownership-pressure': {
+    1: 'Maximum pressure. PE-owned or public company under strong quarterly earnings pressure.',
+    2: 'Moderate pressure. Public company (subscription or mixed model); mid-stage VC; some insulation from pure shareholder pressure.',
+    3: 'Low pressure. Bootstrapped and profitable; co-op or employee-owned; nonprofit or mission-locked structure.',
+  },
 };
 
 const labelColour = labelColours[report.label.toLowerCase()] ?? '#9A9994';
@@ -106,7 +144,7 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 const flagCount = (report.findings as Finding[]).length;
 const negativeCount = (report.findings as Finding[]).filter(f => f.type === 'negative').length;
 const positiveCount = (report.findings as Finding[]).filter(f => f.type === 'positive').length;
-const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'watch').length;
+const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'trajectory').length;
 ---
 
 <Base
@@ -118,6 +156,17 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
 
   {/* ── 1. Masthead ──────────────────────────────────────────── */}
   <header class="masthead">
+    <div class="masthead__banner" style={`background: ${report.brandColor ?? '#9A9994'}`} aria-hidden="true">
+      <img
+        src={`https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}
+        alt=""
+        width="56"
+        height="56"
+        class="masthead__banner-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+      />
+      <span class="masthead__banner-fallback">{report.company[0]}</span>
+    </div>
     <div class="masthead__inner">
 
       <div class="masthead__title-row">
@@ -143,7 +192,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
               {flagCount} {flagCount === 1 ? 'flag' : 'flags'}
               <span class="flag-dots">
                 {(report.findings as Finding[]).filter(f => f.type === 'negative').map(_ => <span class="flag-dot flag-dot--negative" />)}
-                {(report.findings as Finding[]).filter(f => f.type === 'watch').map(_ => <span class="flag-dot flag-dot--watch" />)}
+                {(report.findings as Finding[]).filter(f => f.type === 'trajectory').map(_ => <span class="flag-dot flag-dot--trajectory" />)}
                 {(report.findings as Finding[]).filter(f => f.type === 'positive').map(_ => <span class="flag-dot flag-dot--positive" />)}
               </span>
             </a>
@@ -246,11 +295,16 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
           })}
         </div>
 
-        {(report.dimensions as Dimension[]).map((dim) => {
+        {(report.dimensions as Dimension[]).map((dim, idx) => {
           const scoreColour = dim.score === 3 ? 'var(--c-score-3)' : dim.score === 2 ? 'var(--c-score-2)' : 'var(--c-score-1)';
           const relatedFindings = findingMap[dim.id] ?? [];
+          const dimTotal = dim.assessedCount + dim.inferredCount;
+          const dimPct = dimTotal > 0 ? Math.round((dim.assessedCount / dimTotal) * 100) : 0;
+          const dimConfidence = dimPct >= 70 ? 'High' : dimPct >= 40 ? 'Medium' : 'Low';
           return (
-            <div class="dimension" id={`dim-${dim.id}`}>
+            <>
+              {idx === 0 && <hr class="divider" />}
+              <div class="dimension" id={`dim-${dim.id}`}>
               <div class="dimension__header">
                 <div class="dimension__title-row">
                   <h3 class="dimension__name" title={dim.definition}>
@@ -258,18 +312,21 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
                     <span class="dimension__def-tooltip" role="tooltip">{dim.definition}</span>
                   </h3>
                   <div class="dimension__score-block" style={`--score-colour: ${scoreColour}`}>
-                    <span class="dimension__score-num">{dim.score}</span>
-                    <span class="dimension__score-label mono">{dim.scoreLabel}</span>
+                    <span class="dimension__score-label mono has-tooltip" style={`color: ${scoreColour}`}>
+                      {dim.scoreLabel}
+                      <span class="verdict__tooltip verdict__tooltip--right" role="tooltip">{dimScoreGloss[dim.id]?.[dim.score]}</span>
+                    </span>
+                    <div class="dimension__score-dots">
+                      {[1,2,3].map(i => (
+                        <span class={`dim-dot${i <= dim.score ? ' dim-dot--active' : ''}`} />
+                      ))}
+                    </div>
                   </div>
                 </div>
                 <p class="dimension__meta mono faint">
-                  {dim.assessedCount} assessed
+                  {dimTotal} sources <span class="sources-assessed">({dimPct}% assessed)</span>
                   <span class="chip-sep">·</span>
-                  {dim.inferredCount} inferred
-                  <span class="chip-sep">·</span>
-                  <span class={`evidence-strength evidence-strength--${dim.evidenceStrength.toLowerCase()}`}>
-                    {dim.evidenceStrength} evidence
-                  </span>
+                  {dimConfidence} confidence
                 </p>
               </div>
 
@@ -284,8 +341,10 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
                       data-type={f.type}
                       style={`--pill-colour: ${findingColours[f.type]}`}
                     >
-                      <span class="finding-pill__icon">
-                        {f.type === 'negative' ? '!' : f.type === 'positive' ? '✓' : '◎'}
+                      <span class="finding-pill__icon" aria-hidden="true">
+                        <svg width="9" height="9" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2.5 1.5V12.5M2.5 1.5H10.5L8 5.5L10.5 9.5H2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                       </span>
                       {f.title}
                     </a>
@@ -293,6 +352,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
                 </div>
               )}
             </div>
+            </>
           );
         })}
       </section>
@@ -305,37 +365,50 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
         <p class="section-heading muted">Specific documented incidents, commitments, or signals that affected how dimensions were scored.</p>
 
         <div class="findings-list">
-          {(report.findings as Finding[]).map((f: Finding) => (
+          {([...(report.findings as Finding[])].sort((a, b) => {
+            const parse = (d: string) => new Date(d.replace(/^Retrieved\s+/i, '')).getTime();
+            const ta = parse(a.sourceDate); const tb = parse(b.sourceDate);
+            if (isNaN(ta) && isNaN(tb)) return 0;
+            if (isNaN(ta)) return 1;
+            if (isNaN(tb)) return -1;
+            return tb - ta;
+          })).map((f: Finding) => (
             <div
               class="finding"
               id={`finding-${f.id}`}
               data-type={f.type}
-              style={`border-left-color: ${findingColours[f.type]}`}
             >
-              <div class="finding__header">
-                <div class="finding__type-row">
-                  <span class="finding__type-badge mono" style={`color: ${findingColours[f.type]}`}>
-                    {f.type === 'negative' ? '! Negative' : f.type === 'positive' ? '✓ Positive' : '◎ Watch'}
-                  </span>
-                  {f.dimensionLabel && (
-                    <a href={`#dim-${f.dimension}`} class="finding__dim-tag mono faint">
-                      {f.dimensionLabel}
-                    </a>
-                  )}
-                  {!f.dimensionLabel && (
-                    <span class="finding__dim-tag mono faint">No dimension</span>
-                  )}
+              <div class="finding__content">
+                <div class="finding__header">
+                  <div class="finding__type-row">
+                    <div class="finding__icon" style={`background: ${findingColours[f.type]}`}>
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M2.5 1.5V12.5M2.5 1.5H10.5L8 5.5L10.5 9.5H2.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <span class="finding__type-badge mono" style={`color: ${findingColours[f.type]}`}>
+                      {f.type === 'negative' ? 'Negative' : f.type === 'positive' ? 'Positive' : 'Trajectory'}
+                    </span>
+                    {f.dimensionLabel && (
+                      <>
+                        <span class="finding__dim-sep mono faint">·</span>
+                        <a href={`#dim-${f.dimension}`} class="finding__dim-tag mono faint">
+                          {f.dimensionLabel}
+                        </a>
+                      </>
+                    )}
+                  </div>
+                  <h3 class="finding__title">{f.title}</h3>
                 </div>
-                <h3 class="finding__title">{f.title}</h3>
+                <p class="finding__text">{f.text}</p>
+                <p class="finding__source mono faint">
+                  <a href={f.sourceUrl} target="_blank" rel="noopener">{f.source}</a>
+                  <span class="sep">·</span>
+                  {f.sourceDate}
+                  <span class="sep">·</span>
+                  {f.sourceType.charAt(0).toUpperCase() + f.sourceType.slice(1).toLowerCase()}
+                </p>
               </div>
-              <p class="finding__text">{f.text}</p>
-              <p class="finding__source mono faint">
-                <a href={f.sourceUrl} target="_blank" rel="noopener">{f.source}</a>
-                <span class="sep">·</span>
-                {f.sourceDate}
-                <span class="sep">·</span>
-                {f.sourceType}
-              </p>
             </div>
           ))}
         </div>
@@ -382,6 +455,9 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
 
 <style>
 /* ── Masthead ──────────────────────────────────────────────── */
+.masthead__banner {
+  display: none;
+}
 .masthead {
   border-bottom: 1px solid var(--border);
   padding: 3.5rem var(--gutter) 2.5rem;
@@ -479,7 +555,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
 .flag-dot + .flag-dot { margin-left: -3px; }
 .flag-dot--negative { background: var(--c-negative); }
 .flag-dot--positive { background: var(--c-positive); }
-.flag-dot--watch    { background: var(--c-watch); }
+.flag-dot--trajectory { background: var(--c-watch); }
 .sources-assessed {
   color: var(--text-faint);
   font-size: 0.7rem;
@@ -567,6 +643,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
   z-index: 10;
   pointer-events: none;
 }
+.verdict__tooltip--right { left: auto; right: 0; }
 .has-tooltip:hover .verdict__tooltip,
 .verdict__confidence-inner:hover .verdict__tooltip { display: block; }
 .verdict__summary {
@@ -794,29 +871,28 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
   gap: 0.5rem;
   flex-shrink: 0;
 }
-.dimension__score-num {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: var(--text);
-  line-height: 1;
+.dimension__score-dots {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.dim-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.dim-dot--active {
+  background: var(--score-colour);
+  border-color: transparent;
 }
 .dimension__score-label {
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  color: var(--text-muted);
   letter-spacing: 0.03em;
-}
-.dimension__score-label::before {
-  content: '';
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--score-colour);
-  margin-right: 0.35rem;
-  vertical-align: middle;
-  position: relative;
-  top: -0.05em;
+  cursor: default;
 }
 
 .dimension__meta {
@@ -871,17 +947,23 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
 .findings-list { display: flex; flex-direction: column; gap: 0; }
 
 .finding {
-  padding: 1.5rem 0 1.5rem 1.25rem;
-  border-left: 3px solid transparent;
+  padding: 1.5rem 0;
   border-bottom: 1px solid var(--border);
   scroll-margin-top: 5rem;
   transition: background 0.3s;
 }
 .finding:last-child { border-bottom: none; }
 
-.finding.highlight {
-  background: var(--bg-raised);
-  border-radius: 0 4px 4px 0;
+.finding.highlight { background: var(--bg-raised); }
+
+.finding__icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .finding__header { margin-bottom: 0.6rem; }
@@ -898,12 +980,12 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+.finding__dim-sep {
+  font-size: 0.7rem;
+}
 .finding__dim-tag {
   font-size: 0.7rem;
   text-decoration: none;
-  padding: 0.1rem 0.4rem;
-  background: var(--bg-subtle);
-  border-radius: 2px;
   color: var(--text-faint);
 }
 .finding__dim-tag:hover { color: var(--text-muted); }
@@ -911,7 +993,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
 .finding__title {
   font-family: var(--font-serif);
   font-size: 1.0625rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 .finding__text {
   font-size: 0.9375rem;
@@ -942,13 +1024,40 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'wat
   .sources-columns {
     grid-template-columns: 1fr;
   }
+  .masthead {
+    padding: 0 0 2.5rem;
+  }
+  .masthead__inner {
+    padding: 0 var(--gutter);
+  }
+  .masthead__banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.75rem;
+  }
+  .masthead__banner-img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  .masthead__banner-fallback {
+    display: none;
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: rgba(255,255,255,0.9);
+    align-items: center;
+    justify-content: center;
+  }
   .masthead__title-row {
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   .masthead__logo {
-    order: 1;
-    margin-top: 0;
-    align-self: flex-start;
+    display: none;
   }
   .masthead__title-col {
     order: 0;

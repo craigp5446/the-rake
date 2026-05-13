@@ -27,7 +27,8 @@ const [featured, ...previous] = reports;
 
     <section class="hero">
       <div class="hero__inner">
-        <p class="hero__subhead">Scoring tech companies and their apps on how they make money, how they're designed, and how those decisions affect the people who use them</p>
+        <img src="/therake.svg" alt="" class="hero__mark" aria-hidden="true" />
+        <p class="hero__subhead">A transparency project, scoring tech companies on how well their interests align with yours.</p>
       </div>
     </section>
 
@@ -45,7 +46,7 @@ const [featured, ...previous] = reports;
                 date={formatDate(featured.published)}
                 label={featured.label}
                 score={featured.score}
-                description={labelGloss[featured.label.toLowerCase()] ?? ''}
+                description={featured.summary ?? labelGloss[featured.label.toLowerCase()] ?? ''}
                 href={`/issues/${featured.issue}`}
               />
             </div>
@@ -89,6 +90,9 @@ const [featured, ...previous] = reports;
 .hero__inner {
   max-width: var(--max-w-wide);
   margin: 0 auto;
+}
+.hero__mark {
+  display: none;
 }
 .hero__subhead {
   font-family: var(--font-serif);
@@ -140,4 +144,27 @@ const [featured, ...previous] = reports;
   text-underline-offset: 2px;
 }
 .more-reports a:hover { color: #777; }
+
+@media (max-width: 600px) {
+  .hero { padding: 3rem var(--gutter) 2.5rem; text-align: center; }
+  .hero__inner { display: flex; flex-direction: column; align-items: center; }
+  .hero__mark {
+    display: block;
+    height: 2rem;
+    width: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.featured-card__inner) {
+    flex-direction: column !important;
+  }
+  :global(.featured-card__brand) {
+    width: 100% !important;
+    min-width: unset !important;
+    height: 160px;
+  }
+  :global(.featured-card__content) {
+    padding: 20px 20px !important;
+  }
+}
 </style>

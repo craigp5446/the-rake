@@ -31,7 +31,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
   href,
 }) => (
   <a href={href} className="rake-featured-card" style={{ textDecoration: 'none', color: 'inherit' }}>
-    <div style={{
+    <div className="featured-card__inner" style={{
       background: '#faf9f6',
       border: '1px solid #e0dbd4',
       borderRadius: 5,
@@ -41,7 +41,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
     }}>
 
       {/* Brand block */}
-      <div style={{
+      <div className="featured-card__brand" style={{
         width: 160,
         minWidth: 160,
         background: brandColor,
@@ -80,7 +80,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
       </div>
 
       {/* Content */}
-      <div style={{
+      <div className="featured-card__content" style={{
         flex: 1,
         padding: '24px 32px',
         display: 'flex',
