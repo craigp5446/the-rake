@@ -18,7 +18,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const GET: APIRoute = async ({ props }) => {
   const { report } = props as { report: any };
-  const fontData = await readFile(join(process.cwd(), 'public/georgia.ttf'));
+  const fontData = await fetch(
+    'https://cdn.jsdelivr.net/npm/@fontsource/inter@5/files/inter-latin-400-normal.woff'
+  ).then(r => r.arrayBuffer());
 
   let logoDataUrl: string | null = null;
   try {
@@ -70,7 +72,7 @@ export const GET: APIRoute = async ({ props }) => {
               type: 'span',
               props: {
                 style: {
-                  fontFamily: 'Georgia',
+                  fontFamily: 'Inter',
                   fontSize: '130px',
                   fontWeight: '600',
                   color: 'rgba(255,255,255,0.92)',
@@ -86,7 +88,7 @@ export const GET: APIRoute = async ({ props }) => {
     {
       width: 1200,
       height: 630,
-      fonts: [{ name: 'Georgia', data: fontData, weight: 400, style: 'normal' }],
+      fonts: [{ name: 'Inter', data: fontData, weight: 400, style: 'normal' }],
     }
   );
 
