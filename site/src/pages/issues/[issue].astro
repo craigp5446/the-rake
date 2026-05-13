@@ -61,6 +61,20 @@ const labelColours: Record<string, string> = {
   principled:  '#1D9E75',
 };
 
+const labelGloss: Record<string, string> = {
+  adversarial: 'This product is designed to work against you — it makes more money when you fail, stay confused, or can\'t leave.',
+  extractive:  'This product takes more value from you than it delivers — engagement, data, or money are harvested in ways that don\'t serve your interests.',
+  compromised: 'This product has genuine value but isn\'t fully on your side — trade-offs exist between what\'s good for you and what\'s good for the business.',
+  aligned:     'This product makes money when you get value — its incentives and your interests point in the same direction.',
+  principled:  'This product actively prioritises your interests, sometimes at cost to itself — the way it\'s built reflects values, not just incentives.',
+};
+
+const confidenceGloss: Record<string, { range: string; description: string }> = {
+  high:   { range: '70%+ assessed',  description: 'Well-supported. Suitable for citation.' },
+  medium: { range: '40–70% assessed', description: 'Reasonable but has meaningful inferred components. Treat as informed analysis.' },
+  low:    { range: 'Below 40% assessed', description: 'Largely structural inference. Flagged for priority community verification.' },
+};
+
 const findingColours: Record<string, string> = {
   negative: '#E24B4A',
   positive: '#639922',
@@ -89,6 +103,10 @@ for (const dim of report.dimensions as Dimension[]) {
 // Separate assessed and inferred sources for the sources section
 const assessedSources = (report.sources as Source[]).filter(s => s.type === 'ASSESSED');
 const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INFERRED');
+const flagCount = (report.findings as Finding[]).length;
+const negativeCount = (report.findings as Finding[]).filter(f => f.type === 'negative').length;
+const positiveCount = (report.findings as Finding[]).filter(f => f.type === 'positive').length;
+const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'watch').length;
 ---
 
 <Base
@@ -101,33 +119,36 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
   {/* ── 1. Masthead ──────────────────────────────────────────── */}
   <header class="masthead">
     <div class="masthead__inner">
-      <div class="masthead__meta-top">
-        <span class="mono muted">The Rake / Issue {report.issue}</span>
-      </div>
 
       <div class="masthead__title-row">
-        <div class="masthead__logo">
+        <div class="masthead__logo" style={`background: ${report.brandColor ?? '#9A9994'}`}>
           <img
             src={`https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}
             alt={report.company}
-            width="64"
-            height="64"
+            width="48"
+            height="48"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
           />
           <span class="masthead__logo-fallback">{report.company[0]}</span>
         </div>
-        <div>
+        <div class="masthead__title-col">
+          <p class="masthead__date mono faint">{formatDate(report.published)}</p>
           <h1 class="masthead__company">{report.company}</h1>
-          <p class="masthead__subtitle">{report.subtitle}</p>
+          <div class="masthead__chips mono">
+            <a href="https://github.com/craigphillips/the-rake/blob/main/methodology.md" target="_blank" rel="noopener" class="chip chip--link">Methodology v{report.methodologyVersion}<svg class="ext-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <span class="chip-sep">·</span>
+            <a href="#sources" class="chip chip--link">{report.sourceCount} sources <span class="sources-assessed">({report.assessedPct}% assessed)</span></a>
+            <span class="chip-sep">·</span>
+            <a href="#flags" class="chip chip--link">
+              {flagCount} {flagCount === 1 ? 'flag' : 'flags'}
+              <span class="flag-dots">
+                {(report.findings as Finding[]).filter(f => f.type === 'negative').map(_ => <span class="flag-dot flag-dot--negative" />)}
+                {(report.findings as Finding[]).filter(f => f.type === 'watch').map(_ => <span class="flag-dot flag-dot--watch" />)}
+                {(report.findings as Finding[]).filter(f => f.type === 'positive').map(_ => <span class="flag-dot flag-dot--positive" />)}
+              </span>
+            </a>
+          </div>
         </div>
-      </div>
-
-      <div class="masthead__meta-bottom mono faint">
-        <span>{formatDate(report.published)}</span>
-        <span class="sep">·</span>
-        <a href="https://github.com" target="_blank" rel="noopener">Methodology v{report.methodologyVersion}</a>
-        <span class="sep">·</span>
-        <span>{report.sourceCount} sources</span>
       </div>
     </div>
   </header>
@@ -137,12 +158,20 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
     <div class="verdict__inner">
 
       <div class="verdict__top">
-        <div class="verdict__label-block">
-          <span class="verdict__label mono">{report.label}</span>
-          <span class="verdict__score">{report.score}<span class="verdict__total">/100</span></span>
-        </div>
-        <div class="verdict__confidence mono faint">
-          {report.confidence} confidence · {report.assessedPct}% assessed sources
+        <div class="verdict__score-row">
+          <div class="verdict__score-label">
+            <span class="verdict__score">{report.score}<span class="verdict__total">/100</span></span>
+            <span class="verdict__label has-tooltip">
+              {report.label}
+              <span class="verdict__tooltip" role="tooltip">{labelGloss[report.label.toLowerCase()]}</span>
+            </span>
+          </div>
+          <div class="verdict__confidence mono has-tooltip">
+            <span class="verdict__confidence-inner">
+              {report.confidence} confidence
+              <span class="verdict__tooltip verdict__tooltip--right" role="tooltip">{confidenceGloss[report.confidence.toLowerCase()]?.range} — {confidenceGloss[report.confidence.toLowerCase()]?.description}</span>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -154,11 +183,7 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
           {spectrumBands.map(band => (
             <div
               class="spectrum__band"
-              style={`
-                left: ${band.start}%;
-                width: ${band.end - band.start}%;
-                background: ${labelColours[band.label.toLowerCase()]};
-              `}
+              style={`left: ${band.start}%; width: ${band.end - band.start}%; background: ${labelColours[band.label.toLowerCase()]};`}
               title={band.label}
             ></div>
           ))}
@@ -170,11 +195,19 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
         </div>
         <div class="spectrum__labels mono">
           {spectrumBands.map(band => (
-            <span style={`left: ${band.start + (band.end - band.start)/2}%; color: ${labelColours[band.label.toLowerCase()]}`}>
+            <span
+              class={`spectrum__label-item${band.label.toLowerCase() === report.label.toLowerCase() ? ' active' : ''}`}
+              style={`left: ${band.start + (band.end - band.start)/2}%`}
+            >
               {band.label}
+              <span class="spectrum__label-tooltip" role="tooltip">{labelGloss[band.label.toLowerCase()]}</span>
             </span>
           ))}
         </div>
+      </div>
+
+      <div class="verdict__footer">
+        <a href="#dimensions" class="verdict__scorecard-link mono">Scroll to scorecard<svg class="scroll-icon" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 1v10M2 8l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
 
     </div>
@@ -193,8 +226,25 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
       <hr class="divider" />
 
       {/* ── 4. Dimensions ──────────────────────────────────────── */}
-      <section class="dimensions-section">
-        <h2 class="section-heading mono muted">Seven dimensions</h2>
+      <section class="dimensions-section" id="dimensions">
+        <h2 class="scorecard-heading">Scorecard</h2>
+        <p class="section-heading muted">How this company scores across seven dimensions of user alignment, each rated 1–3.</p>
+
+        <div class="score-grid">
+          {(report.dimensions as Dimension[]).map((dim) => {
+            const colour = dim.score === 3 ? 'var(--c-score-3)' : dim.score === 2 ? 'var(--c-score-2)' : 'var(--c-score-1)';
+            return (
+              <a href={`#dim-${dim.id}`} class="score-grid__row">
+                <span class="score-grid__name mono">{dim.name}</span>
+                <div class="score-grid__dots">
+                  {[1,2,3].map(i => (
+                    <span class={`score-grid__dot${i <= dim.score ? ' score-grid__dot--active' : ''}`} style={i <= dim.score ? `background: ${colour}` : ''} />
+                  ))}
+                </div>
+              </a>
+            );
+          })}
+        </div>
 
         {(report.dimensions as Dimension[]).map((dim) => {
           const scoreColour = dim.score === 3 ? 'var(--c-score-3)' : dim.score === 2 ? 'var(--c-score-2)' : 'var(--c-score-1)';
@@ -213,10 +263,12 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
                   </div>
                 </div>
                 <p class="dimension__meta mono faint">
-                  {dim.assessedCount} assessed · {dim.inferredCount} inferred
-                  <span class="sep">·</span>
+                  {dim.assessedCount} assessed
+                  <span class="chip-sep">·</span>
+                  {dim.inferredCount} inferred
+                  <span class="chip-sep">·</span>
                   <span class={`evidence-strength evidence-strength--${dim.evidenceStrength.toLowerCase()}`}>
-                    {dim.evidenceStrength}
+                    {dim.evidenceStrength} evidence
                   </span>
                 </p>
               </div>
@@ -247,9 +299,10 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 
       <hr class="divider" />
 
-      {/* ── 5. Significant findings ────────────────────────────── */}
-      <section class="findings-section">
-        <h2 class="section-heading mono muted">Significant findings</h2>
+      {/* ── 5. Flags ───────────────────────────────────────────── */}
+      <section class="findings-section" id="flags">
+        <h2 class="scorecard-heading">Flags</h2>
+        <p class="section-heading muted">Specific documented incidents, commitments, or signals that affected how dimensions were scored.</p>
 
         <div class="findings-list">
           {(report.findings as Finding[]).map((f: Finding) => (
@@ -290,22 +343,10 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 
       <hr class="divider" />
 
-      {/* ── 6. Who this is for ─────────────────────────────────── */}
-      <section class="personas-section">
-        <h2 class="section-heading mono muted">Who this is for</h2>
-        {report.personas.map((p: { label: string; text: string }) => (
-          <div class="persona">
-            <p class="persona__label mono muted">{p.label}</p>
-            <p class="persona__text">{p.text}</p>
-          </div>
-        ))}
-      </section>
-
-      <hr class="divider" />
-
-      {/* ── 7. Sources ─────────────────────────────────────────── */}
-      <section class="sources-section">
-        <h2 class="section-heading mono muted">Sources</h2>
+      {/* ── 6. Sources ─────────────────────────────────────────── */}
+      <section class="sources-section" id="sources">
+        <h2 class="scorecard-heading">Sources</h2>
+        <p class="section-heading muted">Evidence base for this report</p>
         <div class="sources-columns">
           <div class="sources-group">
             <p class="sources-group__label mono faint">Assessed ({assessedSources.length})</p>
@@ -349,113 +390,210 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
   max-width: var(--max-w);
   margin: 0 auto;
 }
-.masthead__meta-top { margin-bottom: 1.5rem; }
 .masthead__title-row {
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.masthead__title-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.masthead__date {
+  font-size: 0.75rem;
+  margin-bottom: 0.2rem;
 }
 .masthead__logo {
   width: 64px;
   height: 64px;
   flex-shrink: 0;
-  margin-top: 0.25rem;
+  border-radius: 12px;
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 .masthead__logo img {
-  width: 64px; height: 64px;
+  width: 48px; height: 48px;
   object-fit: contain;
-  border-radius: 12px;
-  border: 1px solid var(--border);
 }
 .masthead__logo-fallback {
   display: none;
-  width: 64px; height: 64px;
-  background: var(--bg-subtle);
-  border-radius: 12px;
   font-family: var(--font-serif);
   font-size: 2rem;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.9);
 }
 .masthead__company {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 400;
   line-height: 1.1;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
-.masthead__subtitle {
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  font-style: italic;
-  color: var(--text-muted);
-  line-height: 1.45;
-}
-.masthead__meta-bottom {
+.masthead__chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem 0.6rem;
+  align-items: center;
+  gap: 0.2rem 0;
   font-size: 0.75rem;
 }
-.masthead__meta-bottom a {
+.chip { color: var(--text-faint); }
+.chip--link {
+  color: var(--text-muted);
   text-decoration: none;
-  color: var(--text-faint);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
 }
-.masthead__meta-bottom a:hover { color: var(--text-muted); }
+.chip--link:hover {
+  color: var(--text);
+  border-bottom-color: var(--border-strong);
+}
+.ext-icon {
+  width: 0.65rem;
+  height: 0.65rem;
+  flex-shrink: 0;
+  opacity: 0.55;
+  vertical-align: middle;
+  position: relative;
+  top: -0.05em;
+}
+.flag-dots {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.3rem;
+}
+.flag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--bg);
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+.flag-dot + .flag-dot { margin-left: -3px; }
+.flag-dot--negative { background: var(--c-negative); }
+.flag-dot--positive { background: var(--c-positive); }
+.flag-dot--watch    { background: var(--c-watch); }
+.sources-assessed {
+  color: var(--text-faint);
+  font-size: 0.7rem;
+}
+.chip-sep {
+  color: var(--text-faint);
+  opacity: 0.4;
+  padding: 0 0.4rem;
+}
 .sep { opacity: 0.4; }
 
 /* ── Verdict ───────────────────────────────────────────────── */
 .verdict {
   padding: 2.5rem var(--gutter);
   border-bottom: 1px solid var(--border);
-  background: var(--bg-raised);
+  background: color-mix(in srgb, var(--label-colour) 7%, var(--bg));
 }
 .verdict__inner {
   max-width: var(--max-w);
   margin: 0 auto;
 }
 .verdict__top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
   margin-bottom: 1.25rem;
 }
-.verdict__label-block {
+.verdict__score-row {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
   gap: 1rem;
 }
-.verdict__label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--label-colour);
+.verdict__score-label {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
 }
 .verdict__score {
-  font-family: var(--font-mono);
-  font-size: 2.25rem;
-  color: var(--label-colour);
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  font-weight: 400;
+  color: var(--text);
   line-height: 1;
 }
 .verdict__total {
-  font-size: 1rem;
-  color: var(--text-faint);
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+.verdict__label {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text);
+  cursor: default;
+  position: relative;
+  line-height: 1;
 }
 .verdict__confidence {
   font-size: 0.75rem;
-  padding-top: 0.5rem;
+  color: var(--text-faint);
+  cursor: default;
 }
+.verdict__confidence-inner {
+  position: relative;
+}
+.has-tooltip { position: relative; }
+.verdict__tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+  padding: 0.4rem 0.65rem;
+  border-radius: 3px;
+  white-space: normal;
+  width: max-content;
+  max-width: 240px;
+  z-index: 10;
+  pointer-events: none;
+}
+.has-tooltip:hover .verdict__tooltip,
+.verdict__confidence-inner:hover .verdict__tooltip { display: block; }
 .verdict__summary {
   font-style: italic;
   color: var(--text-muted);
   margin-bottom: 2rem;
   font-size: 1.0625rem;
   line-height: 1.6;
+}
+.verdict__footer {
+  margin-top: 1.25rem;
+}
+.verdict__scorecard-link {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.verdict__scorecard-link:hover { color: var(--text); }
+.scroll-icon {
+  width: 0.65rem;
+  height: 0.75rem;
+  flex-shrink: 0;
 }
 
 /* Spectrum */
@@ -465,13 +603,13 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
   height: 6px;
   border-radius: 3px;
   overflow: hidden;
-  background: var(--bg-subtle);
+  background: rgba(0,0,0,0.08);
   margin-bottom: 0.75rem;
 }
 .spectrum__band {
   position: absolute;
   top: 0; bottom: 0;
-  opacity: 0.35;
+  opacity: 0.4;
 }
 .spectrum__marker {
   position: absolute;
@@ -488,14 +626,39 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
   position: relative;
   height: 1.2rem;
 }
-.spectrum__labels span {
+.spectrum__label-item {
   position: absolute;
   transform: translateX(-50%);
   font-size: 0.65rem;
   letter-spacing: 0.04em;
   white-space: nowrap;
-  opacity: 0.7;
+  color: var(--text-faint);
+  cursor: default;
 }
+.spectrum__label-item.active { color: var(--text-muted); }
+.spectrum__label-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+  padding: 0.4rem 0.65rem;
+  border-radius: 3px;
+  white-space: normal;
+  width: 200px;
+  z-index: 20;
+  pointer-events: none;
+}
+.spectrum__label-item:hover .spectrum__label-tooltip { display: block; }
 
 /* ── Body ──────────────────────────────────────────────────── */
 .report__body { padding: 0 var(--gutter); }
@@ -515,11 +678,12 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 .narrative-section p:last-child { margin-bottom: 0; }
 
 .section-heading {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
   margin-bottom: 2rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 500;
 }
 
 .divider {
@@ -529,6 +693,49 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 
 /* ── Dimensions ────────────────────────────────────────────── */
 .dimensions-section { padding: 3rem 0; }
+
+.score-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 3rem;
+}
+.score-grid__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.15s;
+}
+.score-grid__row:hover { opacity: 0.55; }
+.score-grid__name {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.score-grid__dots {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+.score-grid__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+.score-grid__dot--active {
+  border-color: transparent;
+}
+.scorecard-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
 
 .dimension {
   padding: 2rem 0;
@@ -588,24 +795,39 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
   flex-shrink: 0;
 }
 .dimension__score-num {
-  font-family: var(--font-mono);
+  font-family: var(--font-serif);
   font-size: 1.5rem;
-  color: var(--score-colour);
+  color: var(--text);
   line-height: 1;
 }
 .dimension__score-label {
   font-size: 0.75rem;
-  color: var(--score-colour);
-  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+.dimension__score-label::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--score-colour);
+  margin-right: 0.35rem;
+  vertical-align: middle;
+  position: relative;
+  top: -0.05em;
 }
 
-.dimension__meta { font-size: 0.75rem; }
+.dimension__meta {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 0.1rem;
+}
 
-.evidence-strength { font-weight: 500; }
-.evidence-strength--strong   { color: var(--c-score-3); }
-.evidence-strength--moderate { color: var(--c-score-2); }
-.evidence-strength--weak     { color: var(--c-score-1); }
-.evidence-strength--blind    { color: var(--c-score-1); }
+.evidence-strength { color: var(--text-muted); font-weight: 400; }
 
 .dimension__rationale {
   font-size: 1rem;
@@ -706,16 +928,6 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 }
 .finding__source a:hover { color: var(--text); }
 
-/* ── Personas ──────────────────────────────────────────────── */
-.personas-section { padding: 3rem 0; }
-.persona { margin-bottom: 1.75rem; }
-.persona:last-child { margin-bottom: 0; }
-.persona__label { margin-bottom: 0.4rem; font-size: 0.75rem; letter-spacing: 0.04em; }
-.persona__text {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-}
-
 /* ── Sources ───────────────────────────────────────────────── */
 .sources-section { padding: 3rem 0; }
 
@@ -726,8 +938,30 @@ const inferredSources = (report.sources as Source[]).filter(s => s.type === 'INF
 }
 
 @media (max-width: 600px) {
+  .spectrum__labels { display: none; }
   .sources-columns {
     grid-template-columns: 1fr;
+  }
+  .masthead__title-row {
+    justify-content: space-between;
+  }
+  .masthead__logo {
+    order: 1;
+    margin-top: 0;
+    align-self: flex-start;
+  }
+  .masthead__title-col {
+    order: 0;
+  }
+  .verdict__score-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .verdict__score-label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
   }
 }
 

@@ -113,10 +113,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/" class="site-header__wordmark">
-      <img src="/therake.svg" alt="" class="site-header__mark" aria-hidden="true" />
-      The Rake
-    </a>
+    <a href="/" class="site-header__wordmark">THE RAKE</a>
+    <img src="/therake.svg" alt="" class="site-header__mark-center" aria-hidden="true" />
     <nav class="site-header__nav">
       <a href="/about">About</a>
       <a href="/methodology">Methodology</a>
@@ -129,12 +127,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>The Rake — analysis applied consistently, in public, with sources.</p>
-    <p>
-      <a href="/about">About</a> ·
-      <a href="/methodology">Methodology</a> ·
-      <a href="https://buttondown.com/the-rake" target="_blank" rel="noopener">Newsletter</a>
-    </p>
+    <p>The Rake. Analysis applied consistently, in public, and with all the receipts.</p>
   </div>
 </footer>
 
@@ -154,6 +147,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 .site-header__wordmark {
   font-family: var(--font-serif);
@@ -162,17 +156,16 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   font-weight: 400;
   text-decoration: none;
   color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 0.2em;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-.site-header__mark {
-  height: 0.75em;
+.site-header__mark-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1.25rem;
   width: auto;
-  display: inline-block;
-  flex-shrink: 0;
+  pointer-events: none;
 }
 .site-header__nav {
   display: flex;

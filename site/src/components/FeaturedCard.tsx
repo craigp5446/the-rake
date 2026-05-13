@@ -96,7 +96,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
         </div>
 
         {/* Row 2: name + score */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline' }}>
           <span style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 52,
@@ -104,24 +104,26 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
             color: '#1a1a1a',
             lineHeight: 1,
             letterSpacing: '-1px',
+            flex: 1,
           }}>
             {companyName}
           </span>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, flexShrink: 0 }}>
-            <span style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 52,
-              fontWeight: 700,
-              color: '#1a1a1a',
-              lineHeight: 1,
-              letterSpacing: '-2px',
-            }}>
-              {score}
-            </span>
-            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: '#ccc' }}>
-              /100
-            </span>
-          </div>
+          <span style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 52,
+            fontWeight: 700,
+            color: '#1a1a1a',
+            lineHeight: 1,
+            letterSpacing: '-2px',
+            flexShrink: 0,
+            position: 'relative',
+            top: '-4px',
+          }}>
+            {score}
+          </span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: '#ccc', flexShrink: 0 }}>
+            /100
+          </span>
         </div>
 
         {/* Row 3: description */}
