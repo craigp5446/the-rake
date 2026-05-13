@@ -150,6 +150,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
 <Base
   title={`Issue ${report.issue}: ${report.company} — The Rake`}
   description={report.summary}
+  ogImage={new URL(`/og/${report.issue}.png`, Astro.site).toString()}
 >
 
 <article class="report">
