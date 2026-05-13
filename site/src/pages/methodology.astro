@@ -44,7 +44,7 @@ const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.
         <p class="meth-note">Profiles are always displayed with their spectrum position — e.g. <strong>Compromised (43)</strong> and <strong>Compromised (58)</strong> are both Compromised, but the number makes the difference visible.</p>
       </section>
 
-      <section class="meth-section">
+      <section class="meth-section" id="dimensions">
         <h2>The seven dimensions</h2>
         <p>Each company is scored across seven dimensions on a 1–3 scale. Dimensions that genuinely do not apply are marked N/A and excluded from the profile calculation.</p>
         <div class="dim-table">
@@ -144,23 +144,37 @@ const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.
         </div>
       </section>
 
-      <section class="meth-section">
+      <section class="meth-section" id="flags">
         <h2>Flags</h2>
         <p>Flags surface the most significant positive and negative findings from the research — specific documented incidents, structural commitments, or directional signals that are important enough to affect how a dimension score should be read or how it might change in a future version.</p>
         <p>Every flag is tied to a specific dimension where the evidence allows, significant enough to affect how a score is read or might change, grounded in a cited source, and specific in the report — always named, dated, and sourced.</p>
         <p>Flags come in three types:</p>
-        <ul>
-          <li><strong>Negative</strong> — a documented incident or structural problem serious enough to affect how the dimension score is read</li>
-          <li><strong>Positive</strong> — a documented commitment or action that genuinely distinguishes a company from the norm</li>
-          <li><strong>Trajectory</strong> — a directional signal that does not yet affect the current score but could affect a future one if it comes to pass; must point clearly toward a better or worse outcome — vague uncertainty does not qualify</li>
-        </ul>
+        <div class="flag-types">
+          {[
+            { type: 'Negative',    colour: '#E24B4A', def: 'A documented incident or structural problem serious enough to affect how the dimension score is read.' },
+            { type: 'Positive',    colour: '#639922', def: 'A documented commitment or action that genuinely distinguishes a company from the norm.' },
+            { type: 'Trajectory',  colour: '#3B82F6', def: 'A directional signal that does not yet affect the current score but could affect a future one if it comes to pass. Must point clearly toward a better or worse outcome — vague uncertainty does not qualify.' },
+          ].map(({ type, colour, def }) => (
+            <div class="flag-type-row">
+              <div class="flag-type-icon" style={`background: ${colour}`}>
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M2.5 1.5V12.5M2.5 1.5H10.5L8 5.5L10.5 9.5H2.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="flag-type-body">
+                <span class="flag-type-label" style={`color: ${colour}`}>{type}</span>
+                <span class="flag-type-def"> — {def}</span>
+              </div>
+            </div>
+          ))}
+        </div>
         <p>A negative or positive flag does not mechanically modify the dimension score — it is the cited evidence that makes the analyst's reasoning legible. A trajectory flag qualifies a score rather than justifying it: it surfaces evidence that the current score may not hold.</p>
         <p>
           <a href={githubUrl} target="_blank" rel="noopener" class="meth-link">Full flag categories and trigger conditions on GitHub →</a>
         </p>
       </section>
 
-      <section class="meth-section">
+      <section class="meth-section" id="sources">
         <h2>Confidence scoring</h2>
         <p>Every source is classified as either <strong>Assessed</strong> (primary sources: company websites, filings, terms of service, pricing pages, official statements) or <strong>Inferred</strong> (secondary sources: journalism, logical deduction from business structure, community reports). The confidence split is displayed per dimension and as an aggregate.</p>
         <p>High inferred ratios are themselves editorial information. A company that is hard to score confidently is exhibiting opacity — and that is worth surfacing.</p>
@@ -477,6 +491,43 @@ const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.
   font-size: 1rem !important;
   line-height: 1.75 !important;
   margin-bottom: 0 !important;
+  color: var(--text-muted);
+}
+
+/* Flag types */
+.flag-types {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+.flag-type-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+}
+.flag-type-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.15rem;
+}
+.flag-type-body {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.flag-type-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.flag-type-def {
   color: var(--text-muted);
 }
 

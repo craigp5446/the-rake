@@ -277,7 +277,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
       {/* ── 4. Dimensions ──────────────────────────────────────── */}
       <section class="dimensions-section" id="dimensions">
         <h2 class="scorecard-heading">Scorecard</h2>
-        <p class="section-heading muted">How this company scores across seven dimensions of user alignment, each rated 1–3.</p>
+        <p class="section-heading muted">How this company scores across seven dimensions of user alignment, each rated 1–3. <a href="/methodology#dimensions" class="section-meth-link">Learn more about our scoring methodology.</a></p>
 
         <div class="score-grid">
           {(report.dimensions as Dimension[]).map((dim) => {
@@ -362,7 +362,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
       {/* ── 5. Flags ───────────────────────────────────────────── */}
       <section class="findings-section" id="flags">
         <h2 class="scorecard-heading">Flags</h2>
-        <p class="section-heading muted">Specific documented incidents, commitments, or signals that affected how dimensions were scored.</p>
+        <p class="section-heading muted">Specific documented incidents, commitments, or signals that affected how dimensions were scored. <a href="/methodology#flags" class="section-meth-link">Learn more about flags.</a></p>
 
         <div class="findings-list">
           {([...(report.findings as Finding[])].sort((a, b) => {
@@ -419,7 +419,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
       {/* ── 6. Sources ─────────────────────────────────────────── */}
       <section class="sources-section" id="sources">
         <h2 class="scorecard-heading">Sources</h2>
-        <p class="section-heading muted">Evidence base for this report</p>
+        <p class="section-heading muted">Evidence base for this report. <a href="/methodology#sources" class="section-meth-link">Learn more about how we assess sources.</a></p>
         <div class="sources-columns">
           <div class="sources-group">
             <p class="sources-group__label mono faint">Assessed ({assessedSources.length})</p>
@@ -760,6 +760,17 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
   font-weight: 300;
   line-height: 1.6;
   margin-bottom: 2rem;
+}
+.section-meth-link {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 2px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.section-meth-link:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
 }
 
 .divider {
