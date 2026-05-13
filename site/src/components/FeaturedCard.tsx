@@ -91,13 +91,13 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
 
         {/* Row 1: date + label */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-          <span style={meta}>{date}</span>
-          <span style={meta}>{label}</span>
+          <span className="fc-meta" style={meta}>{date}</span>
+          <span className="fc-meta" style={meta}>{label}</span>
         </div>
 
         {/* Row 2: name + score */}
         <div style={{ display: 'flex', alignItems: 'baseline' }}>
-          <span style={{
+          <span className="fc-name" style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 52,
             fontWeight: 600,
@@ -108,7 +108,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
           }}>
             {companyName}
           </span>
-          <span style={{
+          <span className="fc-score" style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 52,
             fontWeight: 700,
@@ -121,14 +121,14 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
           }}>
             {score}
           </span>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: '#ccc', flexShrink: 0 }}>
+          <span className="fc-denom" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: '#ccc', flexShrink: 0 }}>
             /100
           </span>
         </div>
 
         {/* Row 3: description */}
         <div style={{ marginTop: 8 }}>
-          <span style={{
+          <span className="fc-desc" style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontStyle: 'italic',
             fontSize: 16,
