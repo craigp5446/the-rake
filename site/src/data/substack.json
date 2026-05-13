@@ -4,35 +4,39 @@
   "domain": "substack.com",
   "brandColor": "#FF6719",
   "issue": 1,
-  "published": "2026-04-21",
-  "methodologyVersion": "1.2",
-  "sourceCount": 28,
+  "published": "2026-05-13",
+  "methodologyVersion": "1.4",
+  "sourceCount": 52,
   "label": "Compromised",
   "score": 52,
-  "confidence": "Medium",
-  "assessedPct": 40,
+  "confidence": "High",
+  "assessedPct": 46,
   "subtitle": "The newsletter platform that only makes money when you do \u2014 except when it doesn't",
   "summary": "Substack's core revenue model is genuinely aligned with creator success, but a quiet pivot to advertising, a data breach, and a hands-off approach to extremist content complicate the picture.",
   "narrative": [
-    "Substack arrived with a clear pitch: unlike the social media platforms that monetised your attention to sell it to advertisers, Substack would only make money when you did. Ten percent of your paid subscriptions, nothing else. If that model sounds almost aggressively simple, that was the point. In a landscape of deliberately obscured revenue structures, legibility was the product.",
-    "For several years, that pitch held. The platform took its cut, helped writers find readers, and mostly stayed out of the way. The data portability was genuine \u2014 you could leave with your full subscriber list at any time, and many writers did exactly that when competitors offered better economics. The algorithm, when Substack eventually built one, was designed to drive subscriptions rather than time-on-platform. These were real choices that cost something.",
-    "The picture has become more complicated since the $100 million Series C in July 2025. Advertising arrived four months later, announced not through a company press release but through a paywalled interview with a single creator. A data breach disclosed in February 2026 turned out to have occurred four months earlier. And the company's track record on content moderation \u2014 specifically its initial refusal to remove Nazi newsletters despite documented presence of white-supremacist content \u2014 revealed a philosophy of non-intervention that had real costs for users.",
-    "None of this undoes the genuine alignment in the core model. But it does suggest a company navigating a transition: from a tool that made money by helping writers, to a platform with the more complex incentives that platform scale tends to produce.",
-    "The pattern across these seven dimensions is unusually coherent for a platform of Substack's scale. The strong scores on captivity and engagement extraction aren't accidents \u2014 they reflect deliberate product choices that cost something. Full data portability means creators can and do leave. An algorithm optimised for subscriptions rather than time-on-platform means Substack actively gives up engagement revenue it could extract. These are real commitments.",
-    "What makes the Compromised placement feel right rather than Aligned is the trajectory. The introduction of advertising in December 2025, announced obliquely through a paywalled interview rather than transparently disclosed, is the kind of thing that looks like a first move rather than a one-off. The Series C at $1.1 billion brings investor expectations that the 10% subscription model alone may not satisfy. The data breach \u2014 with a four-month gap between occurrence and disclosure \u2014 suggests that the opacity around advertising is part of a broader pattern rather than an isolated communication failure.",
-    "The content moderation record is the clearest present-tense problem. The initial position \u2014 that hosting Nazi content was a principled stance rather than a failure of responsibility \u2014 and the eventual reversal under pressure, suggest a company whose stated philosophy of non-intervention can produce real harm to users. A platform that earns revenue from subscriptions is also, by definition, earning revenue from harmful actors who pay to publish. That the harm was eventually addressed doesn't change the structural dynamic that produced it."
+    "A few weeks ago, when the idea for <a href=\"https://therake.co/about/\">The Rake</a> popped in my head, I wasn\u2019t sure where I\u2019d take it. But I didn\u2019t expect Substack would be the first report. To be honest, it just wasn\u2019t on my radar when thinking about what The Rake would be all about.",
+    "But then I needed to decide how to distribute these reports. Of course, Substack was the easiest, most obvious choice.",
+    "While getting set up, I saw Andrew Tate on a \u201cbestseller\u201d list. A proper wtf moment. Later that day, a LinkedIn post surfaced the controversies I\u2019d somehow missed. Specifically the decisions, and non-decisions, around writers with harmful content that Substack has platformed, and the growing number of writers choosing to leave because of it. The awareness came at the right time.",
+    "But this little anecdote, and the report that you\u2019ll see below, highlights that core tension of Substack today.",
+    "Substack\u2019s pitch has been aggressively simple. Writers get paid directly by readers. Substack takes 10%. That\u2019s it. Since 2017, that model has grown to over 5 million paid subscribers and around $450M in annual gross revenue for writers. It\u2019s become the default for anyone who wants to publish on their own, including journalists, essayists, commentators, researchers. Easy to start, and easy to leave with your data intact.",
+    "It\u2019s achieved a serious level of ubiquity, nearly the default. Competition, however, is growing a lot. Many writers are <a href=\"https://www.theverge.com/tech/927294/substack-tax-ghost-beehiiv\">fleeing Substack for alternatives</a>, whether because it makes financial sense or because they disagree with the company\u2019s stance on important issues \u2014 more on that below.",
+    "They\u2019ve succeeded in strong alignment between the business and their customers\u2019 goals. They make money when writers make money, and it seems they\u2019re quite good at helping their customers do just that. Easy to start, and easy to leave with your data. Simple stuff, but important nonetheless.",
+    "What\u2019s not to like?",
+    "Well, where they fail, they fail bad. What do their leaders do (or refuse to do) when confronted with high-earning white supremacist, nazi, anti-vax, anti-trans, and neo-confederate writers? The company\u2019s responses took a tense situation and made it worse.",
+    "So, with Substack we have a successful tech company, that serves its customers well, even when those customers spread hateful ideas and misinformation.",
+    "Substack isn\u2019t unique in having to wrestle with this. And though this is clearly their most publicly controversial tension, it isn\u2019t the only one contributing to its score. Dig into the scorecard below to get a more complete picture."
   ],
   "dimensions": [
     {
       "id": "revenue-clarity",
       "name": "Revenue clarity",
       "definition": "Can a user immediately understand how this company makes money?",
-      "score": 2,
-      "scoreLabel": "Partial",
-      "assessedCount": 3,
-      "inferredCount": 3,
+      "score": 3,
+      "scoreLabel": "Clear",
+      "assessedCount": 5,
+      "inferredCount": 2,
       "evidenceStrength": "Strong",
-      "rationale": "Substack's primary revenue stream \u2014 a 10% platform fee on paid subscriptions \u2014 is clearly disclosed on the company website and pricing pages. However, the December 2025 advertising pilot was announced through a paywalled interview with a single creator rather than an official company announcement, and the company's evolving stance on advertising represents a secondary revenue stream that is not prominently surfaced to users. The shift toward advertising revenue is material but has not been transparently communicated.",
+      "rationale": "Substack\u2019s core revenue model is plainly stated across multiple official sources: the company takes 10% of subscription revenue while writers keep 90%, with no fees charged to readers. The company has publicly disclosed its now-discontinued Pro program which took 85% in year one before reverting to 10%. The iOS in-app purchase structure, where Apple takes 15\u201330%, is documented in official support articles. A native sponsorship pilot launched in December 2025 was publicly reported, though announced through a paywalled creator interview rather than an official company statement \u2014 a transparency gap worth watching as the advertising model develops.",
       "findings": [
         "hidden-ad-revenue"
       ]
@@ -43,10 +47,10 @@
       "definition": "Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?",
       "score": 3,
       "scoreLabel": "Aligned",
-      "assessedCount": 1,
-      "inferredCount": 3,
-      "evidenceStrength": "Moderate",
-      "rationale": "Substack's core business model creates direct alignment: the platform earns revenue only when creators earn paid subscription revenue, taking 10% of creator earnings. This means the company makes more money when users succeed at monetising their work. While high churn rates and creator defections to competitors suggest imperfect alignment at scale, the fundamental incentive structure rewards creator success rather than extracting value through alternate means.",
+      "assessedCount": 5,
+      "inferredCount": 0,
+      "evidenceStrength": "Strong",
+      "rationale": "Substack makes money only when writers make money through subscriptions. The 10% commission structure means the company\u2019s revenue grows in direct proportion to writer success. The company\u2019s algorithm is explicitly stated to optimise for subscriptions and paid conversions rather than time spent or engagement metrics. The discontinued Pro program created temporary misalignment (85% in year one) but ended in 2022. The iOS payment structure creates friction but does not fundamentally alter the commission-based alignment between platform and creator success.",
       "findings": [
         "outcomes-pricing"
       ]
@@ -57,10 +61,10 @@
       "definition": "How easy is it to leave? Is data portable? Is cancellation straightforward?",
       "score": 3,
       "scoreLabel": "Portable",
-      "assessedCount": 4,
-      "inferredCount": 1,
+      "assessedCount": 5,
+      "inferredCount": 2,
       "evidenceStrength": "Strong",
-      "rationale": "Substack provides full data export of posts and subscriber lists in standard formats (CSV for subscribers, ZIP for posts), with comprehensive subscriber data including email addresses, subscription status, and engagement metrics. Paid subscription cancellation is self-serve through account settings with no phone call required, and users can pause subscriptions rather than cancel outright. While migrating paid subscriptions to competitors requires more complex Stripe account transfers, the platform does not deliberately trap users or create artificial switching barriers.",
+      "rationale": "Substack provides comprehensive self-serve data export: full subscriber lists as CSV files including email addresses, subscription status, payment information, and engagement metrics; complete content archives as downloadable zip files. The company explicitly states that writers own their content, subscriber list, and payment relationships and can take all of it on departure. Cancellation is self-serve through account settings with benefits continuing until the billing period ends, and a pause option is available. Migrating paid subscriptions requires a Stripe account transfer, which is more involved than moving free lists, but this reflects Stripe\u2019s payment architecture rather than deliberate Substack lock-in. The iOS in-app purchase limitation \u2014 where billing relationships for Apple-paying subscribers cannot be transferred \u2014 is an Apple-imposed constraint documented transparently in Substack\u2019s own support articles, not a Substack captivity design.",
       "findings": [
         "data-portability"
       ]
@@ -68,13 +72,13 @@
     {
       "id": "engagement-extraction",
       "name": "Engagement extraction",
-      "definition": "Is the product engineered to defeat the user's ability to disengage, or does engagement reflect genuine user value?",
-      "score": 3,
-      "scoreLabel": "Value-driven",
+      "definition": "Is the product engineered to defeat the user\u2019s ability to disengage, or does engagement reflect genuine user value?",
+      "score": 2,
+      "scoreLabel": "Extractive",
       "assessedCount": 3,
-      "inferredCount": 2,
-      "evidenceStrength": "Strong",
-      "rationale": "According to Substack's head of machine learning, the Notes algorithm is explicitly optimised for subscriptions rather than time spent or endless scrolling \u2014 a deliberate contrast with ad-supported social platforms. Users have control over notification settings and can disable email and push notifications. No evidence was found of deliberate engagement extraction mechanics such as streaks, gamification, or reward schedules designed to defeat user disengagement.",
+      "inferredCount": 3,
+      "evidenceStrength": "Moderate",
+      "rationale": "Substack\u2019s Notes feature includes push notifications for likes, restacks, replies, and mentions that are automatically enabled. Multiple writers have documented experiencing compulsive engagement mechanics and criticised the platform\u2019s transformation toward social media dynamics. However, the company\u2019s stated algorithmic optimisation is for subscriptions and paid conversions rather than time spent or endless scrolling. No internal documentation or independent research was found confirming deliberate calibration of mechanics to defeat user judgment or extend use beyond genuine value. The engagement mechanics exist and benefit the platform but the evidence stops short of proving systematic engineering against the user\u2019s ability to disengage.",
       "findings": []
     },
     {
@@ -82,11 +86,11 @@
       "name": "Multi-sided tension",
       "definition": "When the interests of different customer groups conflict \u2014 including through platform safety and content decisions \u2014 whose side does the company take?",
       "score": 2,
-      "scoreLabel": "Mixed record",
+      "scoreLabel": "Interests unresolved",
       "assessedCount": 1,
-      "inferredCount": 4,
-      "evidenceStrength": "Moderate",
-      "rationale": "Substack historically served only creators, but the December 2025 advertising pilot introduces advertisers as a second customer group, creating potential tension. Content moderation is largely delegated to individual writers, and the platform's initial refusal to remove Nazi newsletters despite documented presence of white-supremacist content demonstrates a mixed record on protecting users from harmful content. The platform eventually removed five newsletters in January 2024 after investigative reporting and creator pressure, but only after initial resistance.",
+      "inferredCount": 16,
+      "evidenceStrength": "Strong",
+      "rationale": "Substack serves both readers and writers, but the evidence shows a consistent pattern of prioritising writer revenue relationships \u2014 including controversial writers \u2014 over reader safety. The Substack Pro program paid six-figure advances to writers accused of producing anti-trans and anti-vaccine content while taking 10% of revenue from harmful content including newsletters earning the company an estimated $250,000 annually from anti-vaccine misinformation. When prominent writers threatened to leave over Nazi and racist content, the company initially refused to remove it, stating it \u2018didn\u2019t like Nazis either\u2019 but would not moderate as a matter of policy. The company removed only five Nazi-affiliated accounts after sustained pressure. Co-founder Hamish McKenzie defended controversial writer advances by arguing that a hero can be thought a villain. Multiple marginalised writers documented leaving the platform specifically because Substack chose to financially support writers who targeted their communities. The December 2025 introduction of native sponsorships adds advertisers as a third party, creating a new tension that is not yet resolved by track record.",
       "findings": [
         "harmful-amplification"
       ]
@@ -95,14 +99,15 @@
       "id": "algorithmic-accountability",
       "name": "Algorithmic accountability",
       "definition": "Does the company take responsibility for what its systems surface and amplify?",
-      "score": 2,
-      "scoreLabel": "Partial accountability",
+      "score": 1,
+      "scoreLabel": "Unaccountable",
       "assessedCount": 1,
-      "inferredCount": 5,
-      "evidenceStrength": "Moderate",
-      "rationale": "Substack has published explanations of its Notes algorithm through its head of machine learning, providing meaningful detail about how recommendations are generated. However, the company's content moderation policies have been inconsistently applied \u2014 CEO Chris Best declined to answer direct questions about moderation in a 2023 interview, and the platform initially refused to remove Nazi content despite documented presence. The company eventually acted under sustained pressure, indicating policies exist but enforcement was reactive rather than proactive.",
+      "inferredCount": 10,
+      "evidenceStrength": "Strong",
+      "rationale": "Substack was presented with documented evidence of at least 16 newsletters with overt Nazi symbols and explicitly stated it would not proactively remove Nazi content, with the co-founder saying \u2018we don\u2019t like Nazis either\u2019 but refusing to commit to removal as policy. CEO Chris Best declined to state whether overtly racist content (\u2018all brown people are animals\u2019) would be removed when directly asked in a recorded interview. The company generates at least $2.5 million annually from five anti-vaccine newsletters ranking in the top 20 of its politics category, taking 10% commission. Independent research found that searching COVID-19 on Substack surfaced primarily misinformation sources, with eight of ten top results being conspiracy content. The company removed five publications after sustained pressure but explicitly stated it would not change its content policy or proactively remove neo-Nazi content. This represents a documented pattern of non-intervention as policy stance, not isolated incidents.",
       "findings": [
-        "harmful-amplification"
+        "harmful-amplification",
+        "ceo-racism"
       ]
     },
     {
@@ -111,21 +116,21 @@
       "definition": "Who owns this company, and what structural pressures are they under to extract value from users?",
       "score": 2,
       "scoreLabel": "Moderate pressure",
-      "assessedCount": 4,
-      "inferredCount": 2,
+      "assessedCount": 3,
+      "inferredCount": 6,
       "evidenceStrength": "Strong",
-      "rationale": "Substack is a mid-stage venture-backed company with approximately $200 million raised across six funding rounds, reaching a $1.1 billion valuation in July 2025. Key investors include Andreessen Horowitz and The Chernin Group. The company reached positive cash flow in Q1 2025, reducing immediate return pressure, but the unicorn valuation and VC investor base create expectations for significant returns. The founders retain significant stakes and rejected an acquisition offer from Elon Musk in 2023, indicating some insulation from pure shareholder pressure.",
+      "rationale": "Substack raised $100 million in Series C at a $1.1 billion valuation in July 2025, bringing total funding to approximately $190 million across six rounds. Primary investors include Andreessen Horowitz (holding over 25% post-Series B with board representation), BOND Capital, and The Chernin Group. The company achieved unicorn status despite revenues of approximately $45 million annually. A 2023 community funding round issued non-voting Shadow Shares to over 6,000 writers and readers, providing economic upside without governance rights. The company reached positive cash flow in Q1 2025, reducing immediate extraction pressure, but the valuation relative to revenue and the investor profile create return expectations that the December 2025 advertising pilot \u2014 announced four months after the Series C \u2014 may be an early response to.",
       "findings": []
     }
   ],
   "findings": [
     {
       "id": "hidden-ad-revenue",
-      "type": "negative",
+      "type": "trajectory",
       "dimension": "revenue-clarity",
       "dimensionLabel": "Revenue clarity",
       "title": "Advertising introduced without public announcement",
-      "text": "Substack's December 2025 advertising pilot was announced through a paywalled interview with a single creator rather than an official company announcement, despite representing a material shift away from the company's founding anti-advertising positioning.",
+      "text": "Substack\u2019s December 2025 advertising pilot was announced through a paywalled interview with a single creator rather than an official company announcement, despite representing a material shift away from the company\u2019s founding anti-advertising positioning. Investors named advertising as \u2018a massive opportunity\u2019 at the July 2025 Series C, and plans to expand the programme in 2026 have been reported.",
       "source": "AdWeek",
       "sourceUrl": "https://www.adweek.com/media/substack-ads-sponsorship-newsletters/",
       "sourceDate": "December 9, 2025",
@@ -137,11 +142,11 @@
       "dimension": null,
       "dimensionLabel": null,
       "title": "Data breach: 697,000 records, four-month dwell time",
-      "text": "In October 2025, an unauthorised third party accessed email addresses, phone numbers, and internal metadata for approximately 697,000 users. The breach was not discovered or disclosed until February 2026 \u2014 a four-month gap that security researchers flagged as significant.",
+      "text": "In October 2025, an unauthorised third party accessed email addresses, phone numbers, and internal metadata for approximately 697,000 users. The breach was not discovered or disclosed until February 2026 \u2014 a four-month gap that security researchers flagged as significant. CEO Chris Best apologised, stating the company \u2018came up short here.\u2019",
       "source": "TechCrunch",
       "sourceUrl": "https://techcrunch.com/2026/02/05/substack-confirms-data-breach-affecting-email-addresses-and-phone-numbers/",
       "sourceDate": "February 5, 2026",
-      "sourceType": "ASSESSED"
+      "sourceType": "INFERRED"
     },
     {
       "id": "harmful-amplification",
@@ -149,10 +154,22 @@
       "dimension": "algorithmic-accountability",
       "dimensionLabel": "Algorithmic accountability",
       "title": "Nazi newsletters documented; removal only after sustained pressure",
-      "text": "In late 2023, The Atlantic documented scores of white-supremacist and explicitly Nazi newsletters on the platform. Substack co-founder initially stated the platform would continue hosting such content under its non-intervention philosophy; five newsletters were removed in January 2024 only after sustained creator pressure and investigative reporting.",
+      "text": "In late 2023, The Atlantic documented scores of white-supremacist and explicitly Nazi newsletters on the platform. Substack co-founder initially stated the platform would continue hosting such content under its non-intervention philosophy; five newsletters were removed in January 2024 only after sustained creator pressure and investigative reporting. The company explicitly stated it would not change its content policy.",
       "source": "TechCrunch",
       "sourceUrl": "https://techcrunch.com/2024/01/09/substack-nazi-content-policies-controversy/",
       "sourceDate": "January 10, 2024",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "ceo-racism",
+      "type": "negative",
+      "dimension": "algorithmic-accountability",
+      "dimensionLabel": "Algorithmic accountability",
+      "title": "CEO declined to confirm overtly racist content would be removed",
+      "text": "CEO Chris Best refused to confirm whether overtly racist content stating \u2018all brown people are animals\u2019 would be removed when directly asked by The Verge\u2019s editor-in-chief in a recorded interview, characterising the question as \u2018gotcha content moderation.\u2019",
+      "source": "Gizmodo",
+      "sourceUrl": "https://gizmodo.com/substack-ceo-doesnt-know-if-should-ban-overt-racism-1850337647",
+      "sourceDate": "April 14, 2023",
       "sourceType": "INFERRED"
     },
     {
@@ -161,10 +178,10 @@
       "dimension": "incentive-alignment",
       "dimensionLabel": "Incentive alignment",
       "title": "Outcomes-based pricing: Substack earns only when creators do",
-      "text": "Substack charges only a percentage of creator earnings from paid subscriptions, meaning the platform earns revenue only when creators successfully monetise their work. The company earns nothing from free newsletters.",
+      "text": "Substack charges only a percentage of creator earnings from paid subscriptions, meaning the platform earns revenue only when creators successfully monetise their work. The company earns nothing from free newsletters. The algorithm is explicitly optimised for subscriptions rather than time spent, contrasting with ad-driven platforms.",
       "source": "Substack",
       "sourceUrl": "https://substack.com/about",
-      "sourceDate": "Retrieved April 2026",
+      "sourceDate": "Retrieved May 2026",
       "sourceType": "ASSESSED"
     },
     {
@@ -173,7 +190,7 @@
       "dimension": "captivity",
       "dimensionLabel": "Captivity",
       "title": "Full data portability: subscriber lists exportable in open formats",
-      "text": "Substack provides full export of posts (ZIP) and subscriber lists (CSV) including email addresses, subscription status, payment information, and engagement data in standard formats. The company explicitly states that subscriber lists and payment relationships belong to the writer.",
+      "text": "Substack provides full export of posts (ZIP) and subscriber lists (CSV) including email addresses, subscription status, payment information, and engagement data in standard formats. The company explicitly states that subscriber lists and payment relationships belong to the writer, and competitor migration documentation confirms paid subscription transfer via Stripe works in practice.",
       "source": "Substack Support",
       "sourceUrl": "https://support.substack.com/hc/en-us/articles/360037466012-How-do-I-export-my-posts",
       "sourceDate": "December 12, 2023",
@@ -183,24 +200,24 @@
   "personas": [
     {
       "label": "For writers and creators",
-      "text": "Substack's business model is genuinely aligned with your success \u2014 the company makes money only when you do \u2014 and you can leave with your full subscriber list whenever you want, though the platform's quiet pivot toward advertising deserves watching as a leading indicator of where the incentives are heading."
+      "text": "Substack\u2019s business model is genuinely aligned with your success \u2014 the company makes money only when you do, and you can leave with your full subscriber list whenever you want \u2014 but the platform\u2019s quiet pivot toward advertising and its track record of defending revenue relationships with harmful writers deserves watching as a leading indicator of where incentives are heading."
     },
     {
       "label": "For readers and subscribers",
-      "text": "Substack doesn't use engagement tricks to keep you scrolling, and cancelling subscriptions is straightforward, but the platform's hands-off approach to content moderation means you may encounter extremist content in recommendations, and the company's track record suggests it moves slowly on removing harmful material unless pressured."
+      "text": "Substack doesn\u2019t use engagement tricks to keep you scrolling, and cancelling subscriptions is straightforward, but the platform\u2019s documented refusal to proactively moderate harmful content \u2014 including Nazi publications and prominent anti-vaccine misinformation \u2014 means you may encounter or indirectly fund content that causes harm to others on the platform."
     }
   ],
   "sources": [
     {
       "url": "https://substack.com/going-paid",
       "title": "Substack \u2014 Going Paid",
-      "date": "Retrieved April 2026",
+      "date": "Retrieved May 2026",
       "type": "ASSESSED"
     },
     {
       "url": "https://substack.com/about",
       "title": "Substack \u2014 About",
-      "date": "Retrieved April 2026",
+      "date": "Retrieved May 2026",
       "type": "ASSESSED"
     },
     {
@@ -210,9 +227,33 @@
       "type": "ASSESSED"
     },
     {
-      "url": "https://support.substack.com/hc/en-us/articles/360037466012-How-do-I-export-my-posts",
-      "title": "Substack Support \u2014 How do I export my posts?",
-      "date": "December 12, 2023",
+      "url": "https://on.substack.com/p/why-we-pay-writers",
+      "title": "Substack \u2014 Why we pay writers",
+      "date": "March 12, 2021",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://support.substack.com/hc/en-us/articles/19718129670420-Can-my-subscribers-pay-on-the-Substack-iOS-app",
+      "title": "Substack Support \u2014 iOS in-app payments",
+      "date": "March 5, 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://on.substack.com/p/in-app-payments-iap-faq",
+      "title": "Substack \u2014 In-app payments FAQ",
+      "date": "August 18, 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://on.substack.com/p/demystifying-the-feed",
+      "title": "Substack \u2014 Demystifying the feed",
+      "date": "October 27, 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://on.substack.com/p/algorithm",
+      "title": "Substack \u2014 How the algorithm works",
+      "date": "September 19, 2023",
       "type": "ASSESSED"
     },
     {
@@ -222,9 +263,9 @@
       "type": "ASSESSED"
     },
     {
-      "url": "https://substack.com/book",
-      "title": "Substack \u2014 The Substack Book",
-      "date": "Retrieved April 2026",
+      "url": "https://support.substack.com/hc/en-us/articles/360037466012-How-do-I-export-my-posts",
+      "title": "Substack Support \u2014 How do I export my posts?",
+      "date": "December 12, 2023",
       "type": "ASSESSED"
     },
     {
@@ -240,57 +281,33 @@
       "type": "ASSESSED"
     },
     {
-      "url": "https://support.substack.com/hc/en-us/articles/14742669397396-Do-my-subscribers-get-notifications-about-my-notes",
-      "title": "Substack Support \u2014 Subscriber notifications for Notes",
-      "date": "May 6, 2025",
-      "type": "ASSESSED"
-    },
-    {
-      "url": "https://support.substack.com/hc/en-us/articles/14564821756308-Getting-started-on-Substack-Notes",
-      "title": "Substack Support \u2014 Getting started on Notes",
-      "date": "April 2026",
-      "type": "ASSESSED"
-    },
-    {
-      "url": "https://on.substack.com/p/substacks-view-of-content-moderation",
-      "title": "Substack \u2014 Our view of content moderation",
-      "date": "December 22, 2020",
+      "url": "https://support.substack.com/hc/en-us/articles/19291693034004-Getting-started-on-the-Substack-app",
+      "title": "Substack Support \u2014 Getting started on the app",
+      "date": "Retrieved May 2026",
       "type": "ASSESSED"
     },
     {
       "url": "https://substack.com/content",
       "title": "Substack \u2014 Content guidelines",
-      "date": "March 2026",
+      "date": "March 19, 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://post.substack.com/p/substack-series-c",
+      "title": "Substack \u2014 Series C announcement",
+      "date": "July 17, 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://a16z.com/announcement/substack/",
+      "title": "Andreessen Horowitz \u2014 Substack announcement",
+      "date": "August 29, 2023",
       "type": "ASSESSED"
     },
     {
       "url": "https://on.substack.com/p/wefunder",
       "title": "Substack \u2014 Community investment round",
       "date": "March 28, 2023",
-      "type": "ASSESSED"
-    },
-    {
-      "url": "https://variety.com/2025/digital/news/substack-raises-100-million-chernin-group-skims-investors-1236463721/",
-      "title": "Variety \u2014 Substack raises $100 million",
-      "date": "July 17, 2025",
-      "type": "ASSESSED"
-    },
-    {
-      "url": "https://tracxn.com/d/companies/substack/__p24iniy6ZkhjH1kHKlzDUc3zpmnVgDfLZNx8RkxXs2I/funding-and-investors",
-      "title": "Tracxn \u2014 Substack funding and investors",
-      "date": "April 2026",
-      "type": "ASSESSED"
-    },
-    {
-      "url": "https://en.wikipedia.org/wiki/Substack",
-      "title": "Wikipedia \u2014 Substack",
-      "date": "April 2026",
-      "type": "ASSESSED"
-    },
-    {
-      "url": "https://techcrunch.com/2026/02/05/substack-confirms-data-breach-affecting-email-addresses-and-phone-numbers/",
-      "title": "TechCrunch \u2014 Substack confirms data breach",
-      "date": "February 5, 2026",
       "type": "ASSESSED"
     },
     {
@@ -312,27 +329,9 @@
       "type": "INFERRED"
     },
     {
-      "url": "https://sacra.com/c/substack/",
-      "title": "Sacra \u2014 Substack company profile",
-      "date": "Retrieved April 2026",
-      "type": "INFERRED"
-    },
-    {
-      "url": "https://research.contrary.com/company/substack",
-      "title": "Contrary Research \u2014 Substack",
-      "date": "September 5, 2024",
-      "type": "INFERRED"
-    },
-    {
-      "url": "https://www.cityam.com/substack-implements-native-advertising-following-1-1bn-valuation/",
-      "title": "City A.M. \u2014 Substack implements native advertising",
-      "date": "December 12, 2025",
-      "type": "INFERRED"
-    },
-    {
-      "url": "https://www.nbcnews.com/tech/tech-news/substack-removed-newsletters-criticism-nazi-content-rcna132963",
-      "title": "NBC News \u2014 Substack removed newsletters after Nazi content criticism",
-      "date": "January 9, 2024",
+      "url": "https://techcrunch.com/2026/02/05/substack-confirms-data-breach-affecting-email-addresses-and-phone-numbers/",
+      "title": "TechCrunch \u2014 Substack confirms data breach",
+      "date": "February 5, 2026",
       "type": "INFERRED"
     },
     {
@@ -342,21 +341,189 @@
       "type": "INFERRED"
     },
     {
-      "url": "https://disconnect.blog/substack-is-wrong-about-moderation/",
-      "title": "Disconnect \u2014 Substack is wrong about moderation",
-      "date": "August 28, 2025",
+      "url": "https://www.nbcnews.com/tech/tech-news/substack-removed-newsletters-criticism-nazi-content-rcna132963",
+      "title": "NBC News \u2014 Substack removed newsletters after Nazi content criticism",
+      "date": "January 9, 2024",
       "type": "INFERRED"
     },
     {
-      "url": "https://pubstacksuccess.substack.com/p/the-notes-algorithm-explained-by",
-      "title": "Pubstack Success \u2014 The Notes algorithm explained",
-      "date": "November 1, 2025",
+      "url": "https://www.washingtonpost.com/technology/2024/01/10/substack-bans-nazis-newsletters-controversy/",
+      "title": "Washington Post \u2014 Substack bans Nazi newsletters",
+      "date": "January 10, 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.washingtonpost.com/technology/2024/01/11/substack-platformer-nazis/",
+      "title": "Washington Post \u2014 Substack and Platformer on Nazis",
+      "date": "January 12, 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.techpolicy.press/substack-founder-defends-commercial-relationships-with-nazis/",
+      "title": "Tech Policy Press \u2014 Substack founder defends Nazi relationships",
+      "date": "December 22, 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://platformer.substack.com/p/substack-says-it-will-remove-nazi",
+      "title": "Platformer \u2014 Substack says it will remove Nazi content",
+      "date": "January 8, 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://gizmodo.com/substack-ceo-doesnt-know-if-should-ban-overt-racism-1850337647",
+      "title": "Gizmodo \u2014 Substack CEO on racism moderation",
+      "date": "April 14, 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://counterhate.com/research/substack-anti-vaxx-newsletters/",
+      "title": "Center for Countering Digital Hate \u2014 Substack anti-vax newsletters",
+      "date": "May 13, 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.washingtonpost.com/technology/2022/01/27/substack-misinformation-anti-vaccine/",
+      "title": "Washington Post \u2014 Substack misinformation and anti-vaccine content",
+      "date": "January 27, 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://sciencebasedmedicine.org/substack-where-the-covid-19-cranks-all-go-now/",
+      "title": "Science-Based Medicine \u2014 Substack and COVID-19 misinformation",
+      "date": "March 21, 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://inkstickmedia.com/how-deep-does-substacks-far-right-problem-run-really/",
+      "title": "Inkstick Media \u2014 Substack far-right content",
+      "date": "June 21, 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://on.substack.com/p/substacks-view-of-content-moderation",
+      "title": "Substack \u2014 Our view of content moderation",
+      "date": "December 22, 2020",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://techcrunch.com/2021/03/18/substack-backlash/",
+      "title": "TechCrunch \u2014 Substack Pro backlash",
+      "date": "March 19, 2021",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://nathantankus.substack.com/p/i-am-leaving-substack",
+      "title": "Nathan Tankus \u2014 I am leaving Substack",
+      "date": "April 6, 2021",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://gen.medium.com/substack-is-not-a-neutral-platform-8fc5bdf8e5f2",
+      "title": "Gen \u2014 Substack is not a neutral platform",
+      "date": "March 17, 2021",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.kqed.org/news/11868839/critics-lambast-substack-over-pro-program-for-big-name-writers",
+      "title": "KQED \u2014 Critics on Substack Pro program",
+      "date": "October 15, 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://sacra.com/c/substack/",
+      "title": "Sacra \u2014 Substack company profile",
+      "date": "Retrieved May 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://tracxn.com/d/companies/substack/__p24iniy6ZkhjH1kHKlzDUc3zpmnVgDfLZNx8RkxXs2I/funding-and-investors",
+      "title": "Tracxn \u2014 Substack funding and investors",
+      "date": "May 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://businessmodelcanvastemplate.com/blogs/owners/substack-who-owns",
+      "title": "Business Model Canvas \u2014 Who owns Substack",
+      "date": "March 17, 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://platformer.news/substack-series-c-enshittification/",
+      "title": "Platformer \u2014 Substack Series C and enshittification",
+      "date": "July 18, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://variety.com/2025/digital/news/substack-raises-100-million-chernin-group-skims-investors-1236463721/",
+      "title": "Variety \u2014 Substack raises $100 million",
+      "date": "July 17, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://techcrunch.com/2025/07/17/substack-raises-100m-from-chernin-group-andreessen-horowitz-skims-ceo-and-more/",
+      "title": "TechCrunch \u2014 Substack $100M raise",
+      "date": "July 17, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://shriekingcactus.substack.com/p/writing-about-addiction-on-an-addictive",
+      "title": "Shrieking Cactus \u2014 Writing about addiction on an addictive platform",
+      "date": "March 7, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.niemanlab.org/2025/10/top-substack-writers-depart-for-patreon/",
+      "title": "Nieman Lab \u2014 Top Substack writers depart for Patreon",
+      "date": "October 29, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://3quarksdaily.com/3quarksdaily/2025/08/why-im-quitting-substack.html",
+      "title": "3 Quarks Daily \u2014 Why I\u2019m quitting Substack",
+      "date": "August 12, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.cityam.com/substack-implements-native-advertising-following-1-1bn-valuation/",
+      "title": "City A.M. \u2014 Substack implements native advertising",
+      "date": "December 12, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://dataconomy.com/2025/09/01/substack-forces-iap-hits-writers-with-30-fee/",
+      "title": "Dataconomy \u2014 Substack forces IAP",
+      "date": "September 1, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.isabelleroughol.com/how-substack-delivered-its-users-onto-apple/",
+      "title": "Isabelle Roughol \u2014 How Substack delivered its users onto Apple",
+      "date": "December 6, 2025",
       "type": "INFERRED"
     },
     {
       "url": "https://courtneyworks.substack.com/p/substack-ownership",
       "title": "Courtney Works \u2014 Substack ownership breakdown",
       "date": "September 20, 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://docs.buttondown.com/substack",
+      "title": "Buttondown \u2014 Migrating from Substack",
+      "date": "Retrieved April 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://mazkara.studio/en/blog/migrate-from-substack-guide/",
+      "title": "Mazkara \u2014 Migrate from Substack guide",
+      "date": "March 17, 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.grow-your-newsletter.com/p/how-to-export-substack-subscribers",
+      "title": "Grow Your Newsletter \u2014 How to export Substack subscribers",
+      "date": "October 29, 2025",
       "type": "INFERRED"
     }
   ]

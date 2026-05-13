@@ -184,7 +184,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
           <p class="masthead__date mono faint">{formatDate(report.published)}</p>
           <h1 class="masthead__company">{report.company}</h1>
           <div class="masthead__chips mono">
-            <a href="https://github.com/craigphillips/the-rake/blob/main/methodology.md" target="_blank" rel="noopener" class="chip chip--link">Methodology v{report.methodologyVersion}<svg class="ext-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="https://github.com/craigp5446/the-rake/blob/689ea5cfb38dbb0d9d962d998af7321531d030c7/methodology.md#how-the-rake-scores-companies" target="_blank" rel="noopener" class="chip chip--link">Methodology v{report.methodologyVersion}<svg class="ext-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <span class="chip-sep">·</span>
             <a href="#sources" class="chip chip--link">{report.sourceCount} sources <span class="sources-assessed">({report.assessedPct}% assessed)</span></a>
             <span class="chip-sep">·</span>
@@ -268,7 +268,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
       {/* ── 3. Narrative ───────────────────────────────────────── */}
       <section class="narrative-section">
         {report.narrative.map((para: string) => (
-          <p>{para}</p>
+          <p set:html={para} />
         ))}
       </section>
 
@@ -750,7 +750,6 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
   margin-bottom: 1.4em;
   font-size: 1.125rem;
   line-height: 1.8;
-  max-width: 65ch;
 }
 .narrative-section p:last-child { margin-bottom: 0; }
 
