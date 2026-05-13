@@ -29,7 +29,8 @@ The research is done systematically using a three-phase process: two AI agents h
 
 ## Read it
 
-The newsletter is on Buttondown: [buttondown.com/the-rake](https://buttondown.com/the-rake)
+Read all reports and details of the project on www.therake.co
+You can subscribe to the newsletter on Buttondown, which will let you know when a new report drops: [buttondown.com/the-rake](https://buttondown.com/the-rake)
 
 ---
 
