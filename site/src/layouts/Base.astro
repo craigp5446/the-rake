@@ -73,6 +73,22 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
         --text-muted: #9A9994;
         --text-faint: #5C5B57;
       }
+
+      /* Invert black SVG logos so they're visible on dark backgrounds */
+      .site-header__mark-center,
+      .hero__mark {
+        filter: invert(1);
+      }
+
+      /* Featured card dark mode overrides */
+      .featured-card__inner {
+        background: var(--bg-raised) !important;
+        border-color: var(--border) !important;
+      }
+      .fc-name, .fc-score { color: var(--text) !important; }
+      .fc-meta { color: var(--text-faint) !important; }
+      .fc-desc { color: var(--text-muted) !important; }
+      .fc-denom { color: var(--text-faint) !important; }
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
