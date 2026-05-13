@@ -115,13 +115,34 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <div class="site-header__inner">
     <a href="/" class="site-header__wordmark">THE RAKE</a>
     <img src="/therake.svg" alt="" class="site-header__mark-center" aria-hidden="true" />
-    <nav class="site-header__nav">
+    <nav class="site-header__nav" id="site-nav" aria-label="Main navigation">
       <a href="/about">About</a>
       <a href="/methodology">Methodology</a>
       <a href="https://buttondown.com/the-rake" target="_blank" rel="noopener" class="subscribe-btn">Subscribe</a>
     </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
   </div>
 </header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('site-nav');
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('site-header__nav--open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  // Close on nav link click (for SPA-style navigation)
+  nav?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('site-header__nav--open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 
 <slot />
 
@@ -218,6 +239,62 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   text-decoration: none;
 }
 .site-footer a:hover { color: var(--text); }
+
+/* ── Hamburger ───────────────────────────────── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  flex-shrink: 0;
+}
+.nav-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--text);
+  border-radius: 1px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+@media (max-width: 600px) {
+  .site-header__mark-center { display: none; }
+
+  .nav-toggle { display: flex; }
+
+  .site-header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: calc(-1 * var(--gutter));
+    right: calc(-1 * var(--gutter));
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    padding: 0.5rem 0 1rem;
+  }
+  .site-header__nav.site-header__nav--open { display: flex; }
+  .site-header__nav a {
+    width: 100%;
+    padding: 0.65rem var(--gutter);
+    font-size: 1rem;
+    text-align: right;
+  }
+  .site-header__nav .subscribe-btn {
+    margin: 0.5rem var(--gutter) 0;
+    width: auto;
+    align-self: flex-end;
+    text-align: center;
+  }
+}
 
 /* ── Card hover ──────────────────────────────── */
 .rake-featured-card {
