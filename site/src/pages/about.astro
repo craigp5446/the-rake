@@ -2,77 +2,40 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="About — The Rake" description="The Rake is a transparency project for tech business models. Each issue scores one company on how its revenue model relates to its users.">
+<Base title="About — The Rake" description="A human-centred analysis of tech products. Each report covers one company in depth, collecting public sources and applying a consistent scoring methodology.">
 
 <main class="about-page">
   <div class="about-page__inner">
 
     <header class="about-header">
       <p class="mono muted about-kicker">About The Rake</p>
-      <h1 class="about-title">A transparency project for tech revenue models and user alignment</h1>
+      <h1 class="about-title">A human-centred analysis of tech products</h1>
     </header>
 
     <div class="about-body">
 
-      <section class="about-section">
-        <h2>The problem</h2>
-        <p>Most people have no framework for understanding how the tech products they use actually make money — or who those products are really optimising for. An app can look helpful, feel generous, and still be structurally designed to work against the user's interests. Sometimes that's obvious. Most of the time it's obscured by design.</p>
-        <p>The Rake is an accountability layer for tech business models. It scores companies on how they make money, who benefits, and how much pressure they're under to extract value from users rather than deliver it.</p>
+      <section class="about-section about-section--intro">
+        <p>I like to think I'm intentional about the tech products I use. Working in this field, I feel reasonably savvy about how things work. But in reality, my framework for evaluating the products I use every day has always been surface level.</p>
+        <p>The apps we use are the product of many forces inside the companies that build them. People making decisions that translate into revenue models, data policies, growth tactics, and design choices. Most of us are looking for a simple thing: that the value we get from a product is proportional to what the company extracts from us. But that's a hard thing to see clearly, and companies have little incentive to make it obvious.</p>
+        <p>I created The Rake as a way to look at that more honestly. Each report covers one company in depth, collecting public sources, applying a consistent scoring methodology, and writing an analysis that tries to make sense of the tensions at play. The full framework is on the <a href="/methodology" class="about-link">methodology page</a>.</p>
       </section>
 
       <section class="about-section">
-        <h2>The format</h2>
-        <p>A newsletter. One company per issue, run through a published scoring framework, with sources cited and methodology open. Each issue covers one company in depth: its revenue model, ownership structure, design decisions, and where its incentives align or conflict with the people using it.</p>
-        <p>Everything is grounded in public information: funding records, pricing pages, terms of service, investor reports, published research. No speculation presented as fact. Conclusions are clearly framed as analysis, not accusation.</p>
-        <p>The research and scoring is done systematically using a three-phase process: an AI agent collects and organises public evidence, a second agent applies the scoring framework. A human reviews, checks sources, applies final judgment, and writes the narrative. That final step matters — nothing gets published without it.</p>
+        <h2>Who makes this</h2>
+        <p>I'm Craig, the creator of The Rake. My background is in product design, and I've spent a good few years building products from the ground up at various startups. The spark for this came from a simple conversation about an app that obscured its revenue model. Instead of shrugging and moving on, I thought it could be useful to build something that applies publicly accessible information to a consistent set of criteria.</p>
+        <p>The research and scoring is assisted by AI agents, but the judgment and the writing are mine. That distinction matters, and it's built into the process.</p>
+        <p>I didn't create The Rake to name and shame companies. Where criticism is warranted, I won't shy away from it. But I'm equally interested in highlighting where companies are genuinely doing right by their users. The aim is honest analysis, not a campaign.</p>
+        <p>I'm not a data scientist or trained analyst, and I don't pretend the methodology is perfect. If you've built something like this before and can see ways to make it more rigorous, I'd genuinely welcome that input.</p>
       </section>
 
       <section class="about-section">
-        <h2>The scoring framework</h2>
-        <p>Each company is rated across seven dimensions. Scores are not collapsed into a single number. The profile across dimensions is more revealing than any aggregate.</p>
-
-        <div class="dimensions-list">
-          {[
-            ['Revenue clarity',        'Can a user immediately understand how this company makes money?'],
-            ['Incentive alignment',     'Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?'],
-            ['Captivity',               'How easy is it to leave? Is data portable? Is cancellation straightforward?'],
-            ['Engagement extraction',   'Is the product engineered to defeat the user\'s ability to disengage, or does engagement reflect genuine user value?'],
-            ['Multi-sided tension',     'When the interests of different customer groups conflict, whose side does the company take?'],
-            ['Algorithmic accountability', 'Does the company take responsibility for what its systems surface and amplify?'],
-            ['Ownership pressure',      'Who owns this company, and what structural pressures are they under to extract value from users?'],
-          ].map(([name, def]) => (
-            <div class="dim-row">
-              <span class="dim-row__name">{name}</span>
-              <span class="dim-row__def">{def}</span>
-            </div>
-          ))}
-        </div>
-
-        <p>Every profile also includes a label — one of five editorial categories from Adversarial to Principled — and a spectrum position (0–100) within that label. Two companies can share a label while sitting at meaningfully different positions.</p>
-      </section>
-
-      <section class="about-section">
-        <h2>Source confidence</h2>
-        <p>Every source is classified as either <strong>Assessed</strong> (primary sources: company websites, filings, terms of service) or <strong>Inferred</strong> (secondary sources: journalism, logical deduction, community reports). Each dimension shows this split. A company that is hard to score confidently is exhibiting opacity — which is itself worth surfacing.</p>
-      </section>
-
-      <section class="about-section">
-        <h2>Open methodology</h2>
-        <p>The scoring framework, research prompts, and versioning history are all public on GitHub. You can't build a transparency tool with an opaque methodology. If you disagree with a score, the methodology is your starting point.</p>
-        <p>
-          <a href="/methodology" class="about-link">Read the full methodology →</a>
-        </p>
-      </section>
-
-      <section class="about-section">
-        <h2>What The Rake is not</h2>
+        <h2>A few things worth stating clearly</h2>
         <ul>
-          <li>It is not a legal document or regulatory filing</li>
-          <li>It is not a claim about what companies do in private</li>
-          <li>It is not a campaign to get companies shut down</li>
-          <li>It is not affiliated with any company, investor, or advocacy group</li>
+          <li>I don't know what these companies do in private. Everything here is based on public sources.</li>
+          <li>Public sources are imperfect. I aim to be transparent about confidence levels and gaps in every report.</li>
+          <li>I have no interest in harming any company, and no affiliation with any company, investor, or advocacy group.</li>
+          <li>Every report states the methodology version it was scored against, so you can see exactly what criteria were applied.</li>
         </ul>
-        <p>It is analysis, applied consistently, in public, with sources.</p>
       </section>
 
     </div>
