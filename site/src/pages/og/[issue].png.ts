@@ -1,6 +1,6 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
+import sharp from 'sharp';
 import { readdir, readFile } from 'fs/promises';
 import { join } from 'path';
 
@@ -90,7 +90,7 @@ export const GET: APIRoute = async ({ props }) => {
     }
   );
 
-  const png = new Resvg(svg).render().asPng();
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
 
   return new Response(png, {
     headers: {
