@@ -10,13 +10,9 @@ This document describes that system in full. If you disagree with a score, the m
 
 ---
 
-## The five profile labels
+## The five profile labels and spectrum position
 
-Every company receives a spectrum position from 0–100 and a corresponding profile label. The label is editorial, not mechanical. It reflects a judgment about the full picture, weighted toward incentive alignment and captivity as the core structural questions the framework is built around. A company that scores 3 on both can sit in Aligned even if other dimensions are weaker, provided those weaknesses are surfaced clearly in flags. Conversely, a score of 1 on incentive alignment is very difficult to overcome regardless of how other dimensions score.
-
-The spectrum position within the assigned band should reflect the full dimension profile, not only the anchor dimensions. A company with several 2s alongside strong anchor scores should sit toward the lower end of its band, not the middle.
-
-Moderation and algorithmic accountability findings inform label placement only when they represent a pattern serious enough to change the structural picture — not when they represent an isolated incident or an unresolved policy question. Those belong in flags.
+Every company receives a spectrum position from 0–100 and a corresponding profile label. The spectrum position is calculated mechanically from the dimension scores and flags — it is not an editorial judgment. The label is determined automatically by where the spectrum position lands.
 
 | Band | Label | Definition |
 |---|---|---|
@@ -27,6 +23,63 @@ Moderation and algorithmic accountability findings inform label placement only w
 | 81–100 | **Principled** | This product actively prioritises your interests, sometimes at cost to itself — the way it's built reflects values, not just incentives. |
 
 Profiles are always displayed with their spectrum position: e.g. **Compromised (43)** and **Compromised (58)** are both Compromised, but the number makes the difference visible.
+
+---
+
+## How the spectrum position is calculated
+
+**Step 1 — Map dimension scores to 0–100**
+
+Each scored dimension is mapped using fixed band midpoints:
+- Score of 1 → 17
+- Score of 2 → 50
+- Score of 3 → 83
+
+N/A dimensions are excluded entirely. The base score is the average of all mapped scored dimensions. A company scored across 5 dimensions averages those 5 values; a company scored across 7 dimensions averages all 7.
+
+**Step 2 — Apply flag adjustments**
+
+Flags adjust the base score up (positive flags) or down (negative flags) based on which dimension they map to:
+
+- Flag on an anchor dimension: ±2 points
+- Flag on a non-anchor dimension or not mapped to any dimension: ±1 point
+
+The total flag adjustment is capped at ±8 points. If the net adjustment would exceed this cap in either direction, it is capped at ±8.
+
+**Step 3 — Determine label**
+
+The final spectrum position determines the label automatically using the band definitions above. No editorial override.
+
+---
+
+## Anchor and non-anchor dimensions
+
+Four dimensions are designated anchors. These are the dimensions most directly connected to what a product is actively doing to a user right now. Flags on anchor dimensions carry more weight in the formula (±2 vs ±1).
+
+**Anchor dimensions:**
+- Incentive alignment
+- Captivity
+- Engagement extraction
+- Algorithmic accountability
+
+**Non-anchor dimensions:**
+- Revenue clarity
+- Multi-sided tension
+- Ownership pressure
+
+Anchor status has no effect if a dimension is N/A — an N/A anchor dimension simply drops out of the calculation like any other N/A dimension.
+
+---
+
+## Worked example
+
+A company scores: revenue clarity 2, incentive alignment 3, captivity 1, engagement extraction 2, multi-sided tension N/A, algorithmic accountability N/A, ownership pressure 2.
+
+Step 1 — mapped scores: 50, 83, 17, 50, 50. Average of 5 dimensions = 50.
+
+Step 2 — flags: one negative flag on captivity (anchor, −2), one positive flag on incentive alignment (anchor, +2), one negative flag on revenue clarity (non-anchor, −1). Net adjustment = −1.
+
+Step 3 — final score: 50 − 1 = 49 → **Compromised (49)**.
 
 ---
 
@@ -128,6 +181,8 @@ A score of 1 means the product is **actively working against the user on this di
 Dimensions that genuinely do not apply to a company's product are marked N/A and excluded from the profile calculation and spectrum position. Every N/A must be justified with a one-sentence rationale in the scorecard. N/A is not a default — if there is reasonable doubt about whether a dimension applies, it is scored.
 
 A company cannot receive N/A on more than three dimensions. If more than three dimensions don't apply, the company may be outside The Rake's current scope and this should be noted.
+
+Flags that map to an N/A dimension are still applied at the non-anchor rate (±1), since the finding is real even if the dimension does not score.
 
 The profile summary displays all seven dimensions, showing N/A alongside scored dimensions so the full picture is visible at a glance:
 
@@ -316,4 +371,4 @@ It is analysis, applied consistently, in public, with sources. Scores reflect th
 
 ---
 
-*The Rake scoring methodology v1.2 — April 2026. This document is open. Fork it, critique it, improve it.*
+*The Rake scoring methodology v1.4 — April 2026. This document is open. Fork it, critique it, improve it.*

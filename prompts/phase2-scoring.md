@@ -191,28 +191,44 @@ extract value from users?*
 
 ## Profile label and spectrum position
 
-After scoring all seven dimensions, assign a profile label and spectrum 
-position.
+After scoring all seven dimensions, calculate the spectrum position mechanically using the steps below. The label is determined automatically by where the final score lands — there is no editorial override.
 
-**The five labels:**
+**Step 1 — Map dimension scores to 0–100**
 
-| Band     | Label          | Definition |
-|----------|----------------|------------|
-| 0–20     | Adversarial    | This product is designed to work against you — it makes more money when you fail, stay confused, or can't leave. |
-| 21–40    | Extractive     | This product takes more value from you than it delivers — engagement, data, or money are harvested in ways that don't serve your interests. |
-| 41–60    | Compromised    | This product has genuine value but isn't fully on your side — trade-offs exist between what's good for you and what's good for the business. |
-| 61–80    | Aligned        | This product makes money when you get value — its incentives and your interests point in the same direction. |
-| 81–100   | Principled     | This product actively prioritises your interests, sometimes at cost to itself — the way it's built reflects values, not just incentives. |
+Map each scored dimension using these fixed band midpoints:
+- Score of 1 → 17
+- Score of 2 → 50
+- Score of 3 → 83
 
-The label is editorial, not mechanical. It reflects a judgment about the full picture, weighted toward incentive alignment and captivity as the core structural questions the framework is built around. A company that scores 3 on both can sit in Aligned even if other dimensions are weaker, provided those weaknesses are surfaced clearly in flags. Conversely, a score of 1 on incentive alignment is very difficult to overcome regardless of how other dimensions score.
+Exclude N/A dimensions entirely. The base score is the average of all mapped scored dimensions.
 
-The spectrum position within the assigned band should reflect the full dimension profile, not only the anchor dimensions. A company with several 2s alongside strong anchor scores should sit toward the lower end of its band, not the middle.
+**Step 2 — Apply flag adjustments**
 
-Moderation and algorithmic accountability findings inform label placement only when they represent a pattern serious enough to change the structural picture — not when they represent an isolated incident or an unresolved policy question. Those belong in flags.
+Each flag adjusts the base score based on the dimension it maps to:
+- Flag on an anchor dimension: ±2 points
+- Flag on a non-anchor dimension, or not mapped to any dimension: ±1 point
 
-State your proposed label and spectrum position, then write 2–3 sentences 
-explaining the reasoning behind the placement, including which dimensions 
-drove the label and whether any tension exists between dimensions.
+Positive flags add points; negative flags subtract. Cap the total net adjustment at ±8.
+
+**Anchor dimensions** (flags worth ±2): Incentive alignment, Captivity, Engagement extraction, Algorithmic accountability.
+
+**Non-anchor dimensions** (flags worth ±1): Revenue clarity, Multi-sided tension, Ownership pressure.
+
+If a flag maps to an N/A dimension, apply it at ±1 — the finding is real even if the dimension does not score.
+
+**Step 3 — Determine label**
+
+| Band     | Label       |
+|----------|-------------|
+| 0–20     | Adversarial |
+| 21–40    | Extractive  |
+| 41–60    | Compromised |
+| 61–80    | Aligned     |
+| 81–100   | Principled  |
+
+Show your working: list each mapped score, the base average, each flag adjustment, the net adjustment, and the final score.
+
+Then write 2–3 sentences describing what the overall dimension profile shows — what the scores collectively indicate about how this company relates to its users, and whether any tension exists between dimensions.
 
 ---
 
@@ -322,17 +338,12 @@ are direct, practical conclusions for a reader who wants to know:
 Produce the scorecard in this structure:
 
 SCORING DATE: [inherit from Phase 1 research date]
-METHODOLOGY VERSION: [inherit exactly from Phase 1 research document — do not change this value]
+METHODOLOGY VERSION: [use the METHODOLOGY VERSION stated at the start of this message — do not inherit from the Phase 1 document]
 COMPANY: [company name]
 
 ---
 
 PROFILE SUMMARY
-
-PROPOSED LABEL: [Adversarial / Extractive / Compromised / Aligned / 
-Principled]
-PROPOSED SPECTRUM POSITION: [0–100]
-DIMENSIONS SCORED: [n] of 7
 
 Revenue clarity             [1 / 2 / 3] — [Strong / Moderate / Weak / Blind]
 Incentive alignment         [1 / 2 / 3] — [Strong / Moderate / Weak / Blind]
@@ -342,9 +353,19 @@ Multi-sided tension         [1 / 2 / 3 / N/A] — [Strong / Moderate / Weak / Bl
 Algorithmic accountability  [1 / 2 / 3 / N/A] — [Strong / Moderate / Weak / Blind / N/A]
 Ownership pressure          [1 / 2 / 3] — [Strong / Moderate / Weak / Blind]
 
-REASONING: [2–3 sentences explaining the label and position, including 
-which dimensions drove the label and whether any tension exists between 
-dimensions]
+DIMENSIONS SCORED: [n] of 7
+
+SPECTRUM CALCULATION:
+  Mapped scores: [dimension: score → mapped value, one per line, N/A dimensions noted]
+  Base score: [average of mapped scored dimensions]
+  Flag adjustments: [flag name: anchor/non-anchor, ±n points — one per line]
+  Net adjustment: [sum, note if capped at ±8]
+  Final score: [base + net adjustment]
+
+LABEL: [Adversarial / Extractive / Compromised / Aligned / Principled]
+SPECTRUM POSITION: [final score]
+
+REASONING: [2–3 sentences describing what the overall dimension profile shows — what the scores collectively indicate about how this company relates to its users, and whether any tension exists between dimensions]
 
 ---
 
