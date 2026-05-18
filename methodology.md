@@ -1,6 +1,6 @@
 # How The Rake scores companies
 
-**Version 1.4 — April 2026 — Open methodology**
+**Version 1.5 — May 2026 — Open methodology**
 
 ---
 
@@ -371,4 +371,4 @@ It is analysis, applied consistently, in public, with sources. Scores reflect th
 
 ---
 
-*The Rake scoring methodology v1.4 — April 2026. This document is open. Fork it, critique it, improve it.*
+*The Rake scoring methodology v1.5 — May 2026. This document is open. Fork it, critique it, improve it.*
