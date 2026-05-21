@@ -1,5 +1,5 @@
 # The Rake — Phase 2: Scoring Prompt
-**Version 1.4 — April 2026**
+**Version 1.5 — May 2026**
 
 ---
 
@@ -130,9 +130,9 @@ does engagement reflect genuine user value?*
 ### 5. Multi-sided tension
 *When the company serves more than one customer group, whose interests take priority when they conflict?*
 
-- **1 — Users are the product.** The company's primary commercial relationship is with a party other than the end user, and user interests are structurally subordinated to that relationship. Users are the inventory — their attention, data, or behaviour is what is being sold. When interests conflict between users and paying customers, the paying customer wins by default.
+- **1 — Users subordinated.** The company's primary commercial relationship is with a party other than the end user, and user interests are structurally subordinated to that relationship. Users are the inventory — their attention, data, or behaviour is what is being sold. When interests conflict between users and paying customers, the paying customer wins by default.
 
-- **2 — Mixed record.** The company serves more than one customer group and nominal protections exist, but the track record when commercial interests conflict is ambiguous or unresolved. The company may make choices that create indirect harm to users as a by-product of serving paying customers, without this being the explicit intent.
+- **2 — Interests unresolved.** The company serves more than one customer group and nominal protections exist, but the track record when commercial interests conflict is ambiguous or unresolved. The company may make choices that create indirect harm to users as a by-product of serving paying customers, without this being the explicit intent.
 
 - **3 — Users defended.** The company either has no third-party commercial relationships that create tension with user interests, or has a documented track record of siding with users when those interests conflict — including at measurable commercial cost to itself.
 
@@ -238,12 +238,9 @@ Review the FLAGS OBSERVED section from Phase 1 and determine which flags
 to carry forward. For each flag carried forward, write one sentence 
 explaining the specific finding, and include its source URL and date.
 
-Flags are the evidence layer that makes dimension scores legible. Every 
-flag must be tied to a specific dimension. A flag is what justifies a 
-score — particularly when a documented incident is what moves a score 
-from 2 to 1, or a structural commitment is what earns a 3. If a finding 
-is not significant enough to affect how a dimension score is read, it is 
-not a flag.
+Flags are the evidence layer that makes dimension scores legible. Flags do not modify individual dimension scores — they adjust only the final spectrum position, through the formula described above. A flag is what makes the analyst's reasoning legible, particularly when a documented incident is what distinguishes a score of 1 from a 2, or a structural commitment is what earns a 3. If a finding is not significant enough to affect how a dimension score is read, it is not a flag.
+
+Flags come in three types: **negative** (adjusts spectrum position down by 1 or 2 points), **positive** (adjusts spectrum position up by 1 or 2 points), and **trajectory** (a directional signal that does not yet affect the current score but could affect a future one — trajectory flags do not adjust the spectrum position). A trajectory flag must point clearly toward a better or worse outcome; vague uncertainty does not qualify.
 
 Both negative and positive flags are applied. Every flag must clear the 
 threshold below and be supported by at least one cited source. Drop any 

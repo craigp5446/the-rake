@@ -37,7 +37,8 @@ const [featured, ...previous] = reports;
 
         {featured && (
           <>
-            <div style="margin-bottom: 20px;">
+            <p class="section-label">Latest report</p>
+            <div style="margin-bottom: 56px;">
               <FeaturedCard
                 brandColor={featured.brandColor ?? '#9A9994'}
                 logoSrc={logoSrc(featured.domain)}
@@ -50,8 +51,7 @@ const [featured, ...previous] = reports;
                 href={`/issues/${featured.issue}`}
               />
             </div>
-            <p class="more-reports">More reports to come. To stay in the loop, <a href="https://buttondown.com/the-rake" target="_blank" rel="noopener">sign up here</a>.</p>
-          </>
+</>
         )}
 
         {previous.length > 0 && (
@@ -67,7 +67,7 @@ const [featured, ...previous] = reports;
                   date={formatDate(r.published)}
                   label={r.label}
                   score={r.score}
-                  description={labelGloss[r.label.toLowerCase()] ?? ''}
+                  description={r.summary ?? ''}
                   href={`/issues/${r.issue}`}
                 />
               ))}
@@ -119,31 +119,9 @@ const [featured, ...previous] = reports;
   color: #bbb;
   text-transform: uppercase;
   margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: #d8d4ce;
 }
 
 .list-wrap { max-width: var(--max-w-wide); }
-
-.more-reports {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: #aaa;
-  letter-spacing: 0.01em;
-}
-.more-reports a {
-  color: #aaa;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.more-reports a:hover { color: #777; }
 
 @media (max-width: 600px) {
   .hero { padding: 3rem var(--gutter) 2.5rem; text-align: center; }

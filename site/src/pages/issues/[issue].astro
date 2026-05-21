@@ -185,7 +185,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
           <p class="masthead__date mono faint">{formatDate(report.published)}</p>
           <h1 class="masthead__company">{report.company}</h1>
           <div class="masthead__chips mono">
-            <a href="https://github.com/craigp5446/the-rake/blob/689ea5cfb38dbb0d9d962d998af7321531d030c7/methodology.md#how-the-rake-scores-companies" target="_blank" rel="noopener" class="chip chip--link">Methodology v{report.methodologyVersion}<svg class="ext-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="/methodology" class="chip chip--link" data-method-version={report.methodologyVersion}>Methodology v{report.methodologyVersion}<span class="method-dot" aria-hidden="true"></span></a>
             <span class="chip-sep">·</span>
             <a href="#sources" class="chip chip--link">{report.sourceCount} sources <span class="sources-assessed">({report.assessedPct}% assessed)</span></a>
             <span class="chip-sep">·</span>
@@ -1130,6 +1130,21 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
   font-size: 0.7rem;
   color: var(--text-faint);
 }
+
+.method-dot {
+  display: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3B82F6;
+  flex-shrink: 0;
+  margin-left: 3px;
+  animation: method-pulse 2s ease-in-out infinite;
+}
+@keyframes method-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.7); }
+}
 </style>
 
 <script>
@@ -1144,4 +1159,15 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
       setTimeout(() => target.classList.remove('highlight'), 2000);
     });
   });
+
+  // Show methodology dot when report version is newer than last seen
+  const chip = document.querySelector('[data-method-version]') as HTMLElement | null;
+  if (chip) {
+    const reportVersion = parseFloat(chip.dataset.methodVersion ?? '0');
+    const seenVersion = parseFloat(localStorage.getItem('rake-seen-method-version') ?? '0');
+    if (reportVersion > seenVersion) {
+      const dot = chip.querySelector('.method-dot') as HTMLElement | null;
+      if (dot) dot.style.display = 'inline-block';
+    }
+  }
 </script>

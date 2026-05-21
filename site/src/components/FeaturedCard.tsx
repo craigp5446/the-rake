@@ -49,33 +49,43 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-        <div style={{
-          width: 72,
-          height: 72,
-          background: 'rgba(255,255,255,0.15)',
-          borderRadius: 16,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          overflow: 'hidden',
-        }}>
-          {logoSrc ? (
-            <img
-              src={logoSrc}
-              alt={companyName}
-              style={{ width: 52, height: 52, objectFit: 'contain' }}
-              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-            />
-          ) : (
-            <span style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 34,
-              fontWeight: 600,
-              color: 'rgba(255,255,255,0.92)',
-            }}>
-              {fallbackLetter}
-            </span>
-          )}
+        <div style={{ position: 'relative', width: 72, height: 72, borderRadius: 5, overflow: 'hidden' }}>
+          {/* blurred fill — separate from logo so logo stays sharp */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(255,255,255,0.15)',
+            filter: 'blur(20px)',
+            transform: 'scale(1.2)',
+          }} />
+          {/* logo */}
+          <div style={{
+            position: 'relative',
+            zIndex: 1,
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            {logoSrc ? (
+              <img
+                src={logoSrc}
+                alt={companyName}
+                style={{ width: 52, height: 52, objectFit: 'contain' }}
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+              />
+            ) : (
+              <span style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 34,
+                fontWeight: 600,
+                color: 'rgba(255,255,255,0.92)',
+              }}>
+                {fallbackLetter}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
@@ -130,10 +140,13 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
         <div style={{ marginTop: 8 }}>
           <span className="fc-desc" style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontStyle: 'italic',
             fontSize: 16,
             color: '#777',
             lineHeight: 1.5,
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
           }}>
             {description}
           </span>

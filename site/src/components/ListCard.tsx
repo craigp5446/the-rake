@@ -115,7 +115,6 @@ const ListCard: FC<ListCardProps> = ({
       {/* Row 3: description */}
       <div style={{
         fontFamily: "'Cormorant Garamond', serif",
-        fontStyle: 'italic',
         fontSize: 15,
         color: '#888',
         lineHeight: 1.35,
@@ -123,6 +122,7 @@ const ListCard: FC<ListCardProps> = ({
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         marginTop: 2,
+        paddingRight: 56,
       }}>
         {description}
       </div>

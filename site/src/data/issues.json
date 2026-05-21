@@ -1,5 +1,20 @@
 [
   {
+    "slug": "tiktok",
+    "company": "TikTok",
+    "domain": "tiktok.com",
+    "issue": 2,
+    "published": "2026-05-20",
+    "label": "Adversarial",
+    "score": 19,
+    "subtitle": "The platform engineered for addiction — its own research confirmed the harm, and its business model depends on it",
+    "summary": "Five of seven dimensions score the minimum, backed by regulatory findings from the EU Commission, fourteen state attorneys general, the FTC, and the Irish DPC — a platform whose business model structurally requires the addiction its own internal documents confirm it engineered.",
+    "brandColor": "#010101",
+    "sourceCount": 114,
+    "assessedPct": 35,
+    "confidence": "High"
+  },
+  {
     "slug": "substack",
     "company": "Substack",
     "domain": "substack.com",

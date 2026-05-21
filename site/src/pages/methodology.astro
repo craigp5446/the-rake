@@ -1,6 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.md';
+
+// ── Bump these three lines when shipping a new methodology version ──
+const methodVersion  = '1.5';
+const methodMonth    = 'May 2026';
+const methodUpdated  = 'May 19, 2026';
+// ───────────────────────────────────────────────────────────────────
 ---
 
 <Base title="Methodology — The Rake" description="How The Rake scores tech companies on how their revenue models relate to the interests of the people who use them.">
@@ -9,11 +15,12 @@ const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.
   <div class="meth-page__inner">
 
     <header class="meth-header">
-      <p class="mono muted meth-kicker">Open methodology · v1.5 · May 2026</p>
+      <p class="mono muted meth-kicker">Open methodology · v{methodVersion} · {methodMonth}</p>
       <h1 class="meth-title">How The Rake scores companies</h1>
-      <a href={githubUrl} target="_blank" rel="noopener" class="meth-github-link">
-        View methodology.md on GitHub →
-      </a>
+      <div class="meth-changelog" id="changelog">
+        <p class="meth-changelog__text">We pushed the latest update to the methodology on {methodUpdated}.</p>
+        <a href={githubUrl} target="_blank" rel="noopener" class="meth-changelog__link">View methodology.md on GitHub →</a>
+      </div>
     </header>
 
     <div class="meth-body">
@@ -263,6 +270,10 @@ const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.
     </div>
   </div>
 </main>
+
+<script define:vars={{ methodVersion }}>
+  localStorage.setItem('rake-seen-method-version', methodVersion);
+</script>
 
 </Base>
 
@@ -592,6 +603,39 @@ const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.
   line-height: 1.6;
   color: var(--text-muted);
   padding: 0.2rem 0;
+}
+
+/* Changelog */
+.meth-changelog {
+  background: color-mix(in srgb, #3B82F6 6%, var(--bg));
+  border: 1px solid color-mix(in srgb, #3B82F6 22%, transparent);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.meth-changelog__text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 0 !important;
+}
+.meth-changelog__link {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-bottom: 1px solid color-mix(in srgb, #3B82F6 35%, transparent);
+  padding-bottom: 1px;
+  align-self: flex-start;
+  transition: color 0.15s, border-color 0.15s;
+}
+.meth-changelog__link:hover {
+  color: var(--text);
+  border-bottom-color: #3B82F6;
 }
 
 /* Responsive */
