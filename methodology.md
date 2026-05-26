@@ -1,6 +1,6 @@
 # How The Rake scores companies
 
-**Version 1.5 — May 2026 — Open methodology**
+**Version 1.6 — May 2026 — Open methodology**
 
 ---
 
@@ -296,10 +296,20 @@ Look for: company publications that explain in meaningful detail the primary sig
 Look for: evidence that a parent company has publicly deprioritised, reduced investment in, or signalled intention to exit a product while continuing to monetise its user base. Threshold: must be a specific documented signal — earnings call, shareholder letter, regulatory filing, or confirmed statement from named leadership. Speculation is not sufficient.
 
 *Negative: Founder conduct*
-Look for: personal investments, public associations, or documented behaviour by the founder or CEO that conflicts materially with the company's stated values, or that users would consider significant to their decision to use and pay for the product. Threshold: must be specific and documented — a named investment, a public statement, a confirmed association. Not rumour or inference. Requires at least one assessed source. The conflict with company values or user interests must be clearly articulable.
+Look for: documented personal conduct, investments, or public associations by a founder or senior executive that a user would reasonably weigh in deciding whether to give the company their money and attention — including but not limited to: credible legal findings or active litigation alleging serious personal misconduct (e.g. harassment, fraud, abuse); financial backing of, or public advocacy for, causes or regimes that conflict materially with the company's stated values or that a reasonable user would find repugnant; or documented behaviour materially at odds with the product's stated mission. Threshold: must be specific and documented — a named investment, a public statement, a confirmed association. Not rumour or inference. Requires at least one assessed source. The conflict with company values or user interests must be clearly articulable.
 
 *Positive: Mission-lock structure*
 Look for: legally binding structural commitments that constrain the company's ability to prioritise extraction over user interests — benefit corporation status, statutory mission lock, employee or cooperative ownership, endowment funding with independence conditions. Threshold: must be a legal structure, not a stated commitment or values document. Requires assessed source confirming the structure exists and what it constrains.
+
+*Trajectory: Workforce reduction*
+Look for: a significant layoff or workforce reduction, particularly where the company is simultaneously profitable, growing revenue, or raising capital — the "cuts despite record performance" pattern. Threshold: must be confirmed by a company statement, filing, or credible named reporting, with approximate scale (headcount or percentage) and the financial context. By default this is a trajectory flag — it surfaces in the report and narrative as a directional signal about ownership pressure but does not adjust the spectrum position.
+
+Downstream user impact (escalation): where the reduction can be shown, with a sourced and articulable causal link, to affect a user-facing dimension, log a separate score-moving flag on the dimension actually affected — not on Dimension 7. This escalation is symmetric:
+
+- Negative — cuts that degrade a user-facing function: trust & safety reductions (Dimension 6), support or cancellation/help degradation (Dimension 3, or Dimension 5 where a commercial relationship is involved), or a reduction that accompanies a documented monetisation pivot (Dimension 7 Active divestment).
+- Positive — cuts that demonstrably improve the product's alignment with users: e.g. eliminating an org whose function ran against user interests, with evidence the refocus benefits users.
+
+The link requirement is the gate. Absent a documented downstream user consequence, the finding remains a trajectory flag and does not move the score. A score-moving layoffs flag must name the affected dimension, cite the evidence for the impact, and state the causal connection in one sentence.
 
 ---
 
@@ -377,4 +387,4 @@ It is analysis, applied consistently, in public, with sources. Scores reflect th
 
 ---
 
-*The Rake scoring methodology v1.5 — May 2026. This document is open. Fork it, critique it, improve it.*
+*The Rake scoring methodology v1.6 — May 2026. This document is open. Fork it, critique it, improve it.*

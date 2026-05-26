@@ -3,9 +3,9 @@ import Base from '../layouts/Base.astro';
 const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.md';
 
 // ── Bump these three lines when shipping a new methodology version ──
-const methodVersion  = '1.5';
+const methodVersion  = '1.6';
 const methodMonth    = 'May 2026';
-const methodUpdated  = 'May 19, 2026';
+const methodUpdated  = 'May 26, 2026';
 // ───────────────────────────────────────────────────────────────────
 ---
 
@@ -18,7 +18,7 @@ const methodUpdated  = 'May 19, 2026';
       <p class="mono muted meth-kicker">Open methodology · v{methodVersion} · {methodMonth}</p>
       <h1 class="meth-title">How The Rake scores companies</h1>
       <div class="meth-changelog" id="changelog">
-        <p class="meth-changelog__text">We pushed the latest update to the methodology on {methodUpdated}.</p>
+        <p class="meth-changelog__text">Updated {methodUpdated}. v1.6 adds a Workforce reduction trajectory flag (Dimension 7): layoffs surface as a directional signal by default, and escalate to a score-moving flag on the affected dimension only where a sourced downstream effect on users can be shown. The Founder conduct flag has also been tightened to explicitly cover serious personal-misconduct litigation and repugnant public associations, while keeping the same "articulable link to user interests" threshold.</p>
         <a href={githubUrl} target="_blank" rel="noopener" class="meth-changelog__link">View methodology.md on GitHub →</a>
       </div>
     </header>

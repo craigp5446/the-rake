@@ -1,5 +1,5 @@
 # The Rake — Phase 2: Scoring Prompt
-**Version 1.5 — May 2026**
+**Version 1.6 — May 2026**
 
 ---
 
@@ -301,12 +301,33 @@ one-line reason (e.g. "insufficient evidence", "does not meet threshold",
 - Negative (Active divestment): parent company signalled exit while 
   continuing to monetise user base. Requires primary source — earnings 
   call, filing, or named leadership statement.
-- Negative (Founder conduct): founder or CEO personally associated with 
-  named investments, causes, or behaviour conflicting materially with 
-  company values or user interests. Requires assessed source.
+- Negative (Founder conduct): a founder or senior executive personally
+  associated with documented personal conduct, named investments, causes,
+  or behaviour that a user would reasonably weigh in deciding whether to
+  give the company their money and attention — including credible legal
+  findings or active litigation alleging serious personal misconduct;
+  financial backing of, or public advocacy for, causes or regimes that
+  conflict materially with company values or that a reasonable user would
+  find repugnant; or documented behaviour materially at odds with the
+  product's stated mission. Requires assessed source.
 - Positive (Mission-lock structure): legally binding structure confirmed 
   by assessed source. Values documents and stated commitments do not 
   qualify.
+- Trajectory (Workforce reduction): significant layoff or workforce
+  reduction, especially alongside profitability, revenue growth, or
+  fundraising. Confirmed by company statement, filing, or credible named
+  reporting, with approximate scale and financial context. Default
+  treatment is trajectory — surfaces in the scorecard, does not adjust
+  spectrum position.
+
+  Escalation — where Phase 1 evidence shows a sourced, articulable
+  downstream effect on users, log a separate score-moving flag on the
+  affected dimension (negative if it degrades a user-facing function,
+  positive if it demonstrably improves user alignment). Map it to the
+  dimension actually affected (e.g. T&S cuts → D6; support/cancellation
+  degradation → D3/D5; monetisation pivot → D7 Active divestment), not
+  to D7 by default. State the causal link in the FINDING line. Absent a
+  documented user-facing consequence, keep it as a trajectory flag.
 
 *Flags not tied to a scored dimension*
 

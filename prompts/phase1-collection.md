@@ -1,5 +1,5 @@
 # The Rake — Phase 1: Collection Prompt
-**Version 1.4 — April 2026**
+**Version 1.6 — May 2026**
 
 ---
 
@@ -236,7 +236,10 @@ Who owns this company and what are they optimising for? Look for: current
 ownership structure (bootstrapped / VC / PE / public), most recent funding
 round and lead investors, any acquisition history, investor pressure
 signals (cost-cutting, monetisation pushes, executive changes post-
-acquisition).
+acquisition), and significant layoffs or workforce reductions — capture
+scale (headcount or %) and the financial context at the time (profitable?
+growing? recently funded?), since "cuts despite record performance" is a
+distinct signal.
 
 ## Flags to watch for
 
@@ -290,11 +293,20 @@ determine whether it meets the threshold for inclusion.
 - Negative (Active divestment): parent company has signalled exit from
   the product while continuing to monetise its user base, confirmed by
   a primary source
-- Negative (Founder conduct): founder or CEO personally associated with
-  investments, causes, or behaviour conflicting materially with company
-  values or user interests, confirmed and named
+- Negative (Founder conduct): a founder or senior executive personally
+  associated with documented conduct, named investments, causes, or
+  behaviour that a user would reasonably weigh in deciding whether to
+  give the company their money and attention — including serious
+  personal-misconduct litigation, repugnant public associations, or
+  behaviour materially at odds with the product's stated mission.
+  Confirmed and named.
 - Positive: legally binding mission-lock or equivalent structure
   confirmed by an assessed source
+- Trajectory (Workforce reduction): a significant layoff or workforce
+  reduction, with scale and financial context. Note separately any
+  evidence that the cuts affect a user-facing function — trust &
+  safety, support, moderation, or a product area — since Phase 2 may
+  escalate those to a dimensional flag.
 
 **Flags not tied to a scored dimension**
 
