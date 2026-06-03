@@ -3,9 +3,9 @@ import Base from '../layouts/Base.astro';
 const githubUrl = 'https://github.com/craigp5446/the-rake/blob/main/methodology.md';
 
 // ── Bump these three lines when shipping a new methodology version ──
-const methodVersion  = '1.6';
-const methodMonth    = 'May 2026';
-const methodUpdated  = 'May 26, 2026';
+const methodVersion  = '1.7';
+const methodMonth    = 'June 2026';
+const methodUpdated  = 'June 3, 2026';
 // ───────────────────────────────────────────────────────────────────
 ---
 
@@ -18,7 +18,7 @@ const methodUpdated  = 'May 26, 2026';
       <p class="mono muted meth-kicker">Open methodology · v{methodVersion} · {methodMonth}</p>
       <h1 class="meth-title">How The Rake scores companies</h1>
       <div class="meth-changelog" id="changelog">
-        <p class="meth-changelog__text">Updated {methodUpdated}. v1.6 adds a Workforce reduction trajectory flag (Dimension 7): layoffs surface as a directional signal by default, and escalate to a score-moving flag on the affected dimension only where a sourced downstream effect on users can be shown. The Founder conduct flag has also been tightened to explicitly cover serious personal-misconduct litigation and repugnant public associations, while keeping the same "articulable link to user interests" threshold.</p>
+        <p class="meth-changelog__text">Updated {methodUpdated}. v1.7 introduces flag clamping: flags still adjust the spectrum position (±1 or ±2), but the final score is now clamped to the band determined by the structural (pre-flag) base score. This means flags move a company within its label band but can no longer push it into a different label. The change ensures the label reflects what the dimension scores measured, while flags provide nuance within that range.</p>
         <a href={githubUrl} target="_blank" rel="noopener" class="meth-changelog__link">View methodology.md on GitHub →</a>
       </div>
     </header>
@@ -54,7 +54,7 @@ const methodUpdated  = 'May 26, 2026';
       <section class="meth-section">
         <h2>How the spectrum position is calculated</h2>
         <p>Each scored dimension is mapped to a 0–100 value using fixed band midpoints: a score of 1 maps to 17, a score of 2 to 50, a score of 3 to 83. N/A dimensions are excluded. The base score is the average of all mapped scored dimensions.</p>
-        <p>Flags then adjust the base score. A flag on an anchor dimension adjusts by ±2 points; a flag on a non-anchor dimension (or one not mapped to any dimension) adjusts by ±1 point. The total flag adjustment is capped at ±8 in either direction. The final score determines the label automatically.</p>
+        <p>Flags then adjust the base score. A flag on an anchor dimension adjusts by ±2 points; a flag on a non-anchor dimension (or one not mapped to any dimension) adjusts by ±1 point. The total flag adjustment is capped at ±8 in either direction. The final score is then clamped to the band determined by the base score — flags can move the position within a band but cannot change the label. The label is always determined by the structural base score.</p>
         <div class="anchor-table">
           <div class="anchor-col">
             <div class="anchor-col__label mono faint">Anchor dimensions <span class="anchor-weight">±2 per flag</span></div>

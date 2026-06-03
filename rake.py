@@ -6,12 +6,12 @@ import glob
 from datetime import datetime
 
 # ── config ──────────────────────────────────────────────────────────────────
-PHASE1_MODEL = "claude-opus-4-5"
-PHASE2_MODEL = "claude-sonnet-4-5"
+PHASE1_MODEL = "claude-opus-4-7"
+PHASE2_MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 12000
 PROMPTS_DIR = "prompts"
 ISSUES_DIR = "issues"
-METHODOLOGY_VERSION = "1.4"  # Update this when the methodology changes
+METHODOLOGY_VERSION = "1.7"  # Update this when the methodology changes
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 def load_prompt(filename):
@@ -216,13 +216,19 @@ def run_phase2(company, company_slug, phase1_output):
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 rake.py <company name> [--seeds URL1 URL2 ...]")
+        print("       python3 rake.py <company name> --phase1")
         print("       python3 rake.py <company name> --phase2")
         print("Example: python3 rake.py substack")
         print("Example: python3 rake.py substack --seeds https://leavesubstack.com")
+        print("Example: python3 rake.py substack --phase1")
         print("Example: python3 rake.py substack --phase2")
         sys.exit(1)
 
     args = sys.argv[1:]
+
+    phase1_only = "--phase1" in args
+    if phase1_only:
+        args = [a for a in args if a != "--phase1"]
 
     phase2_only = "--phase2" in args
     if phase2_only:
@@ -256,6 +262,9 @@ def main():
         phase1_output, phase1_path = run_phase1(company, company_slug, seed_urls)
         print("\n── Phase 1 complete ──────────────────────────────────────")
         print(f"Review the output at: {phase1_path}")
+        if phase1_only:
+            print("\nPhase 1 done. Run with --phase2 when ready to score.")
+            return
         print("\nPress Enter to continue to Phase 2, or Ctrl+C to stop and review first.")
         input()
 

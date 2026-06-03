@@ -1,5 +1,5 @@
 # The Rake — Phase 1: Collection Prompt
-**Version 1.6 — May 2026**
+**Version 1.7 — June 2026**
 
 ---
 

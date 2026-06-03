@@ -1,5 +1,5 @@
 # The Rake — Phase 2: Scoring Prompt
-**Version 1.6 — May 2026**
+**Version 1.7 — June 2026**
 
 ---
 
@@ -216,7 +216,9 @@ Positive flags add points; negative flags subtract. Cap the total net adjustment
 
 If a flag maps to an N/A dimension, apply it at ±1 — the finding is real even if the dimension does not score.
 
-**Step 3 — Determine label**
+**Step 3 — Clamp and determine label**
+
+The label is determined by the base score (before flag adjustments). Flag adjustments move the spectrum position within the base score's band but cannot cross a band boundary. If the adjusted score would fall outside the band, clamp it to the nearest edge.
 
 | Band     | Label       |
 |----------|-------------|
@@ -226,7 +228,7 @@ If a flag maps to an N/A dimension, apply it at ±1 — the finding is real even
 | 61–80    | Aligned     |
 | 81–100   | Principled  |
 
-Show your working: list each mapped score, the base average, each flag adjustment, the net adjustment, and the final score.
+Show your working: list each mapped score, the base average, the structural label (from base score), each flag adjustment, the net adjustment, the clamped final score, and confirm the label matches the structural label.
 
 Then write 2–3 sentences describing what the overall dimension profile shows — what the scores collectively indicate about how this company relates to its users, and whether any tension exists between dimensions.
 
@@ -376,9 +378,13 @@ DIMENSIONS SCORED: [n] of 7
 SPECTRUM CALCULATION:
   Mapped scores: [dimension: score → mapped value, one per line, N/A dimensions noted]
   Base score: [average of mapped scored dimensions]
+  Structural label: [label determined by base score band]
+  Structural band: [lower bound]–[upper bound]
   Flag adjustments: [flag name: anchor/non-anchor, ±n points — one per line]
   Net adjustment: [sum, note if capped at ±8]
-  Final score: [base + net adjustment]
+  Unclamped score: [base + net adjustment]
+  Final score: [clamped to structural band if needed]
+  Label: [structural label — confirmed unchanged by clamping]
 
 LABEL: [Adversarial / Extractive / Compromised / Aligned / Principled]
 SPECTRUM POSITION: [final score]

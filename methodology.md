@@ -1,6 +1,6 @@
 # How The Rake scores companies
 
-**Version 1.6 — May 2026 — Open methodology**
+**Version 1.7 — June 2026 — Open methodology**
 
 ---
 
@@ -46,9 +46,11 @@ Flags adjust the base score up (positive flags) or down (negative flags) based o
 
 The total flag adjustment is capped at ±8 points. If the net adjustment would exceed this cap in either direction, it is capped at ±8.
 
-**Step 3 — Determine label**
+**Step 3 — Clamp and determine label**
 
-The final spectrum position determines the label automatically using the band definitions above. No editorial override.
+The label is determined by the base score (before flag adjustments), not the final score. Flag adjustments can move the spectrum position within the base score's band but cannot push it into a different band. If the adjusted score would fall outside the base score's band, it is clamped to the nearest boundary of that band.
+
+This means flags affect where a company sits within its structural label — closer to or further from its band boundaries — but cannot change the label itself. A company whose dimension scores place it in the Compromised band remains Compromised regardless of flag volume.
 
 ---
 
@@ -80,6 +82,8 @@ Step 1 — mapped scores: 50, 83, 17, 50, 50. Average of 5 dimensions = 50.
 Step 2 — flags: one negative flag on captivity (anchor, −2), one positive flag on incentive alignment (anchor, +2), one negative flag on revenue clarity (non-anchor, −1). Net adjustment = −1.
 
 Step 3 — final score: 50 − 1 = 49 → **Compromised (49)**.
+
+If in the above example the net flag adjustment were −10 (capped to −8), the unclamped score would be 42. Since the base score of 50 falls in the Compromised band (41–60), the result is clamped to the band floor: Compromised (41), not Extractive.
 
 ---
 
@@ -387,4 +391,4 @@ It is analysis, applied consistently, in public, with sources. Scores reflect th
 
 ---
 
-*The Rake scoring methodology v1.6 — May 2026. This document is open. Fork it, critique it, improve it.*
+*The Rake scoring methodology v1.7 — June 2026. This document is open. Fork it, critique it, improve it.*
