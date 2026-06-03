@@ -1,0 +1,728 @@
+{
+  "slug": "spotify",
+  "company": "Spotify",
+  "domain": "spotify.com",
+  "brandColor": "#1DB954",
+  "issue": 3,
+  "published": "2026-06-01",
+  "methodologyVersion": "1.6",
+  "sourceCount": 130,
+  "label": "Extractive",
+  "score": 37,
+  "confidence": "High",
+  "assessedPct": 27,
+  "subtitle": "A platform structurally built to extract from creators it claims to champion, and from the users who trust it",
+  "summary": "A streaming platform whose margin improvements are structurally achieved by reducing creator compensation, subordinating user interests to advertising relationships, and operating the most dark-pattern-laden subscription cancellation flow in independent testing.",
+  "narrative": [
+    "[narrative goes here]"
+  ],
+  "dimensions": [
+    {
+      "id": "revenue-clarity",
+      "name": "Revenue clarity",
+      "definition": "Can a user immediately understand how this company makes money?",
+      "score": 2,
+      "scoreLabel": "Partial",
+      "assessedCount": 11,
+      "inferredCount": 3,
+      "evidenceStrength": "Strong",
+      "rationale": "Spotify's primary revenue streams (Premium subscriptions and advertising) are broadly known and publicly documented in pricing pages, earnings filings, and investor materials. However, the advertising business involves multi-layered targeting capabilities (demographic, behavioural, mood-state, fan-derived) disclosed primarily in advertiser-facing materials rather than user-facing documentation, and the mechanics of Discovery Mode's royalty-reduction-for-promotion exchange are not disclosed to listeners in the listening interface. The NMPA/FTC complaint and Variety reporting additionally document that Spotify's reclassification of Premium as a \"bundle\" to reduce songwriter royalty obligations was not communicated to subscribers as a material change to what they were purchasing.",
+      "findings": []
+    },
+    {
+      "id": "incentive-alignment",
+      "name": "Incentive alignment",
+      "definition": "Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?",
+      "score": 2,
+      "scoreLabel": "Neutral",
+      "assessedCount": 1,
+      "inferredCount": 15,
+      "evidenceStrength": "Strong",
+      "rationale": "Spotify's primary revenue model — flat subscription fees and advertising — is neutral on incentive alignment from a listener perspective. The platform delivers the service users pay for, and Spotify's revenue is not structurally tied to listener failure, dependency, or worsening outcomes. The artist royalty practices documented in Phase 1 (Discovery Mode royalty reductions, Perfect Fit Content commissioning, bundling reclassification) are real findings but reflect tension between Spotify and rights holders in a multi-sided market; they are covered in D5 as documented instances of commercial relationships overriding third-party interests, rather than as evidence that the platform structurally requires listener failure.",
+      "findings": [
+        "discovery-mode-royalty-reduction"
+      ]
+    },
+    {
+      "id": "captivity",
+      "name": "Captivity",
+      "definition": "How easy is it to leave? Is data portable? Is cancellation straightforward?",
+      "score": 2,
+      "scoreLabel": "Friction",
+      "assessedCount": 3,
+      "inferredCount": 10,
+      "evidenceStrength": "Strong",
+      "rationale": "Data export is available through Spotify's GDPR Article 15 mechanism in three packages downloadable from the web account page, but the process involves a 30-day wait, JSON-only format, and (as documented by independent user analysis) an incomplete first-level export that requires a separate support request to obtain the full dataset. Cancellation is technically self-serve but was independently ranked the most dark-pattern-laden subscription cancellation flow among 44 UK services studied by KnownHost, with nine documented dark patterns and five screens required. The Spotify Basic tier restriction, preventing cancelled Premium subscribers from resubscribing, adds a structural disincentive to cancellation. The GDPR fine of €5M for failing to fulfil data subject access requests establishes that friction in data access has crossed into a regulatory violation.",
+      "findings": [
+        "dark-pattern-cancellation"
+      ]
+    },
+    {
+      "id": "engagement-extraction",
+      "name": "Engagement extraction",
+      "definition": "Does the product use engagement mechanics that serve the user, or that serve the platform at the user's expense?",
+      "score": 2,
+      "scoreLabel": "Extractive",
+      "assessedCount": 1,
+      "inferredCount": 11,
+      "evidenceStrength": "Moderate",
+      "rationale": "Spotify's recommendation systems are explicitly documented by third-party analysis as optimising for session length and platform retention. Autoplay, identified by the EU Commission as a design feature capable of harming user wellbeing, operates by default with no platform-level usage limit. However, Spotify's own transparency page states its systems are not optimised only for the next click, autoplay can be disabled in settings, and there is no evidence of mechanics deliberately calibrated to override user judgment in the manner that would meet the weaponised threshold. The absence of any platform-level usage limiter, documented through Spotify community support threads confirming iOS Screen Time controls are ineffective for background audio, represents a passive failure to support user autonomy rather than active exploitation.",
+      "findings": []
+    },
+    {
+      "id": "multi-sided-tension",
+      "name": "Multi-sided tension",
+      "definition": "When advertiser or third-party interests conflict with user interests, which side does the company take?",
+      "score": 1,
+      "scoreLabel": "Users subordinated",
+      "assessedCount": 10,
+      "inferredCount": 12,
+      "evidenceStrength": "Strong",
+      "rationale": "Spotify's primary commercial relationships are with advertisers (for free-tier users) and with major rights holders and high-value talent whose interests have demonstrably taken precedence over those of both listeners and creators. The free tier's value to Spotify depends entirely on monetising user attention and behavioural data for advertisers, with targeting extending to mood, real-time mindset, and \"streaming intelligence\" across 3 billion playlists. These are capabilities marketed to advertisers but not prominently disclosed to listeners. The Joe Rogan misinformation episode, in which Spotify declined to apply the same COVID misinformation policies to Rogan that it applied to 20,000 other podcasts, while holding a $100M exclusive deal, is the clearest documented instance of a paying commercial relationship overriding user interests. The Perfect Fit Content and Discovery Mode programmes further illustrate a structural pattern in which Spotify's margin and advertiser relationships take precedence over the creator interests that are nominally central to the platform's mission.",
+      "findings": [
+        "user-interests-subordinated"
+      ]
+    },
+    {
+      "id": "algorithmic-accountability",
+      "name": "Algorithmic accountability",
+      "definition": "Does the company take documented responsibility for what its systems surface and promote?",
+      "score": 2,
+      "scoreLabel": "Partial accountability",
+      "assessedCount": 9,
+      "inferredCount": 11,
+      "evidenceStrength": "Strong",
+      "rationale": "Spotify publishes DSA Transparency Reports, operates under GARM brand-safety standards, discloses content moderation action categories, and has a documented record of removing content under its hate policies (Alex Jones, 20,000+ COVID misinformation podcasts). However, the Joe Rogan episode established that Spotify's content policies were applied inconsistently when a high-value commercial relationship was involved. This pattern was not resolved by the subsequent non-exclusive renewal. The Perfect Fit Content programme represents a form of undisclosed editorial curation in which listeners are not informed that tracks have been commissioned and promoted for margin reasons rather than quality signals. Ranking signals are partially described in Spotify's recommendations explainer but are not disclosed in the actionable detail the rubric requires for a 3.",
+      "findings": [
+        "pfc-ghost-artists"
+      ]
+    },
+    {
+      "id": "ownership-pressure",
+      "name": "Ownership pressure",
+      "definition": "What structural pressures does the ownership model create, and do they push toward or against user interests?",
+      "score": 2,
+      "scoreLabel": "Moderate pressure",
+      "assessedCount": 5,
+      "inferredCount": 10,
+      "evidenceStrength": "Strong",
+      "rationale": "Spotify is a NYSE-listed public company with mixed subscription/advertising revenue, placing it in the moderate-pressure band. Founder dual-class voting control (Ek and Lorentzon together controlling a significant majority of voting power) provides insulation from pure shareholder pressure beyond that available to most public companies. The December 2023 17% workforce reduction, concurrent with positive earnings and record profitability targets, indicates shareholder-return pressure has been acted upon materially, though Spotify's subsequent financial performance shows the pressure has not resulted in product degradation detectable at the dimension level. Ek's transition to Executive Chairman in January 2026 preserves his strategic veto while reducing his operational accountability.",
+      "findings": [
+        "founder-conduct-helsing",
+        "workforce-reduction"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "pfc-ghost-artists",
+      "type": "negative",
+      "dimension": "algorithmic-accountability",
+      "dimensionLabel": "Algorithmic accountability",
+      "title": "Perfect Fit Content / Ghost Artists",
+      "text": "Investigative reporting by Liz Pelly (Harper's, 2024), corroborated by independent playlist sampling showing 95 of 100 tracks on a curated Spotify playlist untraceable to identifiable human artists, documents that Spotify commissioned and promoted tracks under pseudonyms to reduce royalty costs, with playlist editors tracked on a dashboard column measuring content \"commissioned to fit a certain playlist/mood with improved margins.\"",
+      "source": "Futurism / Chartmetric",
+      "sourceUrl": "https://futurism.com/spotify-accused-promoting-ghost-artists",
+      "sourceDate": "December 20, 2024",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "discovery-mode-royalty-reduction",
+      "type": "negative",
+      "dimension": "incentive-alignment",
+      "dimensionLabel": "Incentive alignment",
+      "title": "Discovery Mode: promotion in exchange for a ~30% royalty cut",
+      "text": "Spotify's Discovery Mode offers algorithmic promotion to artists in exchange for approximately a 30% reduction in per-stream royalties, a mechanism the Recording Academy characterised as resembling payola, that is the subject of a class-action lawsuit, and that listeners are not notified about in the listening interface.",
+      "source": "Recording Academy",
+      "sourceUrl": "https://www.grammy.com/news/does-spotifys-new-discovery-mode-resemble-anti-creator-payola",
+      "sourceDate": "Retrieved 31 May 2026",
+      "sourceType": "ASSESSED"
+    },
+    {
+      "id": "dark-pattern-cancellation",
+      "type": "negative",
+      "dimension": "captivity",
+      "dimensionLabel": "Captivity",
+      "title": "Ranked worst-in-class for cancellation dark patterns among 44 subscription services",
+      "text": "A systematic study of 44 UK subscription services by KnownHost ranked Spotify the worst cancellation offender, identifying nine dark patterns including forced continuity, misdirection, confirmshaming, and FOMO tactics, requiring five clicks over five screens to cancel. The NMPA's FTC complaint additionally characterised Spotify's cancellation flows as thwarting cancellation through dark patterns.",
+      "source": "KnownHost",
+      "sourceUrl": "https://www.knownhost.com/blog/hardest-subscriptions-to-cancel/",
+      "sourceDate": "January 26, 2026",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "user-interests-subordinated",
+      "type": "negative",
+      "dimension": "multi-sided-tension",
+      "dimensionLabel": "Multi-sided tension",
+      "title": "Bundling reclassification cut songwriter royalties by $150M+ annually without subscriber consent",
+      "text": "Spotify reclassified its Premium subscription as a \"bundle\" after adding audiobook access without subscriber consent, reducing songwriter mechanical royalties by an estimated $150M+ annually in the first year. The company was subject to an FTC complaint from NMPA and ongoing MLC litigation in which Spotify disclosed potential additional royalty liability of approximately €256M for March 2024–June 2025 alone.",
+      "source": "Billboard / Music Business Worldwide",
+      "sourceUrl": "https://www.billboard.com/business/publishing/spotify-sued-mlc-bundling-cutting-songwriter-royalties-1235684122/",
+      "sourceDate": "May 21, 2024",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "founder-conduct-helsing",
+      "type": "negative",
+      "dimension": "ownership-pressure",
+      "dimensionLabel": "Ownership pressure",
+      "title": "Founder Ek invested €600M in military AI firm Helsing, prompting artist catalogue removals",
+      "text": "Daniel Ek, Spotify's founder and Executive Chairman who retains majority voting control, invested €600M through his private firm Prima Materia as the primary backer of Helsing SE (an AI company developing military surveillance, drone targeting, and battlefield integration systems) and serves as Helsing's chairman. This prompted multiple artists to remove their catalogues from Spotify citing incompatibility with the platform's stated values.",
+      "source": "Complex Discovery",
+      "sourceUrl": "https://complexdiscovery.com/spotify-ceos-military-ai-bet-sparks-artist-revolt-and-a-larger-reckoning-over-tech-leadership/",
+      "sourceDate": "August 5, 2025",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "workforce-reduction",
+      "type": "trajectory",
+      "dimension": "ownership-pressure",
+      "dimensionLabel": "Ownership pressure",
+      "title": "December 2023: 17% workforce reduction (~1,500 employees) concurrent with positive earnings",
+      "text": "In December 2023, Spotify reduced its global workforce by approximately 17% (~1,500 employees), its third round of cuts in 2023 and the largest, at a cost of €110M in severance, made concurrently with a positive earnings report and stated financial improvement goals. The company's headcount had fallen to 7,323 by year-end 2025.",
+      "source": "Rolling Stone / SEC Filing",
+      "sourceUrl": "https://www.rollingstone.com/music/music-news/spotify-global-workforce-cost-cutting-layoffs-1234908996/",
+      "sourceDate": "December 4, 2023",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "data-security-incident",
+      "type": "trajectory",
+      "dimension": null,
+      "dimensionLabel": null,
+      "title": "Multiple data security incidents in 2024–2025",
+      "text": "Multiple Spotify-related data incidents in 2024–2025 are documented, including credential-stuffing attacks in January 2025 affecting \"millions\" of accounts via reused passwords, a March 2025 unsecured Elasticsearch database exposure leaving approximately 300,000+ accounts vulnerable, and an April 2025 customer-data exposure to third-party business partners that prompted password resets after persisting for months.",
+      "source": "Huntress / Factually",
+      "sourceUrl": "https://www.huntress.com/threat-library/data-breach/spotify-data-breach",
+      "sourceDate": "Retrieved 31 May 2026",
+      "sourceType": "INFERRED"
+    }
+  ],
+  "personas": [
+    {
+      "label": "For listeners (free tier)",
+      "text": "Spotify uses your listening behaviour, real-time mood signals, and demographic data to target you with advertising. You are paying for this with your attention, and it is not prominently disclosed in the app."
+    },
+    {
+      "label": "For listeners (Premium subscriber)",
+      "text": "Spotify is the most difficult major subscription to cancel in independent testing, with multiple dark patterns identified in the cancellation flow, and the company converted your music-only subscription to a bundle without your consent to reduce payments to songwriters."
+    },
+    {
+      "label": "For artists and creators",
+      "text": "Spotify's Discovery Mode, Perfect Fit Content programme, and bundling reclassification each structurally reduce the royalties you are owed in ways that benefit Spotify's margins. The platform's incentive architecture is not aligned with your financial success."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.spotify.com/us/premium/",
+      "title": "Spotify - Premium pricing page",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.spotify.com/us/legal/privacy-policy/",
+      "title": "Spotify - Privacy Policy",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.spotify.com/us/legal/notice-at-collection/",
+      "title": "Spotify - Notice at Collection",
+      "date": "1 January 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.spotify.com/us/legal/ad-analytics-privacy-policy/",
+      "title": "Spotify - Ad Analytics Privacy Policy",
+      "date": "13 June 2023",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ads.spotify.com/en-US/small-business-advertising/",
+      "title": "Spotify Ads - Small Business Advertising",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ads.spotify.com/en-US/help-center/targeting-ad-studio/",
+      "title": "Spotify Ads - Targeting in Ad Studio",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://newsroom.spotify.com/2026-05-21/investor-day-ads-business-growth/",
+      "title": "Spotify Newsroom - Investor Day: Ads Business Growth",
+      "date": "21 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ads.spotify.com/en-US/contextual-advertising/",
+      "title": "Spotify Ads - Contextual Advertising",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://support.spotify.com/account_payment_help/privacy/gdpr-article-15-information/",
+      "title": "Spotify Support - GDPR Article 15 data access information",
+      "date": "1 December 2020",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://newsroom.spotify.com/2024-03-04/the-european-commission-confirms-apples-anti-competitive-behavior-is-illegal-and-harms-consumers/",
+      "title": "Spotify Newsroom - EU Commission confirms Apple anti-competitive behaviour",
+      "date": "4 March 2024",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001639920/000114036126017211/ef20071303_ex99-1.htm",
+      "title": "SEC - Spotify Q1 2026 earnings filing",
+      "date": "28 April 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.grammy.com/news/does-spotifys-new-discovery-mode-resemble-anti-creator-payola",
+      "title": "Recording Academy - Does Spotify's Discovery Mode resemble anti-creator payola?",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.spotify.com/us/legal/gdpr-article-15-information/",
+      "title": "Spotify - GDPR Article 15 rights page",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://noyb.eu/en/spotify-fined-eu-5-million-gdpr-violation",
+      "title": "NOYB - Spotify fined €5 million for GDPR violation",
+      "date": "16 April 2024",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.spotify.com/us/safetyandprivacy/understanding-recommendations",
+      "title": "Spotify - Understanding our recommendations",
+      "date": "12 March 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ads.spotify.com/en-US/advertising-policies/",
+      "title": "Spotify Ads - Advertising policies",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ads.spotify.com/en-US/news-and-insights/spotify-audience-network-new-features-2021/",
+      "title": "Spotify Ads - Audience Network new features",
+      "date": "5 October 2021",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ads.spotify.com/en-US/news-and-insights/introducing-sensitive-topic-filters/",
+      "title": "Spotify Ads - Introducing sensitive topic filters",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://newsroom.spotify.com/2026-02-10/spotify-q4-2025-earnings/",
+      "title": "Spotify Newsroom - Q4 2025 Earnings",
+      "date": "10 February 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://s29.q4cdn.com/175625835/files/doc_financials/2025/q4/Q4-2025-Shareholder-Deck-FINAL.pdf",
+      "title": "Spotify - Q4 2025 Shareholder Deck",
+      "date": "10 February 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.spotify.com/uk/safetyandprivacy/transparency",
+      "title": "Spotify - Safety & Privacy Transparency page",
+      "date": "Retrieved 31 May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.spotify.com/safetyandprivacy/transparency/eu_20250213_dsa_report.pdf",
+      "title": "Spotify - EU DSA Transparency Report (February 2025)",
+      "date": "13 February 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.spotify.com/safetyandprivacy/file/eu_2025_dsa_report_introduction_spotify",
+      "title": "Spotify - EU DSA Report 2025 introduction",
+      "date": "27 February 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://judiciary.house.gov/media/in-the-news/house-probes-spotify-over-censorship-after-disinformation-controversies",
+      "title": "House Judiciary Committee - House probes Spotify over censorship",
+      "date": "29 July 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://newsroom.spotify.com/2025-09-30/spotify-announcement-daniel-ek-executive-chairman/",
+      "title": "Spotify Newsroom - Daniel Ek named Executive Chairman",
+      "date": "30 September 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://newsroom.spotify.com/2025-11-04/spotify-q3-2025-earnings/",
+      "title": "Spotify Newsroom - Q3 2025 Earnings",
+      "date": "4 November 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001639920/000114036124005769/ef20020473_ex99-1.htm",
+      "title": "SEC - Spotify Q4 2023 earnings filing",
+      "date": "Q4 2023",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.chartlex.com/blog/streaming/spotify-discovery-mode-explained-indie-artists",
+      "title": "Chartlex - Spotify Discovery Mode explained for indie artists",
+      "date": "3 April 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://variety.com/2024/music/news/music-publishers-complaint-against-spotify-with-ftc-1236035604/",
+      "title": "Variety - Music publishers file FTC complaint against Spotify",
+      "date": "14 June 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://wegetartists.com/the-many-dark-patterns-used-to-hide-spotify-basic/",
+      "title": "We Get Artists - The many dark patterns used to hide Spotify Basic",
+      "date": "20 January 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Controversy_over_fake_artists_on_Spotify",
+      "title": "Wikipedia - Controversy over fake artists on Spotify",
+      "date": "25 March 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://futurism.com/spotify-accused-promoting-ghost-artists",
+      "title": "Futurism - Spotify accused of promoting ghost artists",
+      "date": "20 December 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://musictech.net/news/music/spotify-uses-ghost-artists-on-playlists-report-claims/",
+      "title": "MusicTech - Spotify uses ghost artists on playlists, report claims",
+      "date": "20 December 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://hmc.chartmetric.com/spotify-ai-ghost-artists-perfect-fit-content-2/",
+      "title": "Chartmetric - Spotify AI ghost artists and Perfect Fit Content",
+      "date": "19 August 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.architeg-prints.com/blog/spotify-faces-payola-lawsuit-over-discovery-mode-what-you-need-to-know",
+      "title": "Architeg - Spotify faces payola lawsuit over Discovery Mode",
+      "date": "7 November 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://theplayground.co.uk/spotifys-royalty-roulette-discovery-mode-continues-to-face-backlash/",
+      "title": "The Playground - Spotify's royalty roulette: Discovery Mode continues to face backlash",
+      "date": "24 February 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.billboard.com/business/publishing/spotify-sued-mlc-bundling-cutting-songwriter-royalties-1235684122/",
+      "title": "Billboard - Spotify sued by MLC over bundling and songwriter royalties",
+      "date": "21 May 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://variety.com/2025/music/news/spotify-wins-lawsuit-bundling-royalties-1236289823/",
+      "title": "Variety - Spotify wins bundling royalties lawsuit",
+      "date": "31 January 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.musicbusinessworldwide.com/mlc-can-file-amended-complaint-in-bundling-lawsuit-against-spotify-court-says/",
+      "title": "Music Business Worldwide - MLC can file amended complaint in bundling lawsuit against Spotify",
+      "date": "26 September 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://blog.matchfy.io/how-much-does-spotify-pay-per-stream-in-2025-a-complete-guide-for-independent-artists/",
+      "title": "Matchfy - How much does Spotify pay per stream in 2025",
+      "date": "9 June 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://musically.com/2020/03/12/liz-pelly-spotify-independence-big-music-tech-criticism/",
+      "title": "Music Ally - Liz Pelly on Spotify, independence, and big music tech criticism",
+      "date": "12 March 2020",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://lizpelly.info/writing",
+      "title": "Liz Pelly - Writing archive",
+      "date": "~2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.rollingstone.com/pro/music-biz-commentary/spotify-payola-artist-rights-alliance-1170544/",
+      "title": "Rolling Stone - Artist Rights Alliance on Spotify payola concerns",
+      "date": "18 May 2021",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.knownhost.com/blog/hardest-subscriptions-to-cancel/",
+      "title": "KnownHost - The hardest subscriptions to cancel",
+      "date": "26 January 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://themodems.com/tech/spotify-is-the-hardest-subscription-service-to-cancel/",
+      "title": "The Modems - Spotify is the hardest subscription service to cancel",
+      "date": "23 May 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.deceptive.design/brands/spotify",
+      "title": "Deceptive Design - Spotify dark patterns",
+      "date": "Retrieved 31 May 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.pymnts.com/streaming/2024/spotify-faces-ftc-complaint-from-music-publishers/",
+      "title": "PYMNTS - Spotify faces FTC complaint from music publishers",
+      "date": "13 June 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://edbro.net/posts/an-analysis-of-the-spotify-gdpr-data-export/",
+      "title": "edbro.net - An analysis of the Spotify GDPR data export",
+      "date": "7 February 2021",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://hofmannb.dev/blog/2025/spotify-analysis-script/",
+      "title": "hofmannb.dev - Spotify data export analysis script",
+      "date": "28 August 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://csvviz.com/guides/spotify",
+      "title": "CSVViz - Spotify data export guide",
+      "date": "Retrieved 31 May 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.lexology.com/library/detail.aspx?g=ca6c5828-6ce3-43e4-9edf-10324e0f334e",
+      "title": "Lexology - Spotify GDPR compliance analysis",
+      "date": "4 July 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.music-tomorrow.com/blog/how-spotify-recommendation-system-works-complete-guide",
+      "title": "Music Tomorrow - How Spotify's recommendation system works",
+      "date": "16 October 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://orphiq.com/resources/spotify-algorithmic-playlists-explained",
+      "title": "Orphiq - Spotify algorithmic playlists explained",
+      "date": "15 March 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.techpolicy.press/how-have-platforms-addressed-addictive-design-under-the-dsa/",
+      "title": "Tech Policy Press - How have platforms addressed addictive design under the DSA?",
+      "date": "23 February 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://community.spotify.com/t5/Android/Limit-listening-time/td-p/5628549",
+      "title": "Spotify Community - Limit listening time (Android)",
+      "date": "22 April 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://community.spotify.com/t5/iOS-iPhone-iPad/Screen-time-limitation-is-NOT-working-for-spotify-under-iOS/td-p/6515701",
+      "title": "Spotify Community - Screen time limitation not working under iOS",
+      "date": "7 December 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://community.spotify.com/t5/Live-Ideas/Set-listening-time-limit-for-kids/idi-p/7056105",
+      "title": "Spotify Community - Set listening time limit for kids (feature request)",
+      "date": "18 July 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://nogood.io/blog/spotify-wrapped-marketing-strategy/",
+      "title": "NoGood - Spotify Wrapped marketing strategy",
+      "date": "9 January 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://journals.sagepub.com/doi/10.1177/20438869251395753",
+      "title": "SAGE Journals - Music streaming and habitual listening behaviour",
+      "date": "5 November 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=40995257",
+      "title": "Hacker News - Spotify autoplay and engagement discussion",
+      "date": "19 July 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2025.1457754/full",
+      "title": "Frontiers in Communication - Algorithmic curation and passive listening",
+      "date": "12 March 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://omnisearch.ai/blog/spotify-unwrapped",
+      "title": "Omnisearch - Spotify Unwrapped: behind the data",
+      "date": "12 August 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://slate.com/technology/2022/02/spotify-joe-rogan-content-moderation.html",
+      "title": "Slate - Spotify's content moderation failure on Joe Rogan",
+      "date": "4 February 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.eff.org/deeplinks/2022/02/what-spotify-neil-young-and-joe-rogan-tell-us-about-content-moderation",
+      "title": "EFF - What Spotify, Neil Young, and Joe Rogan tell us about content moderation",
+      "date": "2 March 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.scotsman.com/lifestyle/tech/spotify-crying-content-moderation-on-joe-rogan-covid-misinformation-falls-flat-3549393",
+      "title": "The Scotsman - Spotify's content moderation on Rogan falls flat",
+      "date": "1 February 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://fortune.com/2024/02/03/spotify-joe-rogan-youtube-apple-podcasts/",
+      "title": "Fortune - Joe Rogan, Spotify, and the podcast wars",
+      "date": "3 February 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://variety.com/2024/digital/news/joe-rogan-renews-spotify-deal-not-exclusive-1235895424/",
+      "title": "Variety - Joe Rogan renews Spotify deal, no longer exclusive",
+      "date": "3 February 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://thebaffler.com/downstream/big-mood-machine-pelly",
+      "title": "The Baffler - Big Mood Machine (Liz Pelly)",
+      "date": "11 June 2019",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://medium.com/@apollinereymond/spotifys-api-lock-down-the-end-of-open-data-for-the-music-business-0a9bf07dba27",
+      "title": "Medium - Spotify's API lock-down: the end of open data for the music business",
+      "date": "18 February 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://gnet-research.org/2024/10/25/amplifying-extremism-white-supremacists-and-far-right-groups-on-spotify/",
+      "title": "GNET - Amplifying extremism: white supremacists and far-right groups on Spotify",
+      "date": "25 October 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.npr.org/2018/08/02/634998447/spotify-pulls-some-alex-jones-podcast-episodes",
+      "title": "NPR - Spotify pulls some Alex Jones podcast episodes",
+      "date": "2 August 2018",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://deadline.com/2018/08/apple-pulls-alex-jones-infowars-podcasts-hate-speech-violations-facebook-spotify-remove-content-1202440666/",
+      "title": "Deadline - Apple, Spotify remove Alex Jones/Infowars content",
+      "date": "6 August 2018",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.hiig.de/en/analysis-of-the-dsas-transparency-reports/",
+      "title": "HIIG - Analysis of the DSA's transparency reports",
+      "date": "10 December 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.rollingstone.com/music/music-news/spotify-global-workforce-cost-cutting-layoffs-1234908996/",
+      "title": "Rolling Stone - Spotify global workforce cost-cutting layoffs",
+      "date": "4 December 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.billboard.com/business/streaming/spotify-layoffs-2023-restructure-job-cuts-1235531731/",
+      "title": "Billboard - Spotify layoffs 2023 restructure",
+      "date": "4 December 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.revenuememo.com/p/who-owns-spotify",
+      "title": "Revenue Memo - Who owns Spotify",
+      "date": "~24 May 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://matrixbcg.com/blogs/owners/spotify",
+      "title": "MatrixBCG - Spotify ownership structure",
+      "date": "13 April 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.cnbc.com/2025/09/30/spotify-founder-daniel-ek-stepping-down.html",
+      "title": "CNBC - Spotify founder Daniel Ek stepping down as CEO",
+      "date": "30 September 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://variety.com/2025/digital/news/daniel-ek-step-down-spotify-ceo-1236534775/",
+      "title": "Variety - Daniel Ek steps down as Spotify CEO",
+      "date": "30 September 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.musicbusinessworldwide.com/alex-norstrom-has-a-long-to-do-list-as-spotifys-new-co-ceo-heres-whats-on-it/",
+      "title": "Music Business Worldwide - Alex Norstrom as Spotify's new co-CEO",
+      "date": "2 October 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://complexdiscovery.com/spotify-ceos-military-ai-bet-sparks-artist-revolt-and-a-larger-reckoning-over-tech-leadership/",
+      "title": "Complex Discovery - Spotify CEO's military AI bet sparks artist revolt",
+      "date": "5 August 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://dronexl.co/2025/08/04/bands-boycott-spotify-ceo-helsing-drones/",
+      "title": "DroneXL - Bands boycott Spotify CEO over Helsing drone investment",
+      "date": "5 August 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.musicbusinessworldwide.com/daniel-ek-to-step-away-from-ceo-role-at-spotify-will-become-executive-chairman-effective-january-1-2026/",
+      "title": "Music Business Worldwide - Daniel Ek to become Spotify Executive Chairman",
+      "date": "30 September 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.huntress.com/threat-library/data-breach/spotify-data-breach",
+      "title": "Huntress - Spotify data breach history",
+      "date": "Retrieved 31 May 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://factually.co/fact-checks/technology/spotify-data-breaches-history-9e714b",
+      "title": "Factually - Spotify data breaches history",
+      "date": "11 December 2025",
+      "type": "INFERRED"
+    }
+  ]
+}

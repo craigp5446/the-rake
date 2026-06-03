@@ -1,5 +1,20 @@
 [
   {
+    "slug": "spotify",
+    "company": "Spotify",
+    "domain": "spotify.com",
+    "issue": 3,
+    "published": "2026-06-01",
+    "label": "Extractive",
+    "score": 37,
+    "subtitle": "A platform structurally built to extract from creators it claims to champion, and from the users who trust it",
+    "summary": "A streaming platform whose margin improvements are structurally achieved by reducing creator compensation, subordinating user interests to advertising relationships, and operating the most dark-pattern-laden subscription cancellation flow in independent testing.",
+    "brandColor": "#1DB954",
+    "sourceCount": 130,
+    "assessedPct": 27,
+    "confidence": "High"
+  },
+  {
     "slug": "tiktok",
     "company": "TikTok",
     "domain": "tiktok.com",
