@@ -159,7 +159,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
   <header class="masthead">
     <div class="masthead__banner" style={`background: ${report.brandColor ?? '#9A9994'}`} aria-hidden="true">
       <img
-        src={`https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}
+        src={report.logoPath ?? `https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}
         alt=""
         width="56"
         height="56"
@@ -173,7 +173,7 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
       <div class="masthead__title-row">
         <div class="masthead__logo" style={`background: ${report.brandColor ?? '#9A9994'}`}>
           <img
-            src={`https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}
+            src={report.logoPath ?? `https://cdn.brandfetch.io/${report.domain}/w/160/h/160?c=${import.meta.env.BRANDFETCH_CLIENT_ID}`}
             alt={report.company}
             width="48"
             height="48"

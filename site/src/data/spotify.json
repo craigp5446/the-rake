@@ -5,16 +5,23 @@
   "brandColor": "#1DB954",
   "issue": 3,
   "published": "2026-06-01",
-  "methodologyVersion": "1.6",
+  "logoPath": "/logos/spotify.svg",
+  "methodologyVersion": "1.7",
   "sourceCount": 130,
-  "label": "Extractive",
-  "score": 37,
+  "label": "Compromised",
+  "score": 41,
   "confidence": "High",
   "assessedPct": 27,
   "subtitle": "A platform structurally built to extract from creators it claims to champion, and from the users who trust it",
   "summary": "A streaming platform whose margin improvements are structurally achieved by reducing creator compensation, subordinating user interests to advertising relationships, and operating the most dark-pattern-laden subscription cancellation flow in independent testing.",
   "narrative": [
-    "[narrative goes here]"
+    "I grew up in what feels like a golden age, when music met the internet for the first time. My teenage years were defined by endless downloading on Napster and burning my own CDs. Handcrafted, perfectly curated, personalized to perfection.",
+    "Things have changed. We discover, consume, and share music in ways that would have been unimaginable then. Spotify's product works. It does what it says it does, and does it well.",
+    "Downloading songs as a kid was a great experience for me. I still have the stacks of burned CDs to prove it. For the artists whose music I was taking? Not so great.",
+    "Music has never been simple. It's an industry with many players, many competing interests, and tensions that predate streaming. Spotify didn't create those tensions. But, as we know, it inherited them, and has to navigate them.",
+    "That's why Multi-Sided Tension scored lowest here. The competing priorities between users, artists, advertisers, and Spotify's own growth are always in play. They rarely seem to benefit artists, and don't always resolve in users' favour either.",
+    "None of this is a secret. We all know how hard it is for artists to make meaningful money on Spotify, even as the company brought in an estimated €17B+ in revenue in 2025. Advertising is a significant part of that model, and advertising always introduces some distance between what's good for the platform and what's good for the people using it.",
+    "Choosing Spotify should include some reflection on these tensions. As we've seen, some musicians and listeners are already choosing alternatives, even when the product itself is better. Quality is only one factor. Who benefits, and how, turns out to matter too."
   ],
   "dimensions": [
     {

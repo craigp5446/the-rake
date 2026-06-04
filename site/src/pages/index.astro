@@ -16,8 +16,8 @@ const labelGloss: Record<string, string> = {
 };
 
 const brandfetchId = import.meta.env.BRANDFETCH_CLIENT_ID;
-const logoSrc = (domain: string) =>
-  `https://cdn.brandfetch.io/${domain}/w/256/h/256?c=${brandfetchId}`;
+const logoSrc = (domain: string, logoPath?: string) =>
+  logoPath ?? `https://cdn.brandfetch.io/${domain}/w/256/h/256?c=${brandfetchId}`;
 
 const [featured, ...previous] = reports;
 ---
@@ -41,7 +41,7 @@ const [featured, ...previous] = reports;
             <div style="margin-bottom: 56px;">
               <FeaturedCard
                 brandColor={featured.brandColor ?? '#9A9994'}
-                logoSrc={logoSrc(featured.domain)}
+                logoSrc={logoSrc(featured.domain, featured.logoPath)}
                 fallbackLetter={featured.company[0]}
                 companyName={featured.company}
                 date={formatDate(featured.published)}
@@ -61,7 +61,7 @@ const [featured, ...previous] = reports;
               {previous.map(r => (
                 <ListCard
                   brandColor={r.brandColor ?? '#9A9994'}
-                  logoSrc={logoSrc(r.domain)}
+                  logoSrc={logoSrc(r.domain, r.logoPath)}
                   fallbackLetter={r.company[0]}
                   companyName={r.company}
                   date={formatDate(r.published)}
