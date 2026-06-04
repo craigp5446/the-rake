@@ -45,7 +45,7 @@
       "assessedCount": 1,
       "inferredCount": 15,
       "evidenceStrength": "Strong",
-      "rationale": "Spotify's primary revenue model — flat subscription fees and advertising — is neutral on incentive alignment from a listener perspective. The platform delivers the service users pay for, and Spotify's revenue is not structurally tied to listener failure, dependency, or worsening outcomes. The artist royalty practices documented in Phase 1 (Discovery Mode royalty reductions, Perfect Fit Content commissioning, bundling reclassification) are real findings but reflect tension between Spotify and rights holders in a multi-sided market; they are covered in D5 as documented instances of commercial relationships overriding third-party interests, rather than as evidence that the platform structurally requires listener failure.",
+      "rationale": "Spotify's primary revenue model (flat subscription fees and advertising) is neutral on incentive alignment from a listener perspective. The platform delivers the service users pay for, and Spotify's revenue is not structurally tied to listener failure, dependency, or worsening outcomes. The artist royalty practices documented in Phase 1 (Discovery Mode royalty reductions, Perfect Fit Content commissioning, bundling reclassification) are real findings but reflect tension between Spotify and rights holders in a multi-sided market; they are covered in D5 as documented instances of commercial relationships overriding third-party interests, rather than as evidence that the platform structurally requires listener failure.",
       "findings": [
         "discovery-mode-royalty-reduction"
       ]
