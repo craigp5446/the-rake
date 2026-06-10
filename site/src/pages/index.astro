@@ -71,7 +71,7 @@ const [featured, ...previous] = reports;
                   href={`/issues/${r.issue}`}
                 />
               ))}
-              <div style="border-bottom: 1px solid #d8d4ce;" />
+              <div style="border-bottom: 1px solid var(--border);" />
             </div>
           </>
         )}
@@ -116,7 +116,7 @@ const [featured, ...previous] = reports;
   font-family: 'Space Mono', monospace;
   font-size: 9px;
   letter-spacing: 0.15em;
-  color: #bbb;
+  color: var(--text-faint);
   text-transform: uppercase;
   margin-bottom: 20px;
 }

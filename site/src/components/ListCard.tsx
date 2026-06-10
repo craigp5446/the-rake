@@ -15,7 +15,7 @@ export interface ListCardProps {
 const meta: React.CSSProperties = {
   fontFamily: "'DM Sans', sans-serif",
   fontSize: 10,
-  color: '#aaa',
+  color: 'var(--text-faint)',
   letterSpacing: '0.03em',
 };
 
@@ -40,7 +40,7 @@ const ListCard: FC<ListCardProps> = ({
       padding: '16px 0',
       textDecoration: 'none',
       color: 'inherit',
-      borderTop: '1px solid #d8d4ce',
+      borderTop: '1px solid var(--border)',
     }}
   >
     {/* Icon */}
@@ -89,7 +89,7 @@ const ListCard: FC<ListCardProps> = ({
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: 22,
           fontWeight: 600,
-          color: '#1a1a1a',
+          color: 'var(--text)',
           lineHeight: 1.05,
           letterSpacing: '-0.3px',
         }}>
@@ -100,13 +100,13 @@ const ListCard: FC<ListCardProps> = ({
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 22,
             fontWeight: 700,
-            color: '#1a1a1a',
+            color: 'var(--text)',
             lineHeight: 1,
             letterSpacing: '-0.5px',
           }}>
             {score}
           </span>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: '#ccc' }}>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: 'var(--text-faint)' }}>
             /100
           </span>
         </div>
@@ -116,7 +116,7 @@ const ListCard: FC<ListCardProps> = ({
       <div style={{
         fontFamily: "'Cormorant Garamond', serif",
         fontSize: 15,
-        color: '#888',
+        color: 'var(--text-muted)',
         lineHeight: 1.35,
         whiteSpace: 'nowrap',
         overflow: 'hidden',

@@ -15,7 +15,7 @@ export interface FeaturedCardProps {
 const meta: React.CSSProperties = {
   fontFamily: "'DM Sans', sans-serif",
   fontSize: 11,
-  color: '#aaa',
+  color: 'var(--text-faint)',
   letterSpacing: '0.03em',
 };
 
@@ -32,8 +32,8 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
 }) => (
   <a href={href} className="rake-featured-card" style={{ textDecoration: 'none', color: 'inherit' }}>
     <div className="featured-card__inner" style={{
-      background: '#faf9f6',
-      border: '1px solid #e0dbd4',
+      background: 'var(--bg-raised)',
+      border: '1px solid var(--border)',
       borderRadius: 5,
       display: 'flex',
       alignItems: 'stretch',
@@ -92,7 +92,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 52,
             fontWeight: 600,
-            color: '#1a1a1a',
+            color: 'var(--text)',
             lineHeight: 1,
             letterSpacing: '-1px',
             flex: 1,
@@ -103,7 +103,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 52,
             fontWeight: 700,
-            color: '#1a1a1a',
+            color: 'var(--text)',
             lineHeight: 1,
             letterSpacing: '-2px',
             flexShrink: 0,
@@ -112,7 +112,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
           }}>
             {score}
           </span>
-          <span className="fc-denom" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: '#ccc', flexShrink: 0 }}>
+          <span className="fc-denom" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: 'var(--text-faint)', flexShrink: 0 }}>
             /100
           </span>
         </div>
@@ -122,7 +122,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
           <span className="fc-desc" style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 16,
-            color: '#777',
+            color: 'var(--text-muted)',
             lineHeight: 1.5,
             display: '-webkit-box',
             WebkitLineClamp: 2,
