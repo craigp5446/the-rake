@@ -1,5 +1,20 @@
 [
   {
+    "slug": "ghost",
+    "company": "Ghost",
+    "domain": "ghost.org",
+    "issue": 4,
+    "published": "2026-06-16",
+    "label": "Principled",
+    "score": 87,
+    "subtitle": "The platform that can't be bought, won't run ads, and takes zero cut of what you earn — and has the legal constitution to make those promises stick",
+    "summary": "A legally-locked non-profit that charges flat hosting fees and takes zero cut of creator revenue, with ownership documents that prevent it from being sold, acquired, or pressured by investors. The structural alignment here isn't a mission statement, it's a corporate constitution.",
+    "brandColor": "#15171A",
+    "sourceCount": 113,
+    "assessedPct": 32,
+    "confidence": "High"
+  },
+  {
     "slug": "spotify",
     "company": "Spotify",
     "domain": "spotify.com",

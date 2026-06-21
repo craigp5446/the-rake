@@ -1,0 +1,559 @@
+{
+  "slug": "ghost",
+  "company": "Ghost",
+  "domain": "ghost.org",
+  "brandColor": "#15171A",
+  "issue": 4,
+  "published": "2026-06-16",
+  "methodologyVersion": "1.7",
+  "sourceCount": 113,
+  "label": "Principled",
+  "score": 87,
+  "confidence": "High",
+  "assessedPct": 32,
+  "subtitle": "The platform that can't be bought, won't run ads, and takes zero cut of what you earn — and has the legal constitution to make those promises stick",
+  "summary": "A legally-locked non-profit that charges flat hosting fees and takes zero cut of creator revenue, with ownership documents that prevent it from being sold, acquired, or pressured by investors. The structural alignment here isn't a mission statement, it's a corporate constitution.",
+  "narrative": [
+    "Time for a different kind of report.",
+    "So far The Rake has brought to light the negative sides of tech companies. Balanced, cited, honest, and ideally giving us a better sense of how a company's behaviors and decisions relate to our interests as users and customers.",
+    "Now, diving into Ghost, the result has changed.",
+    "In my opinion, the company set up, the record of its founders, and what seems to be the general company philosophy, deserves more attention. Especially for anyone of us exploring different ways to run a tech company.",
+    "At its core, the structure of the company really sets it apart. In its legal constitution, it states the company cannot be sold, cannot take investment, and the founders hold no equity. These factors make user alignment more written in stone than just \"the founders seem nice\" and it has a \"good culture\".",
+    "Alignment of incentives is a key aspect of The Rake. For most companies, incentives shift over time, and often not for the better. Pressure from investors, leadership changes, anxiety about competition, survival instincts. With Ghost, the forces of pressure to change those incentives don't seem to be as present, and the structure of the company ensures it stays that way.",
+    "Ghost makes money with a flat monthly fee paid by customers. They don't take a cut of earnings. Ghost has no mechanism to benefit from user failure, engagement extraction, or content lock-in.",
+    "It's clear. Simple. But what makes it good is when Ghost set a public goal to have publishers earn more via Ghost than Ghost earns from all its publishers. They achieved this goal in 2025 when launching Ghost 6.0. Publishers earned over $100m, while Ghost took in $8.5m in annual revenue.",
+    "One caveat is a double-edged sword. Ghost customers who choose to self-host are in charge of their own maintenance. In early 2026 a vulnerability in their API was exploited against 700+ sites. Ghost patched it in February, but self-hosted sites that didn't update were left vulnerable.",
+    "To be honest, I wasn't sure what kind of company would achieve this \"Principled\" label, but Ghost did it. Highest score on every dimension, and no negative flags.",
+    "The Rake doesn't endorse any particular company, but it does endorse good practices. And Ghost has them all."
+  ],
+  "dimensions": [
+    {
+      "id": "revenue-clarity",
+      "name": "Revenue clarity",
+      "definition": "Can a user immediately understand how this company makes money?",
+      "score": 3,
+      "scoreLabel": "Clear",
+      "assessedCount": 9,
+      "inferredCount": 5,
+      "evidenceStrength": "Strong",
+      "rationale": "Ghost's revenue model is stated plainly on its homepage, pricing page, and in founder interviews: flat monthly tiers scaled by member count and staff seats, zero transaction fees on creator earnings, no advertising revenue, no data sales, and live company financials published in real time. The Tinybird analytics partnership — the only material third-party commercial relationship — is disclosed on a dedicated integrations page and in the platform changelog. One minor complexity exists: the Terms of Service grant Ghost a perpetual, irrevocable, sublicensable licence to user content despite \"you own your content\" marketing, but this is a legal rather than a revenue-stream disclosure gap and does not constitute a hidden revenue stream.",
+      "findings": [
+        "proactive-revenue-disclosure"
+      ]
+    },
+    {
+      "id": "incentive-alignment",
+      "name": "Incentive alignment",
+      "definition": "Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?",
+      "score": 3,
+      "scoreLabel": "Aligned",
+      "assessedCount": 7,
+      "inferredCount": 5,
+      "evidenceStrength": "Strong",
+      "rationale": "Ghost charges flat monthly hosting fees and takes zero percentage of creator subscription revenue; the platform's revenue does not increase when users stay confused, fail to convert paid subscribers, or remain dependent on Ghost. The company's own stated goal — articulated in a 2021 Indie Hackers interview and corroborated by Nieman Lab's reporting on Ghost 6.0 — was to have publishers earn more via Ghost than Ghost earns from publishers, a target it has met (publisher earnings now exceed $100M versus Ghost's ~$8.5M ARR). The self-hosting option means users can exit to zero cost if Ghost's managed service no longer serves them, removing residual dependency on the platform's continued goodwill.",
+      "findings": []
+    },
+    {
+      "id": "captivity",
+      "name": "Captivity",
+      "definition": "How easy is it to leave? Is data portable? Is cancellation straightforward?",
+      "score": 3,
+      "scoreLabel": "Portable",
+      "assessedCount": 9,
+      "inferredCount": 7,
+      "evidenceStrength": "Strong",
+      "rationale": "Ghost provides self-serve content export (JSON) and member export (CSV) from within Ghost Admin, free migration assistance for Business/Custom plans, and — uniquely in this category — an open-source self-hosting path that lets users run an identical installation entirely outside Ghost(Pro) at zero platform cost, so there is no meaningful penalty for leaving. Cancellation is self-serve via the admin billing area. Two minor caveats exist but do not constitute deliberate lock-in: post comments are excluded from the standard content export (recoverable via a full database dump), and the Terms of Service state a default \"no refunds\" position that Ghost's own referral payouts page shows is applied more flexibly in practice (discretionary refunds within three days, or pro-rata for annual plans). The export formats are open, the data is complete on the dimensions that matter for migration, and the exit path is the most comprehensive available among comparable platforms.",
+      "findings": [
+        "full-data-portability"
+      ]
+    },
+    {
+      "id": "engagement-extraction",
+      "name": "Engagement extraction",
+      "definition": "Does the product use engagement mechanics that serve the user, or that serve the platform at the user's expense?",
+      "score": 3,
+      "scoreLabel": "Value-driven",
+      "assessedCount": 3,
+      "inferredCount": 4,
+      "evidenceStrength": "Strong",
+      "rationale": "Ghost's ActivityPub implementation is explicitly framed as a rejection of engagement-maximising algorithmic feeds; the changelog and project documentation describe federation as a tool for reaching readers without relying on attention-extraction mechanisms. The platform's native analytics are cookie-free, first-party, and described as being for publisher insight rather than for optimising reader dwell time. Ghost has no social feed, no notification-escalation system, and no streak or gamification mechanics in its core product; the \"Retention Offers\" feature surfaces incentives when a subscriber attempts to cancel a creator's subscription, but this is a publisher-facing tool that does not operate on the Ghost platform user.",
+      "findings": []
+    },
+    {
+      "id": "multi-sided-tension",
+      "name": "Multi-sided tension",
+      "definition": "When advertiser or third-party interests conflict with user interests, which side does the company take?",
+      "score": 3,
+      "scoreLabel": "Users defended",
+      "assessedCount": 6,
+      "inferredCount": 3,
+      "evidenceStrength": "Strong",
+      "rationale": "Ghost's primary commercial relationships are with its publisher-users, who pay directly for hosting; there is no advertiser or third-party data-buyer relationship that could create structural tension with user interests. The Tinybird analytics partnership is disclosed, cookie-free, and scoped to first-party publisher data with no third-party sharing confirmed in the official documentation. Ghost's native analytics page states explicitly that data is never shared with third parties. The Recommendations feature was deliberately built to work across the open web rather than only within Ghost's ecosystem — a design choice that foregoes platform lock-in at the cost of network-effect growth.",
+      "findings": []
+    },
+    {
+      "id": "algorithmic-accountability",
+      "name": "Algorithmic accountability",
+      "definition": "Does the company take documented responsibility for what its systems surface and promote?",
+      "score": 3,
+      "scoreLabel": "Accountable",
+      "assessedCount": 6,
+      "inferredCount": 5,
+      "evidenceStrength": "Strong",
+      "rationale": "Ghost discloses the primary ranking signals for its Explore discovery engine (Ahrefs-based search/AI discoverability data) and builds its Recommendations feature on the open Webmention standard with cross-platform scope, rather than operating a proprietary attention-optimising feed. For the third-party content it hosts on Ghost(Pro), Ghost publishes a moderation policy enumerating eleven prohibited categories with a multi-reviewer complaint process, and the CEO made a public, on-record commitment to remove pro-Nazi content when Platformer migrated from Substack — a documented intervention made at a point when signalling openness would have been the commercially easier choice. Ghost operates no engagement-amplifying feed, so the harmful-amplification risk this dimension targets is structurally minimal; content on self-hosted installs running the open-source code falls outside Ghost's infrastructure and is not a surface Ghost controls, amplifies, or earns from, so it is not treated as a Ghost accountability gap.",
+      "findings": [
+        "content-moderation-commitment"
+      ]
+    },
+    {
+      "id": "ownership-pressure",
+      "name": "Ownership pressure",
+      "definition": "What structural pressures does the ownership model create, and do they push toward or against user interests?",
+      "score": 3,
+      "scoreLabel": "Low pressure",
+      "assessedCount": 9,
+      "inferredCount": 4,
+      "evidenceStrength": "Strong",
+      "rationale": "Ghost Foundation is a Singapore Public Company Limited by Guarantee with no share capital, no external investors, and a legal constitution confirmed by corporate registry records that prevents the company from being bought or sold in whole or in part. Revenue is required to be reinvested; founders hold no equity and have confirmed they gain nothing personally from the structure. The company is profitable and growing (from ~$4M ARR at Ghost 5.0 to over $8.5M at Ghost 6.0) with no disclosed debt, no PE involvement, and no parent company — the ownership structure produces no mechanism by which external financial pressure could be applied to the product.",
+      "findings": [
+        "data-security-incident"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "proactive-revenue-disclosure",
+      "type": "positive",
+      "dimension": "revenue-clarity",
+      "dimensionLabel": "Revenue clarity",
+      "title": "Live company financials published in real time since 2015",
+      "text": "Ghost has published live, real-time company revenue figures via a public Baremetrics/ChartMogul dashboard since at least April 2015, going materially beyond legal disclosure requirements and including ARR, customer count, and growth trajectory. This represents proactive transparency at a level no competitor in this category matches.",
+      "source": "Ghost Changelog",
+      "sourceUrl": "https://ghost.org/changelog/april-2015-update/",
+      "sourceDate": "April 2015",
+      "sourceType": "ASSESSED"
+    },
+    {
+      "id": "full-data-portability",
+      "type": "positive",
+      "dimension": "captivity",
+      "dimensionLabel": "Captivity",
+      "title": "Self-serve export, migration concierge, and self-hosting path provide full portability",
+      "text": "Ghost provides self-serve JSON content export, CSV member export, and a free migration concierge service for Business and Custom plan users; the open-source codebase means users can run an identical installation on their own infrastructure at zero platform cost. This constitutes portability substantially beyond regulatory minimum and makes Ghost one of the few platforms from which you can genuinely exit with everything.",
+      "source": "Ghost Help — Exports",
+      "sourceUrl": "https://ghost.org/help/exports/",
+      "sourceDate": "Retrieved 16 June 2026",
+      "sourceType": "ASSESSED"
+    },
+    {
+      "id": "content-moderation-commitment",
+      "type": "positive",
+      "dimension": "algorithmic-accountability",
+      "dimensionLabel": "Algorithmic accountability",
+      "title": "CEO made public commitment to remove pro-Nazi content before migration completed",
+      "text": "Ghost CEO John O'Nolan made an on-record public commitment to remove pro-Nazi content from Ghost(Pro) when Platformer announced its migration from Substack in January 2024 — a commitment made before the migration completed, creating reputational and operational obligations at a point when Ghost stood to gain commercially from signalling openness rather than constraint.",
+      "source": "Platformer / Casey Newton",
+      "sourceUrl": "https://platformer.substack.com/p/why-platformer-is-leaving-substack",
+      "sourceDate": "11 January 2024",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "data-security-incident",
+      "type": "trajectory",
+      "dimension": null,
+      "dimensionLabel": null,
+      "title": "Critical SQL injection vulnerability exploited against 700+ sites in 2026",
+      "text": "CVE-2026-26980, a critical (CVSS 9.4) unauthenticated SQL injection in Ghost's Content API affecting versions 3.24.0–6.19.0, was patched in February 2026 (v6.19.1) but was actively exploited from early May 2026 against 700+ sites including Harvard, Oxford, and DuckDuckGo; attackers extracted Admin API keys and injected malicious JavaScript. A second 2026 vulnerability (CVE-2026-29053, RCE via theme file processing) was also disclosed. The vulnerability was disclosed via Ghost's established responsible disclosure process and the patch was available before exploitation began; the primary risk fell on unpatched self-hosted installations rather than Ghost(Pro).",
+      "source": "GitHub Security Advisory",
+      "sourceUrl": "https://github.com/advisories/GHSA-w52v-v783-gw97",
+      "sourceDate": "16 February 2026",
+      "sourceType": "ASSESSED"
+    }
+  ],
+  "personas": [
+    {
+      "label": "For publishers and creators",
+      "text": "Ghost charges you a flat monthly fee to host your publishing business and takes no percentage of what your subscribers pay you — if Ghost disappeared tomorrow, you could run the same software on your own server and keep your subscriber list, your content, and all your revenue without asking Ghost's permission."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://ghost.org/pricing/",
+      "title": "Ghost — Pricing",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/about/",
+      "title": "Ghost — About",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/privacy/",
+      "title": "Ghost — Privacy Policy",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/creators/",
+      "title": "Ghost — For Creators",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/integrations/tinybird/",
+      "title": "Ghost — Tinybird integration",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/changelog/april-2015-update/",
+      "title": "Ghost Changelog — April 2015 update (live financials launch)",
+      "date": "April 2015",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/6/",
+      "title": "Ghost 6.0 launch page",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/help/native-analytics/",
+      "title": "Ghost Help — Native analytics",
+      "date": "6 August 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.niemanlab.org/2025/08/ghost-makes-it-easier-to-publish-to-the-social-web/",
+      "title": "Nieman Lab — Ghost makes it easier to publish to the social web",
+      "date": "5 August 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://docs.ghost.org/introduction",
+      "title": "Ghost Docs — Introduction",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://john.onolan.org/democratising-publishing/",
+      "title": "John O'Nolan — Democratising publishing",
+      "date": "30 October 2024",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/vs/substack/",
+      "title": "Ghost — Ghost vs Substack",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/help/exports/",
+      "title": "Ghost Help — Exports",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/help/imports/",
+      "title": "Ghost Help — Imports",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/move-to-ghost/",
+      "title": "Ghost — Move to Ghost",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/docs/migration/ghost/",
+      "title": "Ghost Docs — Migration from Ghost",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/terms/",
+      "title": "Ghost — Terms of Service",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/help/manage-your-subscription/",
+      "title": "Ghost Help — Manage your subscription",
+      "date": "3 June 2024",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/referrals/payouts/",
+      "title": "Ghost — Referral payouts",
+      "date": "9 July 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/help/ghost-gdpr-compliance/",
+      "title": "Ghost Help — GDPR compliance",
+      "date": "1 May 2023",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://activitypub.ghost.org/",
+      "title": "Ghost ActivityPub",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/changelog/recommendations/",
+      "title": "Ghost Changelog — Recommendations",
+      "date": "2 November 2023",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/changelog/ghost-explore/",
+      "title": "Ghost Changelog — Ghost Explore",
+      "date": "26 November 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/abuse/",
+      "title": "Ghost — Abuse policy",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/docs/recommendations/",
+      "title": "Ghost Docs — Recommendations",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/changelog/native-comments/",
+      "title": "Ghost Changelog — Native comments",
+      "date": "15 August 2022",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/changelog/5-years/",
+      "title": "Ghost Changelog — 5 years of Ghost",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/help/funding/",
+      "title": "Ghost Help — Funding",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://ghost.org/changelog/moving-to-singapore/",
+      "title": "Ghost Changelog — Moving to Singapore",
+      "date": "11 January 2021",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.sgpbusiness.com/company/Ghost-Foundation-Limited",
+      "title": "SGP Business — Ghost Foundation Limited company record",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5016122/governance",
+      "title": "Charity Commission — Ghost Foundation governance record",
+      "date": "Retrieved 16 June 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://github.com/advisories/GHSA-w52v-v783-gw97",
+      "title": "GitHub Security Advisory — GHSA-w52v-v783-gw97 (CVE-2026-26980)",
+      "date": "16 February 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://thehackernews.com/2026/05/ghost-cms-cve-2026-26980-exploited-to.html",
+      "title": "The Hacker News — Ghost CMS CVE-2026-26980 exploited",
+      "date": "Late May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.sonicwall.com/blog/ghost-cms-content-api-blind-sql-injection",
+      "title": "SonicWall — Ghost CMS Content API blind SQL injection",
+      "date": "23 April 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Ghost_(blogging_platform)",
+      "title": "Wikipedia — Ghost (blogging platform)",
+      "date": "Retrieved 16 June 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.emailsoftwareinsights.com/reviews/ghost/pricing/",
+      "title": "Email Software Insights — Ghost pricing review",
+      "date": "Retrieved 16 June 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://creatorstackclub.com/software/ghost",
+      "title": "Creator Stack Club — Ghost",
+      "date": "Retrieved 16 June 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.adweek.com/media/newsletter-platform-ghost-generates-3-3-million-doubling-its-revenue/",
+      "title": "Adweek — Newsletter platform Ghost generates $3.3M, doubling its revenue",
+      "date": "1 April 2021",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://chartmogul.com/blog/ghost-chartmogul-dashboard/",
+      "title": "ChartMogul — Ghost ChartMogul dashboard",
+      "date": "6 August 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.indiehackers.com/post/john-onolan-of-ghost-3-3m-year-talks-creators-decentralization-no-code-b8c30b9977",
+      "title": "Indie Hackers — John O'Nolan of Ghost ($3.3M/year) talks creators, decentralization",
+      "date": "24 March 2021",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.listenupih.com/ghost-post/",
+      "title": "Listen Up IH — Ghost post",
+      "date": "4 February 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.usebetterproducts.com/ghost-cms-review/",
+      "title": "Use Better Products — Ghost CMS review",
+      "date": "19 November 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://noiseamplifier.com/blog/exporting-ghost-cms-data-for-migration-or-backup/",
+      "title": "Noise Amplifier — Exporting Ghost CMS data for migration or backup",
+      "date": "1 May 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://forum.ghost.org/t/how-to-migrate-with-ghost-pro-to-self-hosting/29341",
+      "title": "Ghost Forum — How to migrate with Ghost(Pro) to self-hosting",
+      "date": "1 April 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.g2.com/products/ghost/pricing",
+      "title": "G2 — Ghost pricing",
+      "date": "Retrieved 16 June 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://uk.trustpilot.com/review/ghost.org",
+      "title": "Trustpilot — Ghost.org reviews",
+      "date": "Retrieved 16 June 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.producthunt.com/products/ghost",
+      "title": "Product Hunt — Ghost",
+      "date": "Retrieved 16 June 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://subscribed.fyi/ghost/how-to-cancel/",
+      "title": "Subscribed.fyi — How to cancel Ghost",
+      "date": "14 February 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://nixsanctuary.com/ghost-cms-a-big-time-nasty-lock-in-publishing-platform/",
+      "title": "Nix Sanctuary — Ghost CMS: a big-time nasty lock-in publishing platform",
+      "date": "17 July 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://techcrunch.com/2025/03/19/substack-rival-ghost-is-now-connected-to-the-fediverse",
+      "title": "TechCrunch — Substack rival Ghost is now connected to the fediverse",
+      "date": "19 March 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.webpronews.com/ghost-6-launches-fediverse-integration-via-activitypub/",
+      "title": "WebProNews — Ghost 6 launches fediverse integration via ActivityPub",
+      "date": "5 August 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://contentcreators.com/tools/ghost-review",
+      "title": "Content Creators — Ghost review",
+      "date": "21 March 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.tinybird.co/blog/tinybird-is-the-analytics-platform-for-ghost-6-0",
+      "title": "Tinybird — Tinybird is the analytics platform for Ghost 6.0",
+      "date": "15 January 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://noiseamplifier.com/blog/ghost-v6-review-built-in-analytics-and-activitypub-integration/",
+      "title": "Noise Amplifier — Ghost v6 review: built-in analytics and ActivityPub integration",
+      "date": "14 August 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://platformer.substack.com/p/why-platformer-is-leaving-substack",
+      "title": "Platformer — Why Platformer is leaving Substack",
+      "date": "11 January 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.rollingstone.com/culture/culture-news/substack-platformer-leaving-nazi-content-1234945461/",
+      "title": "Rolling Stone — Substack, Platformer, leaving Nazi content",
+      "date": "12 January 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://techcrunch.com/2024/07/08/substack-rival-ghost-federates-its-first-newsletter/",
+      "title": "TechCrunch — Substack rival Ghost federates its first newsletter",
+      "date": "8 July 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://theweek.com/media/substacks-moderation-crisis-the-revolt-over-nazi-newsletters",
+      "title": "The Week — Substack's moderation crisis: the revolt over Nazi newsletters",
+      "date": "16 January 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://birchtree.me/blog/im-always-happy-i-use-ghost-and-not-substack-but-im-extra-happy-today/",
+      "title": "Birch Tree — I'm always happy I use Ghost and not Substack, but I'm extra happy today",
+      "date": "22 December 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.crunchbase.com/organization/ghost",
+      "title": "Crunchbase — Ghost",
+      "date": "Retrieved 16 June 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://recordowl.com/company/ghost-foundation-limited",
+      "title": "RecordOwl — Ghost Foundation Limited",
+      "date": "Retrieved 16 June 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://tracxn.com/d/companies/ghost/__5udQNK9sDcVH8p8Q0Nz3NPzhhRl8WFFjokuTj6SstU4",
+      "title": "Tracxn — Ghost company profile",
+      "date": "4 March 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.securityweek.com/ghost-cms-vulnerability-exploited-to-hack-over-700-websites/",
+      "title": "SecurityWeek — Ghost CMS vulnerability exploited to hack over 700 websites",
+      "date": "May 2026",
+      "type": "INFERRED"
+    }
+  ]
+}
