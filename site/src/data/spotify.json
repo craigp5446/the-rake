@@ -3,6 +3,7 @@
   "company": "Spotify",
   "domain": "spotify.com",
   "brandColor": "#1DB954",
+  "logoPath": "/logos/spotify-white.svg",
   "issue": 3,
   "published": "2026-06-01",
   "methodologyVersion": "1.7",

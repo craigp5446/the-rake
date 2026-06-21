@@ -3,6 +3,7 @@
   "company": "Substack",
   "domain": "substack.com",
   "brandColor": "#FF6719",
+  "logoPath": "/logos/substack-white.svg",
   "issue": 1,
   "published": "2026-05-13",
   "methodologyVersion": "1.4",
