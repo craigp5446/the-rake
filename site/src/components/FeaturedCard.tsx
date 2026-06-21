@@ -34,7 +34,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
     <div className="featured-card__inner" style={{
       background: 'var(--bg-raised)',
       border: '1px solid var(--border)',
-      borderRadius: 5,
+      borderRadius: 12,
       display: 'flex',
       alignItems: 'stretch',
       overflow: 'hidden',
@@ -54,7 +54,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
             <img
               src={logoSrc}
               alt={companyName}
-              style={{ width: 56, height: 56, objectFit: 'contain' }}
+              style={{ width: 56, height: 56, objectFit: 'contain', borderRadius: 14 }}
               onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
             />
           ) : (
