@@ -27,6 +27,9 @@ def save_output(company_slug, phase, content):
     filename = f"{date}-{time}-phase{phase}.md"
     path = os.path.join(folder, filename)
     with open(path, "w") as f:
+        f.write(f"RESEARCH DATE: {datetime.today().strftime('%d %B %Y')}\n")
+        f.write(f"METHODOLOGY VERSION: {METHODOLOGY_VERSION}\n")
+        f.write(f"\n---\n\n")
         f.write(content)
     print(f"\n✓ Saved to {path}")
     return path
