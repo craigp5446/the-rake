@@ -1,0 +1,732 @@
+{
+  "slug": "etsy",
+  "company": "Etsy",
+  "domain": "etsy.com",
+  "logoPath": "/logos/etsy-white.svg",
+  "brandColor": "#F1641E",
+  "issue": 5,
+  "published": "2026-07-06",
+  "methodologyVersion": "1.7",
+  "sourceCount": 90,
+  "label": "Extractive",
+  "score": 35,
+  "confidence": "High",
+  "assessedPct": 56,
+  "subtitle": "The marketplace that permanently enrolls successful sellers in ads they can't opt out of, freezes earnings without explaining why, and is under activist-investor pressure to extract more",
+  "summary": "A three-sided marketplace where the more successful you become as a seller, the more you pay — mandatory Offsite Ads permanently enroll every shop that crosses $10,000 in sales at a 12% fee with no exit. Opaque payment reserves can hold 75% of earnings for up to six months without disclosed triggers, while Elliott Management's 13% stake and a new $750 million share buyback signal that shareholder return now outranks marketplace investment.",
+  "narrative": [
+    "narrative placeholder"
+  ],
+  "dimensions": [
+    {
+      "id": "revenue-clarity",
+      "name": "Revenue clarity",
+      "definition": "Can a user immediately understand how this company makes money?",
+      "score": 2,
+      "scoreLabel": "Partial",
+      "assessedCount": 9,
+      "inferredCount": 4,
+      "evidenceStrength": "Strong",
+      "rationale": "Etsy's primary fee structure — transaction fee, listing fee, payment processing fee — is documented in its Fees & Payments Policy and reflected clearly in its 10-K, satisfying basic transparency for sellers. However, the data-sharing dimension of Etsy's revenue model is not proactively surfaced to users: the Privacy Policy acknowledges third-party data sharing and advertising analytics services, and the US Regional Privacy Policy concedes that personalised advertising may constitute a \"sale\" under state law — language buried in a regional addendum rather than the main privacy disclosure. A class action filed in July 2025 (White v. Etsy) further alleges that pixel trackers from Google, Meta, TikTok, and Microsoft collected user data without consent, suggesting that actual data-sharing practice may exceed what any policy document discloses.",
+      "findings": ["hidden-revenue-stream"]
+    },
+    {
+      "id": "incentive-alignment",
+      "name": "Incentive alignment",
+      "definition": "Does the company make more money when users succeed, or when they stay longer, spend more, or remain confused?",
+      "score": 2,
+      "scoreLabel": "Neutral",
+      "assessedCount": 6,
+      "inferredCount": 6,
+      "evidenceStrength": "Strong",
+      "rationale": "Etsy earns revenue through a take-rate model — transaction fees, listing fees, payment processing, and advertising — meaning it captures a percentage of every completed sale, which broadly aligns with seller success. However, the mandatory Offsite Ads program for sellers exceeding $10,000 in trailing 365-day sales creates a one-sided extraction: sellers are permanently enrolled regardless of whether the advertising generates proportionate return, with no opt-out even if sales subsequently fall below threshold, and fees can reach over 20% of any single transaction when stacked. Additionally, Etsy's internal research explicitly describes search optimisation for revenue rather than relevance alone, and CEO statements describe engagement and frequency as primary targets of AI personalisation — confirming the platform extracts value from engagement independent of whether a specific transaction occurs.",
+      "findings": ["mandatory-offsite-ads"]
+    },
+    {
+      "id": "captivity",
+      "name": "Captivity",
+      "definition": "How easy is it to leave? Is data portable? Is cancellation straightforward?",
+      "score": 2,
+      "scoreLabel": "Friction",
+      "assessedCount": 9,
+      "inferredCount": 7,
+      "evidenceStrength": "Strong",
+      "rationale": "Buyers can delete accounts via a self-serve GDPR/CCPA-compliant path, and the official documentation is clear; however, the shop closure process for sellers requires resolving all open orders and outstanding balances first, cannot be completed on mobile, and closing a shop does not delete the underlying account — a distinction that third-party guides note most sellers do not understand. More materially, Etsy's payment reserve program can hold 75% of a seller's earnings for 90–180 days upon account suspension, with Etsy explicitly stating it does not disclose the logic or thresholds that trigger a reserve — a mechanism that creates significant financial lock-in. An email-change waiting period of 7 days before initiating account closure adds further friction, though it is a minor individual step.",
+      "findings": ["payment-holds-dark-pattern"]
+    },
+    {
+      "id": "engagement-extraction",
+      "name": "Engagement extraction",
+      "definition": "Does the product use engagement mechanics that serve the user, or that serve the platform at the user's expense?",
+      "score": 2,
+      "scoreLabel": "Extractive",
+      "assessedCount": 7,
+      "inferredCount": 5,
+      "evidenceStrength": "Strong",
+      "rationale": "Etsy's engineering blog posts confirm that recommendation and search systems are optimised against clickthrough rate and conversion rate using implicit feedback, and a peer-reviewed paper co-authored by Etsy data scientists explicitly states that product search must \"optimize for both relevance and revenue\" — direct company documentation that the system is calibrated for revenue extraction, not solely for helping buyers find what they need. CEO-level statements on Q1 2025 earnings describe AI personalisation as a \"customer relationship flywheel\" targeting engagement and frequency, and company blog posts confirm personalized homepages yielded \"nearly double the engagement.\" Push notifications are documented as a deliberate mechanism to return users to the app. However, the evidence does not establish that Etsy's engagement mechanics are specifically calibrated to override user judgment or defeat the user's ability to disengage — the mechanisms are commercially oriented but operate within the normal scope of e-commerce personalisation.",
+      "findings": []
+    },
+    {
+      "id": "multi-sided-tension",
+      "name": "Multi-sided tension",
+      "definition": "When advertiser or third-party interests conflict with user interests, which side does the company take?",
+      "score": 1,
+      "scoreLabel": "Users subordinated",
+      "assessedCount": 14,
+      "inferredCount": 13,
+      "evidenceStrength": "Strong",
+      "rationale": "Etsy operates a three-sided marketplace — buyers, sellers, and advertisers — in which sellers are both customers and inventory, and their interests are structurally subordinated in multiple documented ways. The mandatory Offsite Ads program permanently enrolls sellers who cross a revenue threshold, redirecting a percentage of their revenue to fund advertising placements they do not control; Etsy's Purchase Protection program holds sellers financially liable for disputes by default, with the company explicitly reserving \"sole discretion\" over coverage decisions; and Etsy's ML infrastructure, by the company's own engineering documentation, integrates advertising revenue optimisation directly into the search and recommendation stack that determines what buyers see. The counterfeit goods evidence — confirmed by Citron Research, an Irish DSA regulatory review, and Etsy's own declining-but-still-imperfect enforcement data — further demonstrates that Etsy's commercial interest in listing volume has historically overridden its policing of the marketplace in ways that harm both buyers (who receive counterfeit goods) and legitimate sellers (who are undercut).",
+      "findings": []
+    },
+    {
+      "id": "algorithmic-accountability",
+      "name": "Algorithmic accountability",
+      "definition": "Does the company take documented responsibility for what its systems surface and promote?",
+      "score": 2,
+      "scoreLabel": "Partial accountability",
+      "assessedCount": 15,
+      "inferredCount": 12,
+      "evidenceStrength": "Strong",
+      "rationale": "Etsy publishes primary ranking factors for search, recommendations, and ads — including listing quality score, customer service quality, Etsy Ads bidding mechanism, and recommendation ranker features — and its engineering blog provides substantive disclosure of algorithmic methods at a technical level beyond what most platforms offer. However, documented failures are material: the Citron Research report (February 2023) and subsequent Irish DSA regulatory review (October 2024) identified counterfeit sellers occupying paid ad slots labelled \"Star Seller,\" suggesting that advertising placement systems can be exploited to surface harmful or infringing content; independent analysis of Etsy's own precision improvement data suggests roughly 80% of automated enforcement flags may still be incorrect; and Etsy's Creativity Standards were amended without announcement in June 2025, demonstrating that significant algorithmic policy changes can be made without disclosure. Etsy's 2025 Transparency Report and Trust & Safety community posts show genuine investment in accountability infrastructure, but enforcement track record remains inconsistent.",
+      "findings": ["harmful-amplification-counterfeit", "algorithmic-criteria-documented"]
+    },
+    {
+      "id": "ownership-pressure",
+      "name": "Ownership pressure",
+      "definition": "What structural pressures does the ownership model create, and do they push toward or against user interests?",
+      "score": 1,
+      "scoreLabel": "Maximum pressure",
+      "assessedCount": 10,
+      "inferredCount": 12,
+      "evidenceStrength": "Strong",
+      "rationale": "Etsy is a public company (NASDAQ: ETSY) with an ad-supported and transaction-fee model, subject to quarterly earnings pressure, and has Elliott Management — one of the world's most prominent activist investors with approximately $59 billion AUM and a history of forcing asset sales and strategic pivots at tech companies — holding approximately 13% of shares with a board seat held by partner Marc Steinberg since February 2024. The FY2024 10-K and Q4 press release show record adjusted EBITDA and $260 million in share repurchases in a single quarter despite declining GMS, consistent with a management posture oriented toward shareholder return rather than marketplace investment. Etsy voluntarily relinquished its B Corp status in 2017 and declined to convert to a benefit corporation structure, and its founding mission-lock structure no longer exists in any legally binding form.",
+      "findings": ["elliott-activist-pressure", "workforce-reduction"]
+    }
+  ],
+  "findings": [
+    {
+      "id": "hidden-revenue-stream",
+      "type": "negative",
+      "dimension": "revenue-clarity",
+      "dimensionLabel": "Revenue clarity",
+      "title": "Pixel tracker class action alleges undisclosed revenue-generating data sharing",
+      "text": "Class action filed July 3, 2025 in California federal court (White v. Etsy) alleges Etsy embedded pixel trackers from Google, Meta, TikTok, and Microsoft that collected user IP addresses, device data, geolocation, and browsing behaviour for targeted advertising and real-time ad auctions without obtaining user consent — a revenue-generating data-sharing arrangement not surfaced in user-facing disclosures. Etsy's own October 2025 privacy policy update, characterised by an independent analyst as responding to the lawsuit, added language about \"Third-Party Service Providers and Network Participants\" that was absent from prior documentation.",
+      "source": "National Law Review — Etsy Sued Over Pixel Trackers",
+      "sourceUrl": "https://natlawreview.com/article/etsy-sued-over-pixel-trackers-what-it-means-your-business",
+      "sourceDate": "10 July 2025",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "mandatory-offsite-ads",
+      "type": "negative",
+      "dimension": "incentive-alignment",
+      "dimensionLabel": "Incentive alignment",
+      "title": "Successful sellers permanently enrolled in Offsite Ads with no opt-out",
+      "text": "Etsy's Advertising & Marketing Policy and official Help documentation confirm that sellers whose trailing 365-day sales exceed $10,000 are permanently enrolled in Offsite Ads for the lifetime of their shop with no opt-out, paying a 12% fee on all sales attributed within a 30-day window regardless of whether the advertising generated proportionate value — a structurally mandatory revenue extraction that increases with seller success and cannot be reversed.",
+      "source": "Etsy — Advertising & Marketing Policy",
+      "sourceUrl": "https://www.etsy.com/legal/advertising/",
+      "sourceDate": "Retrieved 5 July 2026",
+      "sourceType": "ASSESSED"
+    },
+    {
+      "id": "payment-holds-dark-pattern",
+      "type": "negative",
+      "dimension": "captivity",
+      "dimensionLabel": "Captivity",
+      "title": "Payment reserves freeze up to 75% of seller earnings with no disclosed triggers",
+      "text": "Etsy's official policy confirms it does not disclose the specific logic or thresholds used to trigger payment reserves; independent legal analysis documents frozen balances of 75–100% of pending earnings held for 90–180 days upon account suspension, with individual amounts ranging from $2,800 to over $20,000; and PBS/The 19th reported during the 2022 seller strike that a seller had 75% of earnings held throughout the holiday season, which the seller described as \"scary and humiliating.\"",
+      "source": "Value Added Resource — Etsy Responds to Seller Concerns About Payment Reserves",
+      "sourceUrl": "https://www.valueaddedresource.net/etsy-responds-to-seller-concerns-about-payment-reserves/",
+      "sourceDate": "1 August 2023",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "harmful-amplification-counterfeit",
+      "type": "negative",
+      "dimension": "algorithmic-accountability",
+      "dimensionLabel": "Algorithmic accountability",
+      "title": "Paid ad slots and Star Seller badges awarded to counterfeit goods sellers",
+      "text": "Citron Research's February 2023 report, corroborated by multiple media accounts, identified searches for \"Disney\" and \"Nike\" on Etsy returning top paid advertising slots occupied by sellers of allegedly counterfeit goods, with at least one such seller labelled \"Star Seller\" after more than 34,000 sales — demonstrating that Etsy's advertising placement and quality-signal systems were simultaneously amplifying and legitimising infringing content; Ireland's media regulator opened a DSA compliance review in October 2024 specifically citing Etsy's inadequate illegal-content reporting mechanisms, confirming regulatory awareness of ongoing platform-level failure.",
+      "source": "InvestorPlace — Etsy Stock Alert: Citron Research Says Crime Is Obvious",
+      "sourceUrl": "https://investorplace.com/2023/02/etsy-stock-alert-citron-research-says-crime-is-obvious-for-etsy/",
+      "sourceDate": "16 February 2023",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "algorithmic-criteria-documented",
+      "type": "positive",
+      "dimension": "algorithmic-accountability",
+      "dimensionLabel": "Algorithmic accountability",
+      "title": "Search, recommendation, and ad ranking factors publicly documented at technical depth",
+      "text": "Etsy publishes its primary search, recommendation, and advertising ranking factors in an official policy page (updated October 2025), supplemented by a series of maintained engineering blog posts disclosing specific algorithmic methods including the multi-task canonical ranker, context-specific ranking, and a personalised search model — a level of technical disclosure that is current, maintained, and goes substantially beyond regulatory minimum.",
+      "source": "Etsy — Search, Advertisement, and Recommendation Policy",
+      "sourceUrl": "https://www.etsy.com/legal/policy/search-advertisement-recommendation/899478564529",
+      "sourceDate": "16 October 2025",
+      "sourceType": "ASSESSED"
+    },
+    {
+      "id": "elliott-activist-pressure",
+      "type": "negative",
+      "dimension": "ownership-pressure",
+      "dimensionLabel": "Ownership pressure",
+      "title": "Elliott Management holds 13% stake and board seat; $750M buyback approved during declining GMS",
+      "text": "Elliott Management disclosed a ~13% economic stake in Etsy in February 2024 and secured a board seat for partner Marc Steinberg; Elliott has a documented history of forcing asset sales and strategic restructuring at technology companies including eBay; and Etsy's December 2025 approval of a new $750 million share repurchase authorisation — on top of more than $200 million remaining from the prior program — during a period of declining GMS is consistent with shareholder return pressure overriding marketplace investment.",
+      "source": "CNBC — Elliott Builds ~13% Stake in Etsy, Secures Board Seat",
+      "sourceUrl": "https://www.cnbc.com/2024/02/01/activist-elliott-builds-roughly-13percent-stake-in-etsy-secures-board-seat.html",
+      "sourceDate": "February 1, 2024",
+      "sourceType": "INFERRED"
+    },
+    {
+      "id": "workforce-reduction",
+      "type": "trajectory",
+      "dimension": "ownership-pressure",
+      "dimensionLabel": "Ownership pressure",
+      "title": "11% workforce reduction in December 2023 alongside continued share repurchases",
+      "text": "Etsy announced an 11% reduction in its core marketplace workforce (~225 employees) in December 2023, including the CMO and CHRO, at a cost of $25–30 million primarily in severance, with independent reporting noting that layoffs significantly impacted customer support and marketing functions; Glassdoor reviews from current and former employees describe repeated layoffs and associated trust-and-safety staffing concerns. The layoffs occurred alongside continued share repurchase activity, consistent with capital reallocation away from operational headcount.",
+      "source": "CNBC — Etsy Laying Off 11% of Staff",
+      "sourceUrl": "https://www.cnbc.com/2023/12/13/etsy-laying-off-11percent-of-staff-citing-competitive-environment.html",
+      "sourceDate": "13 December 2023",
+      "sourceType": "INFERRED"
+    }
+  ],
+  "personas": [
+    {
+      "label": "For sellers",
+      "text": "Etsy charges you a minimum of 6.5% per sale plus listing and payment fees, and once your shop crosses $10,000 in sales you are permanently enrolled in Offsite Ads — adding up to 12% on attributed sales with no opt-out — meaning your total take can exceed 20% per transaction; at the same time, Etsy can freeze 75% of your earnings without explaining why, and resolving disputes defaults to your financial liability."
+    },
+    {
+      "label": "For buyers",
+      "text": "Etsy does not guarantee you a refund under its Purchase Protection Program — the policy is explicitly \"not an insurance policy\" and the company reserves \"sole discretion\" over coverage — and the platform's advertising and recommendation systems surface paid listings from sellers you cannot independently verify, including historically from sellers of counterfeit goods."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.etsy.com/legal/fees/",
+      "title": "Etsy — Fees & Payments Policy",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/privacy/",
+      "title": "Etsy — Privacy Policy",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/policy/united-states-regional-privacy-policy/1146293244010",
+      "title": "Etsy — United States Regional Privacy Policy",
+      "date": "6 March 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/policy/non-member-privacy-policy/1146287590828",
+      "title": "Etsy — Non-member Privacy Policy",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/advertising/",
+      "title": "Etsy — Advertising & Marketing Policy",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://help.etsy.com/hc/en-us/articles/360000338367-How-Etsy-s-Offsite-Ads-Work",
+      "title": "Etsy Help — How Etsy's Offsite Ads Work",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001370637/000137063725000017/etsy-20241231.htm",
+      "title": "SEC — Etsy FY2024 10-K",
+      "date": "February 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://last10k.com/sec-filings/etsy",
+      "title": "Last10K — Etsy SEC Filings Summary",
+      "date": "19 February 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/terms-of-use/",
+      "title": "Etsy — Terms of Use",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://investors.etsy.com/news-events/press-releases/detail/13/etsy-inc-reports-fourth-quarter-and-full-year-2024-results",
+      "title": "Etsy — Q4 and Full Year 2024 Results",
+      "date": "19 February 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://help.etsy.com/hc/en-us/articles/360021647754-Can-I-Permanently-Delete-My-Etsy-Account",
+      "title": "Etsy Help — Can I Permanently Delete My Etsy Account",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://help.etsy.com/hc/en-us/articles/115015777088-How-to-Close-Your-Etsy-Shop",
+      "title": "Etsy Help — How to Close Your Etsy Shop",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/policy/cases-policy/243306189901",
+      "title": "Etsy — Cases Policy",
+      "date": "May 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/policy/purchase-protection-program-for-sellers/34509585385",
+      "title": "Etsy — Purchase Protection Program for Sellers",
+      "date": "April 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://help.etsy.com/hc/en-us/articles/5745586898199-How-to-Open-a-Case",
+      "title": "Etsy Help — How to Open a Case",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://help.etsy.com/hc/en-us/articles/115015587347-How-to-Cancel-a-Sale",
+      "title": "Etsy Help — How to Cancel a Sale",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://help.etsy.com/hc/en-us/articles/5850122619287-What-is-Etsy-s-Purchase-Protection-for-Sellers",
+      "title": "Etsy Help — What is Etsy's Purchase Protection for Sellers",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/buyers/",
+      "title": "Etsy — Buyer Policy",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/sellers/",
+      "title": "Etsy — Seller Policy",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/codeascraft/how-we-built-a-multi-task-canonical-ranker-for-recommendations-at-etsy",
+      "title": "Etsy Code as Craft — Multi-task Canonical Ranker for Recommendations",
+      "date": "April 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/codeascraft/bringing-personalized-search-to-etsy",
+      "title": "Etsy Code as Craft — Bringing Personalized Search to Etsy",
+      "date": "December 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/codeascraft/personalized-recommendations-at-etsy",
+      "title": "Etsy Code as Craft — Personalized Recommendations at Etsy",
+      "date": "January 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/codeascraft/redesigning-etsys-machine-learning-platform",
+      "title": "Etsy Code as Craft — Redesigning Etsy's Machine Learning Platform",
+      "date": "October 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.dsml.etsy.com/publications",
+      "title": "Etsy DSML — Publications",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://help.etsy.com/hc/en-us/articles/115015745808-How-Ads-Are-Placed-in-Etsy-Search",
+      "title": "Etsy Help — How Ads Are Placed in Etsy Search",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/seller-handbook/article/1044333907217",
+      "title": "Etsy Seller Handbook — Search & Recommendation Signals",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://storage.googleapis.com/etsy-custom-assets/TransparencyReport2026/2025_Transparency_Report_Digital.pdf",
+      "title": "Etsy — 2025 Transparency Report",
+      "date": "2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://help.etsy.com/hc/en-us/articles/4403058372503-What-is-the-Star-Seller-Badge",
+      "title": "Etsy Help — What is the Star Seller Badge",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/starseller",
+      "title": "Etsy — Star Seller Program",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/legal/policy/search-advertisement-recommendation/899478564529",
+      "title": "Etsy — Search, Advertisement, and Recommendation Policy",
+      "date": "16 October 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/news/building-a-more-trusted-and-transparent-marketplace-together",
+      "title": "Etsy News — Building a More Trusted and Transparent Marketplace",
+      "date": "28 May 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://storage.googleapis.com/etsy-extfiles-prod/DSA%20Report%20Feb%202025.pdf",
+      "title": "Etsy — DSA Report February 2025",
+      "date": "February 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://community.etsy.com/t5/Announcements/Etsy-s-2023-Trust-amp-Safety-highlights-and-our-plans-for-2024/td-p/145544440/",
+      "title": "Etsy Community — 2023 Trust & Safety Highlights and 2024 Plans",
+      "date": "May 2024",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/seller-handbook/article/375461474487",
+      "title": "Etsy Seller Handbook — How Etsy Search Works",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/seller-handbook/article/1275449912004",
+      "title": "Etsy Seller Handbook — Etsy Ads Guide",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/seller-handbook/article/1402347260856",
+      "title": "Etsy Seller Handbook — Creativity Standards",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001370637/000137063724000004/exhibit991january312024.htm",
+      "title": "SEC — Etsy Elliott Management Disclosure (January 2024)",
+      "date": "January 31, 2024",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://investors.etsy.com/news-events/press-releases/detail/215/etsy-announces-new-750-million-share-repurchase-authorization-and-appointment-of-fred-wilson-as-lead-independent-director",
+      "title": "Etsy — $750M Share Repurchase Authorization",
+      "date": "18 December 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://investors.etsy.com/news-events/press-releases/detail/212/etsy-announces-leadership-transition-kruti-patel-goyal-to-become-chief-executive-officer-josh-silverman-transitions-to-executive-chair-effective-january-1-2026",
+      "title": "Etsy — CEO Transition Announcement",
+      "date": "29 October 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001370637/000137063725000097/exhibit991102925.htm",
+      "title": "SEC — Etsy 8-K CEO Transition (October 2025)",
+      "date": "29 October 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.stocktitan.net/sec-filings/ETSY/8-k-etsy-inc-reports-material-event-a3957f6ebe96.html",
+      "title": "StockTitan — Etsy 8-K Material Event",
+      "date": "October 29, 2025",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.etsy.com/news/business-as-a-force-for-good-defining-etsys-path",
+      "title": "Etsy — Business as a Force for Good (B Corp Exit Statement)",
+      "date": "November 2017",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://investors.etsy.com/governance-impact-reporting/corporate-governance/board-of-directors",
+      "title": "Etsy — Board of Directors",
+      "date": "Retrieved 5 July 2026",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1370637/000114036121013411/nc10019302x1_def14a.htm",
+      "title": "SEC — Etsy Proxy Statement 2021",
+      "date": "2021",
+      "type": "ASSESSED"
+    },
+    {
+      "url": "https://natlawreview.com/article/etsy-sued-over-pixel-trackers-what-it-means-your-business",
+      "title": "National Law Review — Etsy Sued Over Pixel Trackers",
+      "date": "10 July 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://topclassactions.com/lawsuit-settlements/lawsuit-news/etsy-class-action-alleges-website-uses-trackers-to-collect-users-data/",
+      "title": "Top Class Actions — Etsy Class Action: Trackers to Collect User Data",
+      "date": "21 July 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.valueaddedresource.net/etsy-privacy-policy-update-october-2025/",
+      "title": "Value Added Resource — Etsy Privacy Policy Update October 2025",
+      "date": "30 August 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://settlementresearch.com/etsydata-classaction/",
+      "title": "Settlement Research — Etsy Data Class Action",
+      "date": "Retrieved 5 July 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://dl.acm.org/doi/pdf/10.1145/3209978.3209993",
+      "title": "ACM SIGIR — Etsy Search: Optimizing for Relevance and Revenue",
+      "date": "SIGIR 2018",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.retaildive.com/news/etsy-is-leveraging-ai-to-boost-personalization/746917/",
+      "title": "Retail Dive — Etsy Leveraging AI to Boost Personalization",
+      "date": "1 May 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.npr.org/2022/04/11/1091123928/etsy-strike-2022",
+      "title": "NPR — Etsy Strike 2022",
+      "date": "11 April 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://techcrunch.com/2022/04/11/etsy-strike-sellers-transaction-fees/",
+      "title": "TechCrunch — Etsy Strike: Sellers Protest Transaction Fees",
+      "date": "11 April 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://craftybase.com/blog/everything-you-should-know-about-etsy-offsite-ads",
+      "title": "Craftybase — Everything You Should Know About Etsy Offsite Ads",
+      "date": "May 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.crainsnewyork.com/technology/etsy-ceo-josh-silverman-awarded-40m-pay-after-strike",
+      "title": "Crain's New York — Etsy CEO Josh Silverman Awarded $40M Pay After Strike",
+      "date": "April 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.valueaddedresource.net/etsy-responds-to-seller-concerns-about-payment-reserves/",
+      "title": "Value Added Resource — Etsy Responds to Seller Concerns About Payment Reserves",
+      "date": "1 August 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.cindylouwho2.com/blog/2021/10/22/etsy-payment-account-reserves-what-every-seller-needs-to-know",
+      "title": "Cindy Lou Who 2 — Etsy Payment Account Reserves: What Sellers Need to Know",
+      "date": "14 August 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://terms.law/Demand-Letters/Platforms/etsy/",
+      "title": "Terms.law — Etsy Demand Letters",
+      "date": "19 May 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.pbs.org/newshour/economy/why-etsys-latest-fee-increase-has-inspired-thousands-of-sellers-including-its-most-marginalized-to-strike",
+      "title": "PBS NewsHour — Why Etsy's Fee Increase Inspired a Seller Strike",
+      "date": "19 April 2022",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.cindylouwho2.com/blog/2023/4/13/etsys-seller-protection-policy-how-to-stop-buyer-refunds-of-your-money",
+      "title": "Cindy Lou Who 2 — Etsy's Seller Protection Policy",
+      "date": "April 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.insightagent.app/guides/how-to-cancel-your-etsy-seller-account",
+      "title": "Insight Agent — How to Cancel Your Etsy Seller Account",
+      "date": "February 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.shopping-cart-migration.com/must-know-tips/how-to-close-etsy-shop-temporarily-vs-permanently",
+      "title": "Shopping Cart Migration — How to Close Your Etsy Shop",
+      "date": "March 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.retaildive.com/news/etsy-ai-curated-collections/745001/",
+      "title": "Retail Dive — Etsy AI-Curated Collections",
+      "date": "10 April 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.retaildive.com/ex/mobilecommercedaily/etsy-taps-push-notifications-with-local-pilot-program",
+      "title": "Retail Dive — Etsy Taps Push Notifications with Local Pilot Program",
+      "date": "Retrieved 5 July 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://goodux.appcues.com/blog/etsy-mobile-push-notification-priming",
+      "title": "Good UX by Appcues — Etsy Mobile Push Notification Priming",
+      "date": "Retrieved 5 July 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.marketscreener.com/quote/stock/ETSY-INC-21685602/news/Etsy-shares-fall-after-Citron-Research-calls-out-platform-for-counterfeit-goods-43010723/",
+      "title": "MarketScreener — Etsy Shares Fall After Citron Research Counterfeit Goods Report",
+      "date": "16 February 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://finance.yahoo.com/news/etsy-has-become-a-clearinghouse-for-counterfeit-goods-short-seller-214830017.html",
+      "title": "Yahoo Finance — Etsy Has Become a Clearinghouse for Counterfeit Goods",
+      "date": "17 February 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://investorplace.com/2023/02/etsy-stock-alert-citron-research-says-crime-is-obvious-for-etsy/",
+      "title": "InvestorPlace — Etsy Stock Alert: Citron Research Says Crime Is Obvious",
+      "date": "16 February 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.valueaddedresource.net/irish-regulator-etsy-digital-services-act-compliance-review/",
+      "title": "Value Added Resource — Irish Regulator Etsy DSA Compliance Review",
+      "date": "6 October 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://techcrunch.com/2024/07/09/etsy-new-seller-policy-2024-generative-ai/",
+      "title": "TechCrunch — Etsy New Seller Policy 2024: Generative AI",
+      "date": "9 July 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://craftindustryalliance.org/etsys-ai-problem/",
+      "title": "Craft Industry Alliance — Etsy's AI Problem",
+      "date": "11 June 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.xhbt.org/open-calls/etsys-ai-art-policy-2025-complete-guide",
+      "title": "XHBT — Etsy's AI Art Policy 2025 Complete Guide",
+      "date": "17 July 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://iscompliant.app/Blog/etsy-creativity-standards-pod-sellers-guide",
+      "title": "IsCompliant — Etsy Creativity Standards: POD Sellers Guide",
+      "date": "Retrieved 5 July 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://iscompliant.app/Blog/etsy-reseller-crackdown-transparency-report",
+      "title": "IsCompliant — Etsy Reseller Crackdown Transparency Report",
+      "date": "12 February 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.cindylouwho2.com/blog/2021/9/2/how-etsy-seo-works-guide-search-algorithm",
+      "title": "Cindy Lou Who 2 — How Etsy SEO Works: Search Algorithm Guide",
+      "date": "January 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.marketplace.org/episode/2025/04/10/etsy-launches-new-ai-tool-to-help-shoppers",
+      "title": "Marketplace — Etsy Launches New AI Tool to Help Shoppers",
+      "date": "April 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://aimgroup.com/2024/02/02/activist-investor-elliott-management-joins-etsy-board/",
+      "title": "AIM Group — Elliott Management Joins Etsy Board",
+      "date": "February 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.cnbc.com/2024/02/01/activist-elliott-builds-roughly-13percent-stake-in-etsy-secures-board-seat.html",
+      "title": "CNBC — Elliott Builds ~13% Stake in Etsy, Secures Board Seat",
+      "date": "February 1, 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://finance.yahoo.com/news/activist-investor-elliott-gains-seat-155443212.html",
+      "title": "Yahoo Finance — Activist Investor Elliott Gains Etsy Board Seat",
+      "date": "February 1, 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.valueaddedresource.net/etsy-ceo-josh-silverman-steps-down/",
+      "title": "Value Added Resource — Etsy CEO Josh Silverman Steps Down",
+      "date": "November 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.ecommercebytes.com/2026/04/17/etsy-discloses-executive-compensation-date-of-annual-shareholder-meeting/",
+      "title": "EcommerceBytes — Etsy Discloses Executive Compensation",
+      "date": "April 17, 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.valueaddedresource.net/etsy-depop-payout-delays-testing-buyer-fees/",
+      "title": "Value Added Resource — Etsy/Depop Payout Delays, Testing Buyer Fees",
+      "date": "April 2024",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.fastcompany.com/40418325/will-etsy-keep-its-commitment-to-social-good-after-its-management-shakeup",
+      "title": "Fast Company — Will Etsy Keep Its Commitment to Social Good After Its Management Shakeup",
+      "date": "July 2017",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.weforum.org/stories/2019/11/from-b-corps-to-zebras-4-ways-to-build-businesses-that-work-for-good/",
+      "title": "World Economic Forum — From B Corps to Zebras: Ways to Build Businesses for Good",
+      "date": "November 2019",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.valueaddedresource.net/etsy-layoffs-restructuring-includes-cmo/",
+      "title": "Value Added Resource — Etsy Layoffs and Restructuring (Includes CMO)",
+      "date": "26 December 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.cnbc.com/2023/12/13/etsy-laying-off-11percent-of-staff-citing-competitive-environment.html",
+      "title": "CNBC — Etsy Laying Off 11% of Staff",
+      "date": "13 December 2023",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Etsy",
+      "title": "Wikipedia — Etsy",
+      "date": "Retrieved 5 July 2026",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.ecommercebytes.com/2025/04/22/etsy-sells-reverb-will-focus-on-etsy-and-depop-marketplaces/",
+      "title": "EcommerceBytes — Etsy Sells Reverb, Will Focus on Etsy and Depop",
+      "date": "22 April 2025",
+      "type": "INFERRED"
+    },
+    {
+      "url": "https://www.sunsethq.com/layoff-tracker/etsy",
+      "title": "SunsetHQ — Etsy Layoff Tracker",
+      "date": "Retrieved 5 July 2026",
+      "type": "INFERRED"
+    }
+  ]
+}

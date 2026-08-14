@@ -1,5 +1,21 @@
 [
   {
+    "slug": "etsy",
+    "company": "Etsy",
+    "domain": "etsy.com",
+    "issue": 5,
+    "published": "2026-07-06",
+    "label": "Extractive",
+    "score": 35,
+    "subtitle": "The marketplace that permanently enrolls successful sellers in ads they can't opt out of, freezes earnings without explaining why, and is under activist-investor pressure to extract more",
+    "summary": "A three-sided marketplace where the more successful you become as a seller, the more you pay — mandatory Offsite Ads permanently enroll every shop that crosses $10,000 in sales at a 12% fee with no exit. Opaque payment reserves can hold 75% of earnings for up to six months without disclosed triggers, while Elliott Management's 13% stake and a new $750 million share buyback signal that shareholder return now outranks marketplace investment.",
+    "logoPath": "/logos/etsy-white.svg",
+    "brandColor": "#F1641E",
+    "sourceCount": 90,
+    "assessedPct": 56,
+    "confidence": "High"
+  },
+  {
     "slug": "ghost",
     "company": "Ghost",
     "domain": "ghost.org",
