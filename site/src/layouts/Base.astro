@@ -3,8 +3,9 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  jsonLd?: object | object[];
 }
-const { title, description = "Each issue scores one tech company on how its business model relates to the people who use it.", ogImage } = Astro.props;
+const { title, description = "Each issue scores one tech company on how its business model relates to the people who use it.", ogImage, jsonLd } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
@@ -32,6 +33,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- JSON-LD structured data -->
+  {jsonLd && (
+    <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])} />
+  )}
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4XVX2Q7CNR"></script>
@@ -182,6 +188,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 <footer class="site-footer">
   <div class="site-footer__inner">
     <p>The Rake. Analysis applied consistently, in public, and with all the receipts.</p>
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
   </div>
 </footer>
 
@@ -272,6 +282,16 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   text-decoration: none;
 }
 .site-footer a:hover { color: var(--text); }
+.site-footer__nav {
+  display: flex;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+.site-footer__nav a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
 
 /* ── Hamburger ───────────────────────────────── */
 .nav-toggle {

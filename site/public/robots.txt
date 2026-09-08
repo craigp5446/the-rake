@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://therake.co/sitemap-index.xml
