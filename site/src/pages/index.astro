@@ -20,15 +20,65 @@ const logoSrc = (domain: string, logoPath?: string) =>
   logoPath ?? `https://cdn.brandfetch.io/${domain}/w/256/h/256?c=${brandfetchId}`;
 
 const [featured, ...previous] = reports;
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'The Rake',
+  description: 'A transparency project scoring tech companies on how well their business model aligns with user interests.',
+  url: 'https://therake.co',
+  publisher: {
+    '@type': 'Person',
+    name: 'Craig Phillips',
+    url: 'https://therake.co/about/',
+  },
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'The Rake',
+  description: 'A transparency project scoring tech companies on how well their business model aligns with user interests.',
+  url: 'https://therake.co',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'editorial',
+    email: 'craig@fluke.design',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'NL',
+  },
+};
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'The Rake — Reports',
+  description: 'All company alignment reports published by The Rake.',
+  url: 'https://therake.co',
+  numberOfItems: reports.length,
+  itemListElement: reports.map((r, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${r.company} — Issue ${r.issue}`,
+    url: `https://therake.co/issues/${r.issue}/`,
+  })),
+};
 ---
 
-<Base title="The Rake — tech business model transparency">
+<Base
+  title="The Rake — tech business model transparency"
+  description="A transparency project, scoring tech companies on how well their interests align with yours."
+  ogImage={featured ? new URL(`/og/${featured.issue}.png`, 'https://therake.co').toString() : undefined}
+  jsonLd={[websiteSchema, organizationSchema, itemListSchema]}
+>
   <main>
 
     <section class="hero">
       <div class="hero__inner">
         <img src="/therake.svg" alt="" class="hero__mark" aria-hidden="true" />
-        <p class="hero__subhead">A transparency project, scoring tech companies on how well their interests align with yours.</p>
+        <h1 class="hero__subhead">A transparency project, scoring tech companies on how well their interests align with yours.</h1>
       </div>
     </section>
 

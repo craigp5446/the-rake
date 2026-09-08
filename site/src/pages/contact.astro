@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Contact — The Rake"
+  description="Get in touch with The Rake — questions, corrections, research tips, or general correspondence."
+>
+
+<main class="contact-page">
+  <div class="contact-page__inner">
+
+    <header class="contact-header">
+      <p class="mono muted contact-kicker">Contact</p>
+      <h1 class="contact-title">Get in touch</h1>
+    </header>
+
+    <div class="contact-body">
+
+      <section class="contact-section">
+        <p>The best way to reach The Rake is by email. Whether you have a question about a report, spotted something that looks wrong, have a source tip, or want to suggest a company for a future issue — I'd genuinely like to hear from you.</p>
+        <p><a href="mailto:craig@fluke.design" class="contact-link">craig@fluke.design</a></p>
+      </section>
+
+      <section class="contact-section">
+        <h2>What I'm particularly interested in</h2>
+        <ul>
+          <li><strong>Corrections</strong> — if something in a report is factually wrong, I want to fix it. Please include the specific claim and a source.</li>
+          <li><strong>Source tips</strong> — primary documents, leaked materials, or underreported stories that bear on a company's alignment with users.</li>
+          <li><strong>Company suggestions</strong> — which tech company should The Rake cover next, and why.</li>
+          <li><strong>Methodology feedback</strong> — if you've done something similar and can see ways to make the scoring more rigorous, I'd genuinely welcome it.</li>
+        </ul>
+      </section>
+
+      <section class="contact-section">
+        <h2>Response times</h2>
+        <p>The Rake is a one-person operation. I read every message but can't guarantee a reply to all of them. If your message relates to a factual error in a report, I treat that as a priority and will respond as quickly as I can.</p>
+      </section>
+
+      <section class="contact-section">
+        <h2>Press and republication</h2>
+        <p>If you'd like to quote or republish content from The Rake, please get in touch before doing so. Analysis and scoring rubrics are original work and I ask that attribution is included in any republication. Brief quotation with a link to the source report is fine without prior contact.</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+</Base>
+
+<style>
+.contact-page { padding: 0 var(--gutter); }
+.contact-page__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.contact-header {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.contact-kicker { margin-bottom: 1rem; }
+.contact-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+}
+.contact-body { padding: 0 0 4rem; }
+.contact-section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.contact-section:last-child { border-bottom: none; }
+.contact-section h2 {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.contact-section p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.25em;
+}
+.contact-section p:last-child { margin-bottom: 0; }
+.contact-section ul {
+  list-style: none;
+  margin-bottom: 1.25em;
+}
+.contact-section ul li {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.5em;
+}
+.contact-section ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+.contact-link {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+.contact-link:hover { border-color: var(--text); }
+</style>

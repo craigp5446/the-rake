@@ -120,6 +120,37 @@ const dimScoreGloss: Record<string, Record<number, string>> = {
 };
 
 const labelColour = labelColours[report.label.toLowerCase()] ?? '#9A9994';
+
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  name: `${report.company} — A report by The Rake`,
+  description: report.summary,
+  url: `https://therake.co/issues/${report.issue}/`,
+  datePublished: report.published,
+  author: {
+    '@type': 'Person',
+    name: 'Craig Phillips',
+    url: 'https://therake.co/about/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'The Rake',
+    url: 'https://therake.co',
+  },
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: String(report.score),
+    bestRating: '100',
+    worstRating: '0',
+    ratingExplanation: report.label,
+  },
+  itemReviewed: {
+    '@type': 'Organization',
+    name: report.company,
+    url: `https://${report.domain}`,
+  },
+};
 const spectrumBands = [
   { label: 'Adversarial', start: 0,  end: 20 },
   { label: 'Extractive',  start: 20, end: 40 },
@@ -149,8 +180,9 @@ const watchCount    = (report.findings as Finding[]).filter(f => f.type === 'tra
 
 <Base
   title={`${report.company} — A report by The Rake`}
-  description="Scoring tech companies on how well their interests align with yours."
+  description={report.subtitle ?? 'Scoring tech companies on how well their interests align with yours.'}
   ogImage={new URL(`/og/${report.issue}.png`, Astro.site).toString()}
+  jsonLd={reviewSchema}
 >
 
 <article class="report">

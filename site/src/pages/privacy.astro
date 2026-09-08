@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Privacy — The Rake"
+  description="How The Rake handles data — what is collected, what is not, and how analytics are used."
+>
+
+<main class="privacy-page">
+  <div class="privacy-page__inner">
+
+    <header class="privacy-header">
+      <p class="mono muted privacy-kicker">Privacy policy</p>
+      <h1 class="privacy-title">How The Rake handles data</h1>
+      <p class="privacy-updated mono faint">Last updated: July 2026</p>
+    </header>
+
+    <div class="privacy-body">
+
+      <section class="privacy-section privacy-section--intro">
+        <p>The Rake is a publishing project. It does not sell products, run a SaaS platform, or create user accounts. The data handling here is correspondingly simple. This page explains what is collected when you visit the site, what is not collected, and how to contact us about privacy concerns.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>What is collected</h2>
+        <p><strong>Analytics.</strong> The Rake uses Google Analytics 4 (GA4) to understand how the site is used — which pages are viewed, broadly where visitors come from, and how long they spend reading. This data is aggregated and anonymised. IP addresses are not stored. No cross-site tracking is performed by The Rake itself.</p>
+        <p>Google Analytics sets cookies in your browser to track sessions and distinguish between visits. You can prevent this by using a browser extension that blocks analytics scripts, or by using a browser in private mode.</p>
+        <p><strong>Email newsletter.</strong> If you subscribe to The Rake via the Subscribe link, your email address is handled by Buttondown, a third-party newsletter platform. The Rake does not store your email address independently. Buttondown's privacy policy governs how subscriber data is handled on their platform.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>What is not collected</h2>
+        <ul>
+          <li>The Rake does not require you to create an account or log in.</li>
+          <li>The Rake does not sell advertising and does not share data with advertisers.</li>
+          <li>The Rake does not collect payment information.</li>
+          <li>The Rake does not run any server-side logging of individual visitors beyond what Google Analytics captures.</li>
+          <li>No personal data is stored on The Rake's own infrastructure.</li>
+        </ul>
+      </section>
+
+      <section class="privacy-section">
+        <h2>Cookies</h2>
+        <p>The Rake's site sets cookies only through Google Analytics. These are analytics cookies used to measure traffic. No marketing, advertising, or tracking cookies are set by The Rake directly. Third-party links on the site (to sources, to company websites, to Buttondown) may set their own cookies — those are governed by the respective third parties' policies.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>Third-party services</h2>
+        <ul>
+          <li><strong>Google Analytics 4</strong> — aggregated site analytics. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</li>
+          <li><strong>Buttondown</strong> — email newsletter. <a href="https://buttondown.com/privacy" target="_blank" rel="noopener">Buttondown's privacy policy</a>.</li>
+          <li><strong>Netlify</strong> — site hosting. Standard server logs may be retained by Netlify per their infrastructure policy. <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Netlify's privacy policy</a>.</li>
+        </ul>
+      </section>
+
+      <section class="privacy-section">
+        <h2>Your rights</h2>
+        <p>Under EU data protection law (GDPR), you have the right to access, correct, or request deletion of any personal data held about you. Since The Rake does not directly store personal data beyond what Google Analytics and Buttondown hold on our behalf, requests should be directed to those platforms directly where possible. For questions or concerns specific to The Rake, contact us at <a href="mailto:craig@fluke.design" class="privacy-link">craig@fluke.design</a>.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>Changes to this policy</h2>
+        <p>If the data handling practices described here change materially, this page will be updated with a new date. The Rake does not plan to introduce advertising or data monetisation — that would contradict the purpose of the project — but this page will be kept accurate if anything does change.</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+</Base>
+
+<style>
+.privacy-page { padding: 0 var(--gutter); }
+.privacy-page__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.privacy-header {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.privacy-kicker { margin-bottom: 1rem; }
+.privacy-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+.privacy-updated { font-size: 0.75rem; }
+.privacy-body { padding: 0 0 4rem; }
+.privacy-section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.privacy-section:last-child { border-bottom: none; }
+.privacy-section h2 {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.privacy-section p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.25em;
+}
+.privacy-section p:last-child { margin-bottom: 0; }
+.privacy-section ul {
+  list-style: none;
+  margin-bottom: 1.25em;
+}
+.privacy-section ul li {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.5em;
+}
+.privacy-section ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+.privacy-section a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 2px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.privacy-section a:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
+}
+.privacy-link {
+  font-family: var(--font-mono);
+}
+</style>
